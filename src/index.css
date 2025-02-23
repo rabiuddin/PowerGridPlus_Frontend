@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #0b6a62;
-    --color-secondary: #22a196;
+  --color-primary: #0b6a62;
+  --color-secondary: #22a196;
+  --animate-delay-2000: 2000ms;
+  --animate-delay-4000: 4000ms;
 }
+
