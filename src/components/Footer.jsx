@@ -10,20 +10,20 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           {/* Logo Section */}
           <div>
-            <p className="font-extrabold text-[#0b6a62] text-xl">POWERGRID</p>
-            <p className="text-sm font-bold text-[#22a196] md:ml-11">PLUS</p>
+            <p className="font-extrabold text-primary text-xl">POWERGRID</p>
+            <p className="text-sm font-bold text-secondary md:ml-11">PLUS</p>
             <p className="mt-2 black text-sm">PowerGridPlus - © 2024</p>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-semibold text-[#22a196]">Navigation</h3>
+            <h3 className="text-lg font-semibold text-secondary">Navigation</h3>
             <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
               <ul className="space-y-2">
                 <li>
                   <a
                     href="#"
-                    className="hover:text-[#22a196] transition-all duration-200 ease-in-out"
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Home
                   </a>
@@ -31,7 +31,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="hover:text-[#22a196] transition-all duration-200 ease-in-out"
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     About
                   </a>
@@ -39,7 +39,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="hover:text-[#22a196] transition-all duration-200 ease-in-out"
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Contact Us
                   </a>
@@ -49,7 +49,7 @@ const Footer = () => {
                 <li className="mx-5">
                   <a
                     href="#"
-                    className="hover:text-[#22a196] transition-all duration-200 ease-in-out"
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Services
                   </a>
@@ -57,7 +57,7 @@ const Footer = () => {
                 <li className="mx-5">
                   <a
                     href="#"
-                    className="hover:text-[#22a196] transition-all duration-200 ease-in-out"
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Blog
                   </a>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <li className="mx-5">
                   <a
                     href="#"
-                    className="hover:text-[#22a196] transition-all duration-200 ease-in-out"
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device
                   </a>
@@ -76,16 +76,16 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold text-[#22a196]">
+            <h3 className="text-lg font-semibold text-secondary">
               Contact info
             </h3>
             <div className="mt-2 space-y-2">
               <p className="flex items-center justify-center md:justify-start">
-                <MdEmail className="mr-2 text-xl text-[#22a196]" />{" "}
+                <MdEmail className="mr-2 text-xl text-secondary" />{" "}
                 info@powergridplus.ee
               </p>
               <p className="flex items-center justify-center md:justify-start">
-                <MdPhone className="mr-2 text-xl text-[#22a196]" />{" "}
+                <MdPhone className="mr-2 text-xl text-secondary" />{" "}
                 +372-555-599-65
               </p>
             </div>
