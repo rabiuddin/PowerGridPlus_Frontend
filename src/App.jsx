@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div>
-      <div className='bg-red-600'>
-        <p>Tailwind is Working</p>
-      </div>
-    </div>
-  )
-}
+    <>
+      <Navbar />
+      <Footer />
+    </>
+  );
+};
 
-export default App
+export default App;
