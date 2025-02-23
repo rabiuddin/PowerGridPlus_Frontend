@@ -21,8 +21,8 @@ const Navbar = () => {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <p className="font-extrabold text-[#0b6a62] text-xl">POWERGRID</p>
-            <p className="text-center text-xs font-bold text-[#22a196]">PLUS</p>
+            <p className="font-extrabold text-primary text-xl">POWERGRID</p>
+            <p className="text-center text-xs font-bold text-secondary">PLUS</p>
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="#"
-            className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-[#0b6a62] transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
+            className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
           >
             GET YOUR DEVICE NOW
           </a>
@@ -74,8 +74,8 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <p className="font-extrabold text-[#0b6a62] text-xl">POWERGRID</p>
-              <p className="text-center text-xs font-bold text-[#22a196]">
+              <p className="font-extrabold text-primary text-xl">POWERGRID</p>
+              <p className="text-center text-xs font-bold text-secondary">
                 PLUS
               </p>
             </a>
@@ -125,7 +125,7 @@ const Navbar = () => {
               <div className="py-6">
                 <a
                   href="#"
-                  className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-[#0b6a62] transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
+                  className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
                 >
                   GET YOUR DEVICE NOW
                 </a>
