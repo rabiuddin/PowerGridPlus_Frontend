@@ -5,7 +5,7 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
     <div
       className={`flex flex-col md:flex-row items-center ${
         isReversed ? "md:flex-row-reverse" : ""
-      } bg-[#ffffffCC] hover:bg-white shadow-lg rounded-lg overflow-hidden transition-all transform hover:scale-101 duration-400 mx-4 md:mx-0`}
+      } bg-[#ffffffCC] hover:bg-white shadow-lg rounded-lg overflow-hidden transition-all transform hover:scale-101 duration-400 mx-4 md:mx-0 h-full`} // Added h-full here
     >
       {/* Text Content */}
       <div className="md:w-1/2 p-8">
@@ -15,8 +15,10 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
       </div>
 
       {/* Image Section */}
-      <div className="md:w-1/2">
-        <img src={image} alt={title} className="w-full h-auto object-cover" />
+      <div className="md:w-1/2 h-full">
+        {" "}
+        {/* Added h-full here */}
+        <img src={image} alt={title} className="w-full object-cover" />
       </div>
     </div>
   );
