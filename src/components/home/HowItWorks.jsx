@@ -16,7 +16,7 @@ const HowItWorks = () => {
   <br />
   This compact design configuration allows clients to buy a single smart plug unit to sense all electrical loads and save costs on additional sensors while also having the benefits of real-time feedback on key loads, saving costs on smart plug technologies.
 </>,
-      image: "/path-to-image-1.png", // Replace with actual image path
+      image: "/src/assets/step1Image.png", // Replace with actual image path
     },
     {
       step: "STEP 2",
@@ -33,7 +33,7 @@ If you need to switch a device on or off while you are away, simply use the mobi
 
 Minimize energy consumption by utilizing the mobile or web app to switch off your appliances when you are away from home.
         </>,
-      image: "/path-to-image-2.png",
+      image: "/src/assets/step2Image.jpg",
     },
     {
       step: "STEP 3",
@@ -49,7 +49,7 @@ The PowergridPlus app Dashboard incorporates advanced user interfaces such as de
 <br />
 Our Smart Plug utilizes AI to automatically detect and generate recommendations that help eliminate minor power waste from your devices, helping to lower both your carbon emissions and electricity costs.
       </>,
-      image: "/path-to-image-3.png",
+      image: "/src/assets/step3Image.jpg",
     },
   ];
 

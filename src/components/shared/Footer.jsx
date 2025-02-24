@@ -10,8 +10,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           {/* Logo Section */}
           <div>
-            <p className="font-extrabold text-primary text-xl">POWERGRID</p>
-            <p className="text-sm font-bold text-secondary md:ml-11">PLUS</p>
+            <img
+              src="/src/assets/PwergridplusLogoOld4.png"
+              alt="Company Logo"
+              className="w-52"
+            />
+
             <p className="mt-2 black text-sm">PowerGridPlus - © 2024</p>
           </div>
 

@@ -21,8 +21,7 @@ const Navbar = () => {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <p className="font-extrabold text-primary text-xl">POWERGRID</p>
-            <p className="text-center text-xs font-bold text-secondary">PLUS</p>
+            <img src="/src/assets/PwergridplusLogoOld4.png" alt="Company Logo" className="w-52"/>
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -74,10 +73,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <p className="font-extrabold text-primary text-xl">POWERGRID</p>
-              <p className="text-center text-xs font-bold text-secondary">
-                PLUS
-              </p>
+              <img src="/src/assets/PwergridplusLogoOld.png" alt="Company Logo" className="w-12"/>
             </a>
             <button
               type="button"
