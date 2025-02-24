@@ -54,10 +54,10 @@ Our Smart Plug utilizes AI to automatically detect and generate recommendations 
   ];
 
   return (
-    <div className="py-16 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200">
+    <div className="py-16 bg-gray-100 bg-cover" style={{ backgroundImage: "URL('/src/assets/HowItWorksBg.png')" }}>
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">How it works?</h2>
-        <div className="w-16 h-1 bg-teal-500 mx-auto mb-12"></div>
+        <h1 className="main-heading">How it works?</h1>
+        <div className="w-16 h-1 bg-teal-600 mx-auto mb-10"></div>
       </div>
 
       <div className="space-y-12 px-4 md:px-0 w-[80%] mx-auto">

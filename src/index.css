@@ -7,3 +7,7 @@
   --animate-delay-4000: 4000ms;
 }
 
+.main-heading{
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 max-w-4xl mx-auto mb-4
+}
+

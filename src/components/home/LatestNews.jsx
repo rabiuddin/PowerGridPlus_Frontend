@@ -33,7 +33,7 @@ export default function LatestNews() {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Latest News</h2>
+        <h2 className="main-heading">Latest News</h2>
         <div className="w-16 h-1 bg-teal-600 mx-auto mb-10"></div>
 
         {/* News Grid */}
