@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
+import { motion, AnimatePresence } from "framer-motion";
 
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
@@ -21,7 +22,11 @@ const Navbar = () => {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img src="/src/assets/PwergridplusLogoOld4.png" alt="Company Logo" className="w-52"/>
+            <img
+              src="/src/assets/PwergridplusLogoOld4.png"
+              alt="Company Logo"
+              className="w-52"
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -63,79 +68,96 @@ const Navbar = () => {
           </a>
         </div>
       </nav>
-      <Dialog
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-        className="lg:hidden"
-      >
-        <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img src="/src/assets/PwergridplusLogoOld.png" alt="Company Logo" className="w-12"/>
-            </a>
-            <button
-              type="button"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <Dialog
+            open={mobileMenuOpen}
+            onClose={() => setMobileMenuOpen(false)}
+            className="lg:hidden"
+          >
+            <div
+              className="fixed inset-0 z-10"
               onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.5 }}
+              className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
             >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="size-6" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Home
+              <div className="flex items-center justify-between">
+                <a href="#" className="-m-1.5 p-1.5">
+                  <span className="sr-only">Your Company</span>
+                  <img
+                    src="/src/assets/PwergridplusLogoOld.png"
+                    alt="Company Logo"
+                    className="w-12"
+                  />
                 </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
                 >
-                  About
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Services
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Blog
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Contact Us
-                </a>
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon aria-hidden="true" className="size-6" />
+                </button>
               </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
-                >
-                  GET YOUR DEVICE NOW
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 my-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
+              <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-gray-500/10">
+                  <div className="space-y-2 py-6">
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Home
+                    </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      About
+                    </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Services
+                    </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Blog
+                    </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Contact Us
+                    </a>
+                  </div>
+                  <div className="py-6">
+                    <a
+                      href="#"
+                      className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
+                    >
+                      GET YOUR DEVICE NOW
+                    </a>
+                    <a
+                      href="#"
+                      className="-mx-3 my-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Log in
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </DialogPanel>
-      </Dialog>
+            </motion.div>
+          </Dialog>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
