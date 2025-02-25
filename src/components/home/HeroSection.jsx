@@ -5,7 +5,7 @@ const HeroSection = () => {
     <section
       className="relative flex items-center justify-center h-screen bg-cover bg-center"
       style={{
-        backgroundImage: "url('src/assets/hero_image.webp')",
+        backgroundImage: "url('/hero_image.webp')",
       }}
     >
       <div className="absolute inset-0 bg-black opacity-70"></div>

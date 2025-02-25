@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="mx-auto">
             <img
-              src="/src/assets/PwergridplusLogoOld4.png"
+              src="/PwergridplusLogoOld4.png"
               alt="Company Logo"
               className="w-52"
             />

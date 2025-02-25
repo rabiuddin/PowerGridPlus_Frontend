@@ -34,7 +34,7 @@ const HowItWorks = () => {
           loads, saving costs on smart plug technologies.
         </>
       ),
-      image: "/src/assets/step1Image.png", // Replace with actual image path
+      image: "/step1Image.png", // Replace with actual image path
     },
     {
       step: "STEP 2",
@@ -56,7 +56,7 @@ const HowItWorks = () => {
           app to switch off your appliances when you are away from home.
         </>
       ),
-      image: "/src/assets/step2Image.jpg",
+      image: "/step2Image.jpg",
     },
     {
       step: "STEP 3",
@@ -90,7 +90,7 @@ const HowItWorks = () => {
           costs.
         </>
       ),
-      image: "/src/assets/step3Image.jpg",
+      image: "/step3Image.jpg",
     },
   ];
 

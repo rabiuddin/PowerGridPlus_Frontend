@@ -33,7 +33,7 @@ const Navbar = () => {
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
-              src="/src/assets/PwergridplusLogoOld4.png"
+              src="/PwergridplusLogoOld4.png"
               alt="Company Logo"
               className="w-52"
             />
@@ -101,7 +101,7 @@ const Navbar = () => {
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Your Company</span>
                   <img
-                    src="/src/assets/PwergridplusLogoOld.png"
+                    src="/PwergridplusLogoOld.png"
                     alt="Company Logo"
                     className="w-12"
                   />
