@@ -13,6 +13,16 @@ import React from "react";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleScrollToSection = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").slice(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="bg-white">
       <nav
@@ -58,12 +68,13 @@ const Navbar = () => {
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="#"
+            href="#get-device"
+            onClick={handleScrollToSection}
             className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
           >
             GET YOUR DEVICE NOW
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 my-auto">
+          <a href="/login" className="text-sm/6 font-semibold text-gray-900 my-auto">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -140,13 +151,14 @@ const Navbar = () => {
                   </div>
                   <div className="py-6">
                     <a
-                      href="#"
+                      href="#get-device"
+                      onClick={handleScrollToSection}
                       className="bg-[#0b6a62] text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-[#0b6a62]"
                     >
                       GET YOUR DEVICE NOW
                     </a>
                     <a
-                      href="#"
+                      href="/login"
                       className="-mx-3 my-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Log in
