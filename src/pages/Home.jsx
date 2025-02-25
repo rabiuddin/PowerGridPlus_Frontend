@@ -6,10 +6,11 @@ import LatestNews from "../components/home/LatestNews";
 import FAQ from "../components/home/FAQ";
 import CallToAction from "../components/home/CallToAction";
 import Reveal from "../components/shared/Reveal";
+import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
   return (
-    <>
+    <MainLayout>
       <HeroSection />
       <Reveal>
         <WhyChooseUs />
@@ -20,7 +21,7 @@ const Home = () => {
       <Reveal>
         <CallToAction />
       </Reveal>
-    </>
+    </MainLayout>
   );
 };
 
