@@ -1,8 +1,8 @@
 export default function CallToAction() {
     return (
-      <section className="flex flex-col items-center justify-center py-12 bg-gray-50">
-        <h2 className="text-3xl font-bold text-gray-900 text-center">Get your device now!</h2>
-        <div className="w-16 h-1 bg-[#0b6a62] my-2"></div>
+      <section className="flex flex-col items-center justify-center py-12 bg-gray-50" id="get-device">
+        <h1 className="main-heading">Get your device now!</h1>
+        <div className="w-16 h-1 bg-teal-600 mx-auto mb-10"></div>
         <p className="text-lg text-gray-600 text-center my-6">
           Complete the form and we'll get in touch as soon as possible!
         </p>

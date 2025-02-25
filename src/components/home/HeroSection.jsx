@@ -17,7 +17,6 @@ export default function HeroSection() {
               <IoPhonePortraitOutline size={40} />
             </span>
           </span>
-          <span className="shimmer">for Insurance Industry</span>
         </h1>
         <p className="text-lg text-gray-600 mt-4">
           Don’t struggle with insurance complexities—our conversational AI

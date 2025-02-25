@@ -5,17 +5,23 @@ import HowItWorks from "../components/home/HowItWorks";
 import LatestNews from "../components/home/LatestNews";
 import FAQ from "../components/home/FAQ";
 import CallToAction from "../components/home/CallToAction";
+import Reveal from "../components/shared/Reveal";
+import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
   return (
-    <>
+    <MainLayout>
       <HeroSection />
-      <WhyChooseUs />
+      <Reveal>
+        <WhyChooseUs />
+      </Reveal>
       <HowItWorks />
       <LatestNews />
       <FAQ />
-      <CallToAction />
-    </>
+      <Reveal>
+        <CallToAction />
+      </Reveal>
+    </MainLayout>
   );
 };
 

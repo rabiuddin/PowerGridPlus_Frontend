@@ -9,9 +9,13 @@ const Footer = () => {
       <div className="container mx-auto px-6 lg:px-20 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           {/* Logo Section */}
-          <div>
-            <p className="font-extrabold text-primary text-xl">POWERGRID</p>
-            <p className="text-sm font-bold text-secondary md:ml-11">PLUS</p>
+          <div className="mx-auto">
+            <img
+              src="/PwergridplusLogoOld4.png"
+              alt="Company Logo"
+              className="w-52"
+            />
+
             <p className="mt-2 black text-sm">PowerGridPlus - © 2024</p>
           </div>
 
@@ -22,7 +26,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="#"
+                    href="/"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Home
@@ -64,7 +68,7 @@ const Footer = () => {
                 </li>
                 <li className="mx-5">
                   <a
-                    href="#"
+                    href="#get-device"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device

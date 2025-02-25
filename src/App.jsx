@@ -1,17 +1,18 @@
 import React from "react";
-import Navbar from "./components/shared/Navbar";
-import Footer from "./components/shared/Footer";
-import Home from "./pages/Home"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const App = () => {
   return (
-    <>
-      <Navbar />
-      
-      <Home />
-
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
   );
 };
 
