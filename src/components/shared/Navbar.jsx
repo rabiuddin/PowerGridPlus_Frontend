@@ -32,7 +32,7 @@ const Navbar = () => {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <Link to={"#"} className="-m-1.5 p-1.5">
+          <Link to={"/"} className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               src="/PwergridplusLogoOld4.png"
@@ -58,7 +58,7 @@ const Navbar = () => {
           <Link to={"/about-us"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             About
           </Link>
-          <Link to={"/"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
+          <Link to={"/services"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             Services
           </Link>
           <Link to={"/"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
@@ -138,7 +138,7 @@ const Navbar = () => {
                       About
                     </Link>
                     <Link
-                      to={"/"}
+                      to={"/services"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Services

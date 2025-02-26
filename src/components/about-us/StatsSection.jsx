@@ -13,7 +13,7 @@ const StatsSection = () => {
   return (
     <>
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-[#0b6a62] to-[#22a196]">
+      <section className="py-16 bg-gradient-to-r from-primary to-secondary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
