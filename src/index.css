@@ -7,6 +7,25 @@
   --animate-delay-4000: 4000ms;
 }
 
+.shimmer-primary {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  background: -webkit-gradient(linear,left top,right top,from(#0b6a62),to(#0b6a62),color-stop(.5,#fff));
+  background: -moz-gradient(linear,left top,right top,from(#0b6a62),to(#0b6a62),color-stop(.5,#fff));
+  background: gradient(linear,left top,right top,from(#0b6a62),to(#0b6a62),color-stop(.5,#fff));
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  background-color: #0b6a62;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 125px 100%;
+  color: #ffffff1a; 
+  line-height: 1.5;
+}
+
+
 .shimmer {
   animation-duration: 4s;
   animation-iteration-count: infinite;
