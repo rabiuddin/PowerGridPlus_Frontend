@@ -93,7 +93,7 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline hover:outline-2 hover:outline-gradient-to-r hover:outline-primary hover:outline-secondary"
+            className="w-full py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline-2  hover:outline-gradient-to-r hover:outline-primary "
           >
             Sign in
           </button>

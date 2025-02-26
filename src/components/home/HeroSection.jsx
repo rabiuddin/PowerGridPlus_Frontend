@@ -16,7 +16,7 @@ export default function HeroSection() {
       >
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight flex flex-col gap-2">
           <span className="flex flex-col items-center lg:items-start gap-4 shimmer justify-center lg:justify-start">
-            <span className="flex flex-row">
+            <span className="flex justify-center items-center">
               <span>AI-Driven Energy</span>
               <img src="/PwergridplusLogoOld.png" alt="Company Logo" className="h-11"/>
             </span>
@@ -93,7 +93,7 @@ export default function HeroSection() {
           <div>
             <h3 className="text-gray-800 font-bold">Track Electric Usage</h3>
             <p className="text-gray-600 text-xs hidden sm:block">
-              ou can track your electric usage.
+              You can track your electric usage.
             </p>
           </div>
         </motion.div>
