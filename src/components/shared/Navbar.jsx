@@ -3,6 +3,7 @@ import { Dialog, PopoverGroup } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import { motion, AnimatePresence } from "framer-motion";
+import { IoLogInOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const callsToAction = [
@@ -80,6 +81,7 @@ const Navbar = () => {
             className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
             whileHover={{ scale: 1.02 }}
           >
+            <IoLogInOutline className="text-lg"/>
             LOGIN
           </Link>
         </div>
@@ -167,6 +169,7 @@ const Navbar = () => {
                       className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5 w-[188px]"
                       whileHover={{ scale: 1.02 }}
                     >
+                      <IoLogInOutline className="text-lg"/>
                       LOGIN
                     </Link>
                   </div>
