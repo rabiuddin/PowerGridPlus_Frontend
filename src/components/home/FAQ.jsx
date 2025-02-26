@@ -44,7 +44,7 @@ const FAQ = () => {
             className="bg-white shadow-md rounded-lg overflow-hidden transition-all duration-300"
           >
             <button
-              className="w-full flex justify-between items-center p-4 text-lg font-medium text-gray-800 hover:bg-gray-100 transition duration-300"
+              className="w-full flex justify-between items-center p-4 text-lg font-medium text-gray-800 hover:bg-gray-100 transition duration-300 cursor-pointer"
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
