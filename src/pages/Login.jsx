@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react"
+import {Link} from "react-router-dom"
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
@@ -15,13 +16,13 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative ">
-      <a
-        href="/"
+      <Link
+        to={"/"}
         className="absolute top-4 left-4 flex items-center gap-2 text-primary hover:text-secondary transition-colors duration-200"
       >
         <ArrowLeft className="h-5 w-5" />
         <span className="font-medium">Back to Home</span>
-      </a>
+      </Link>
 
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-2xl shadow-xl sm:mx-0 mx-2">
         <div className="flex flex-col items-center space-y-4">
@@ -85,9 +86,9 @@ export default function Login() {
                 Remember me
               </label>
             </div>
-            <a href="#" className="text-sm font-medium text-primary hover:text-secondary">
+            <Link to={"#"} className="text-sm font-medium text-primary hover:text-secondary">
               Forgot password?
-            </a>
+            </Link>
           </div>
 
           <button
@@ -99,9 +100,9 @@ export default function Login() {
 
           <div className="text-center">
             <span className="text-gray-600">Don't have an account? </span>
-            <a href="/signup" className="font-medium text-primary hover:text-secondary transition-colors duration-200">
+            <Link to={"/signup"} className="font-medium text-primary hover:text-secondary transition-colors duration-200">
               Sign up
-            </a>
+            </Link>
           </div>
         </form>
       </div>

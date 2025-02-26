@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 
@@ -25,54 +26,54 @@ const Footer = () => {
             <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
-                    About
-                  </a>
+                    <span>About</span>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <ul className="space-y-2">
                 <li className="mx-5">
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li className="mx-5">
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li className="mx-5">
-                  <a
-                    href="#get-device"
+                  <Link
+                    to="#get-device"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -95,24 +96,24 @@ const Footer = () => {
             </div>
             {/* Social Media Icons */}
             <div className="flex justify-center md:justify-start space-x-4 mt-4">
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="bg-teal-800 text-white p-2 rounded-full hover:bg-gray-300 hover:text-teal-800 transition-all duration-200 ease-in-out"
               >
                 <FaLinkedinIn />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="bg-teal-800 text-white p-2 rounded-full hover:bg-gray-300 hover:text-teal-800 transition-all duration-200 ease-in-out"
               >
                 <FaFacebookF />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="bg-teal-800 text-white p-2 rounded-full hover:bg-gray-300 hover:text-teal-800 transition-all duration-200 ease-in-out"
               >
                 <FaInstagram />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false)
@@ -22,13 +23,13 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative">
-      <a
-        href="/"
+      <Link
+        to={"/"}
         className="absolute top-3 left-4 flex items-center gap-2 text-primary hover:text-secondary transition-colors duration-200"
       >
         <ArrowLeft className="h-5 w-5" />
         <span className="font-medium">Back to Home</span>
-      </a>
+      </Link>
 
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-2xl shadow-xl my-2 mx-2 sm:mx-0">
         <div className="flex flex-col items-center space-y-4">
@@ -114,9 +115,9 @@ export default function Signup() {
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
               I agree to the{" "}
-              <a href="#" className="text-primary hover:text-secondary">
+              <Link to={"#"} className="text-primary hover:text-secondary">
                 Terms and Conditions
-              </a>
+              </Link>
             </label>
           </div>
 
@@ -129,9 +130,9 @@ export default function Signup() {
 
           <div className="text-center">
             <span className="text-gray-600">Already have an account? </span>
-            <a href="/login" className="font-medium text-primary hover:text-secondary transition-colors duration-200">
+            <Link to={"/login"} className="font-medium text-primary hover:text-secondary transition-colors duration-200">
               Log in
-            </a>
+            </Link>
           </div>
         </form>
       </div>

@@ -97,7 +97,7 @@ const HowItWorks = () => {
   return (
     <div
       className="py-16 bg-gray-100 bg-cover"
-      style={{ backgroundImage: "URL('/src/assets/HowItWorksBg.png')" }}
+      style={{ backgroundImage: "URL('/HowItWorksBg.png')" }}
     >
       <div className="max-w-6xl mx-auto text-center">
         <h1 className="main-heading">How it works?</h1>
