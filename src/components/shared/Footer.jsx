@@ -4,6 +4,15 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 
 const Footer = () => {
+
+  const handleScrollToSection = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").slice(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <footer className="bg-white">
       {/* Bottom Section: Footer Content */}
@@ -35,7 +44,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to="#"
+                    to="/about-us"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     <span>About</span>
@@ -43,7 +52,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to="#"
+                    to="/contact-us"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Contact Us
@@ -53,7 +62,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li className="mx-5">
                   <Link
-                    to="#"
+                    to="/"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Services
@@ -61,7 +70,7 @@ const Footer = () => {
                 </li>
                 <li className="mx-5">
                   <Link
-                    to="#"
+                    to="/"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Blog
@@ -70,6 +79,7 @@ const Footer = () => {
                 <li className="mx-5">
                   <Link
                     to="#get-device"
+                    onClick={handleScrollToSection}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device

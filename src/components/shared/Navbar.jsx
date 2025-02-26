@@ -132,25 +132,25 @@ const Navbar = () => {
                       Home
                     </Link>
                     <Link
-                      to={"#"}
+                      to={"/about-us"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       About
                     </Link>
                     <Link
-                      to={"#"}
+                      to={"/"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Services
                     </Link>
                     <Link
-                      to={"#"}
+                      to={"/"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Blog
                     </Link>
                     <Link
-                      to={"#"}
+                      to={"/contact-us"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Contact Us
