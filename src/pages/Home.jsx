@@ -11,15 +11,23 @@ import Testimonials from "../components/home/Testimonials";
 
 const Home = () => {
   return (
-    <MainLayout >
+    <MainLayout>
       <HeroSection />
       <Reveal>
         <WhyChooseUs />
       </Reveal>
-      <HowItWorks />
-      <Testimonials/>
-      <Blogs/>
-      <FAQ />
+      <Reveal>
+        <HowItWorks />
+      </Reveal>
+      <Reveal>
+        <Testimonials />
+      </Reveal>
+      <Reveal>
+        <Blogs />
+      </Reveal>
+      <Reveal>
+        <FAQ />
+      </Reveal>
       <Reveal>
         <CallToAction />
       </Reveal>
