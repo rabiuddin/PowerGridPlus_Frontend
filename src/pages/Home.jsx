@@ -2,11 +2,11 @@ import React from "react";
 import HeroSection from "../components/home/HeroSection";
 import WhyChooseUs from "../components/home/WhyChooseUs";
 import HowItWorks from "../components/home/HowItWorks";
-import LatestNews from "../components/home/LatestNews";
 import FAQ from "../components/home/FAQ";
 import CallToAction from "../components/home/CallToAction";
 import Reveal from "../components/shared/Reveal";
 import MainLayout from "../layouts/MainLayout";
+import Blogs from "../components/home/Blogs";
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
         <WhyChooseUs />
       </Reveal>
       <HowItWorks />
-      <LatestNews />
+      <Blogs/>
       <FAQ />
       <Reveal>
         <CallToAction />
