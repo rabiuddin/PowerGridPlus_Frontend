@@ -10,7 +10,7 @@ import Blogs from "../components/home/Blogs";
 
 const Home = () => {
   return (
-    <MainLayout>
+    <MainLayout >
       <HeroSection />
       <Reveal>
         <WhyChooseUs />
