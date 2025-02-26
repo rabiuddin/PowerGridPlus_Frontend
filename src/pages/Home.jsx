@@ -7,6 +7,7 @@ import CallToAction from "../components/home/CallToAction";
 import Reveal from "../components/shared/Reveal";
 import MainLayout from "../layouts/MainLayout";
 import Blogs from "../components/home/Blogs";
+import Testimonials from "../components/home/Testimonials";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <WhyChooseUs />
       </Reveal>
       <HowItWorks />
+      <Testimonials/>
       <Blogs/>
       <FAQ />
       <Reveal>
