@@ -52,19 +52,19 @@ const Navbar = () => {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12 mr-4">
-          <Link to={"#"} className="font-semibold text-gray-900 text-sm/6">
+          <Link to={"/"} className="font-semibold text-gray-900 text-sm/6 hover:text-secondary transition-all duration-200 ease-in-out">
             Home
           </Link>
-          <Link to={"#"} className="text-sm/6 font-semibold text-gray-900">
+          <Link to={"/about-us"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             About
           </Link>
-          <Link to={"#"} className="text-sm/6 font-semibold text-gray-900">
+          <Link to={"/"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             Services
           </Link>
-          <Link to={"#"} className="text-sm/6 font-semibold text-gray-900">
+          <Link to={"/"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             Blog
           </Link>
-          <Link to={"#"} className="text-sm/6 font-semibold text-gray-900">
+          <Link to={"/contact-us"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             Contact Us
           </Link>
         </PopoverGroup>
