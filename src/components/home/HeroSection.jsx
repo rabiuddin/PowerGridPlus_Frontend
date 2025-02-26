@@ -60,7 +60,7 @@ export default function HeroSection() {
         {/* Main Image */}
         <div className="relative flex justify-center">
           <img
-            src="src/assets/hero_robot.png"
+            src="/hero_robot.png"
             alt="AI Assistant"
             className="w-full pb-11 relative z-10"
           />
