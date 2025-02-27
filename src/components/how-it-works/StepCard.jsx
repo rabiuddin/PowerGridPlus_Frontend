@@ -1,7 +1,6 @@
 import React from "react";
 import RevealFromLeft from "../shared/RevealFromLeft";
 import RevealFromRight from "../shared/RevealFromRight";
-import { Link } from "react-router-dom";
 
 const StepCard = ({ step, title, description, image, isReversed }) => {
   return (
@@ -13,56 +12,44 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
       {/* Text Content */}
       {isReversed ? (
         <>
-          <div className="md:w-1/2 h-auto md:h-1/2 p-8">
+          <div className="md:w-1/2 p-8">
             <RevealFromRight>
               <div>
                 <h3 className="text-teal-500 text-md font-semibold">{step}</h3>
                 <h2 className="text-2xl font-bold text-gray-800 mt-2">
                   {title}
                 </h2>
-                <div className="text-gray-600 mt-4 line-clamp-2">
+                <div className="text-gray-600 mt-4">
                   {description}
                 </div>
-                <Link
-                  to="/how-it-works"
-                  className="inline-block mt-4 text-sm font-semibold text-teal-500 hover:text-teal-700 transition-colors"
-                >
-                  Read More &rarr;
-                </Link>
               </div>
             </RevealFromRight>
           </div>
-          <div className="md:w-1/2 h-auto md:h-1/2">
+          <div className="md:w-1/2 h-full">
             <RevealFromLeft>
-              <img src={image} alt={title} className="w-full h-full object-cover" />
+              <img src={image} alt={title} className="h-full object-cover" />
             </RevealFromLeft>
           </div>
         </>
       ) : (
         <>
-          <div className="md:w-1/2 p-8 h-auto md:h-1/2 ">
+          <div className="md:w-1/2 p-8">
             <RevealFromLeft>
               <div>
                 <h3 className="text-teal-500 text-md font-semibold">{step}</h3>
                 <h2 className="text-2xl font-bold text-gray-800 mt-2">
                   {title}
                 </h2>
-                <div className="text-gray-600 mt-4 line-clamp-2">
+                <div className="text-gray-600 mt-4">
                   {description}
                 </div>
-                <Link
-                  to="/how-it-works"
-                  className="inline-block mt-4 text-sm font-semibold text-teal-500 hover:text-teal-700 transition-colors"
-                >
-                  Read More &rarr;
-                </Link>
               </div>
             </RevealFromLeft>
           </div>
-          <div className="md:w-1/2 h-auto md:h-1/2">
-            <RevealFromRight>
-              <img src={image} alt={title} className="w-full h-full object-cover" />
-            </RevealFromRight>
+          <div className="md:w-1/2 h-full">
+            <RevealFromLeft>
+              <img src={image} alt={title} className="h-full object-cover" />
+            </RevealFromLeft>
           </div>
         </>
       )}
