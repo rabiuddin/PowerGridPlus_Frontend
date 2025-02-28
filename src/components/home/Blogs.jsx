@@ -1,56 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { FiArrowRight, FiCalendar } from "react-icons/fi"
 import BlogCardItem from "../shared/BlogCardItem";
+import { blogData, itemVariants, containerVariants } from "../../data/blogs";
 
 export default function Blogs() {
-  const blogItems = [
-    {
-      id: 1,
-      image: "https://picsum.photos/id/242/350/250",
-      title: "Lorem ipsum dolor sit amet",
-      date: "15.10.2024",
-      description: "Consectetur adipiscing elit.",
-    },
-    {
-      id: 2,
-      image: "https://picsum.photos/id/238/350/250",
-      title: "Lorem ipsum dolor sit amet",
-      date: "15.10.2024",
-      description: "Consectetur adipiscing elit.",
-    },
-    {
-      id: 3,
-      image: "https://picsum.photos/id/239/350/250",
-      title: "Lorem ipsum dolor sit amet",
-      date: "15.10.2024",
-      description: "Consectetur adipiscing elit.",
-    },
-    {
-      id: 4,
-      image: "https://picsum.photos/id/240/350/250",
-      title: "Lorem ipsum dolor sit amet",
-      date: "15.10.2024",
-      description: "Consectetur adipiscing elit.",
-    },
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
 
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
@@ -71,7 +24,7 @@ export default function Blogs() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {blogItems.map((item) => (
+          {blogData.slice(0, 4).map((item) => (
             <BlogCardItem key={item.id} item={item} variants={itemVariants} />
           ))}
         </motion.div>
