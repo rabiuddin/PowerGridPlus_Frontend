@@ -10,24 +10,24 @@ const testimonials = [
     text: "PowergridPlus has revolutionized how we manage our energy infrastructure. The AI-driven insights have helped us reduce downtime by 45% and improve efficiency significantly.",
     author: "Sarah Johnson",
     position: "Chief Technology Officer",
-    company: "EnergyTech Solutions",
-    logo: "https://picsum.photos/id/240/120/60",
+    company: "Prototypes for Humanity",
+    logo: "/company-logo/companyLogo1.jpg",
   },
   {
     id: 2,
     text: "Implementation of PowergridPlus was seamless, and the results were immediate. Our grid reliability has improved by 60%, and we've seen substantial cost savings.",
     author: "Michael Chen",
     position: "Operations Director",
-    company: "Smart Grid Systems",
-    logo: "https://picsum.photos/id/240/120/60",
+    company: "Vidrik",
+    logo: "/company-logo/companyLogo2.jpg",
   },
   {
     id: 3,
     text: "The predictive maintenance capabilities of PowergridPlus have transformed our operations. We can now address potential issues before they become problems.",
     author: "Emily Rodriguez",
     position: "Infrastructure Manager",
-    company: "Future Power Corp",
-    logo: "https://picsum.photos/id/240/120/60",
+    company: "Amplitude",
+    logo: "/company-logo/companyLogo3.jpg",
   },
 ]
 
@@ -85,7 +85,7 @@ export default function Testimonials() {
                 <img
                   src={testimonials[currentIndex].logo || "/placeholder.svg"}
                   alt={`${testimonials[currentIndex].company} logo`}
-                  className="h-12 object-contain"
+                  className="h-12 object-contain mix-blend-darken"
                 />
               </div>
 
@@ -96,9 +96,9 @@ export default function Testimonials() {
               </blockquote>
 
               <div className="text-center">
-                <h4 className="font-semibold text-[#0b6a62] text-lg">{testimonials[currentIndex].author}</h4>
-                <p className="text-gray-600">{testimonials[currentIndex].position}</p>
-                <p className="text-[#22a196]">{testimonials[currentIndex].company}</p>
+                <h4 className="font-semibold text-[#0b6a62] text-lg">{testimonials[currentIndex].company}</h4>
+                {/* <p className="text-gray-600">{testimonials[currentIndex].position}</p>
+                <p className="text-[#22a196]">{testimonials[currentIndex].company}</p> */}
               </div>
             </motion.div>
           </AnimatePresence>

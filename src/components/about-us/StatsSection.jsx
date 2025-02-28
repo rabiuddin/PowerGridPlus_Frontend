@@ -23,7 +23,7 @@ const StatsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="text-center text-white p-6 rounded-lg bg-white/10 backdrop-blur-sm"
+                className="text-center text-white p-6 rounded-lg hover:shadow-xl bg-white/10 backdrop-blur-sm"
               >
                 <div className="text-4xl mb-4 flex justify-center">
                   {stat.icon}
