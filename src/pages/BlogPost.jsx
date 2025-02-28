@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import { blogData } from "../data/blogs";
@@ -7,6 +7,10 @@ import CommentSection from "../components/blogs/CommentSection";
 const BlogPost = () => {
   const { id } = useParams();
   const blog = blogData.find((post) => post.id === parseInt(id));
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!blog) {
     return <div>Blog post not found</div>;
@@ -27,11 +31,6 @@ const BlogPost = () => {
               {blog.title}
             </h1>
             <div className="flex items-center justify-center">
-              <img
-                src={blog.author.avatar || "/placeholder.svg"}
-                alt={blog.author.name}
-                className="w-10 h-10 rounded-full mr-2"
-              />
               <span className="font-medium">{blog.author.name}</span>
             </div>
           </header>

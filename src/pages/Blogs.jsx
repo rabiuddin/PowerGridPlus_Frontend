@@ -9,7 +9,7 @@ const Blogs = () => {
   return (
     <MainLayout>
       <Reveal>
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center py-6 mx-auto bg-gradient-to-br from-[#f3fff9] to-[#edfff6]">
           <h1 className="text-4xl md:text-5xl font-bold text-[#0b6a62] mb-6">
             <span className="flex justify-center items-center gap-2  shimmer-primary">
               <span>Our Blog</span>
@@ -26,12 +26,6 @@ const Blogs = () => {
         </div>
       </Reveal>
       <div className="container mx-auto px-4 py-12">
-        {/* <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">Our Blog</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore our collection of articles, tutorials, and insights
-          </p>
-        </header> */}
 
         <motion.div
           variants={containerVariants}

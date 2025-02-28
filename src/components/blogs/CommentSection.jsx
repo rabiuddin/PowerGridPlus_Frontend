@@ -5,7 +5,6 @@ export default function CommentSection({ blogId }) {
     {
       id: 1,
       author: "Alex Johnson",
-      avatar: "/placeholder.svg?height=40&width=40&text=AJ",
       date: "2 days ago",
       content:
         "This article was incredibly insightful! I especially enjoyed the section about the practical applications.",
@@ -14,7 +13,6 @@ export default function CommentSection({ blogId }) {
     {
       id: 2,
       author: "Sam Rivera",
-      avatar: "/placeholder.svg?height=40&width=40&text=SR",
       date: "1 week ago",
       content: "Great read! I would love to see a follow-up article that dives deeper into this topic.",
       likes: 3,
@@ -30,7 +28,6 @@ export default function CommentSection({ blogId }) {
     const comment = {
       id: comments.length + 1,
       author: "You",
-      avatar: "/placeholder.svg?height=40&width=40&text=You",
       date: "Just now",
       content: newComment,
       likes: 0,
@@ -67,11 +64,6 @@ export default function CommentSection({ blogId }) {
         {comments.map((comment) => (
           <div key={comment.id} className="bg-white p-6 rounded-lg shadow-sm">
             <div className="flex items-start">
-              <img
-                src={comment.avatar || "/placeholder.svg"}
-                alt={comment.author}
-                className="w-10 h-10 rounded-full mr-4"
-              />
               <div className="flex-1">
                 <div className="flex items-center mb-1">
                   <h4 className="font-semibold">{comment.author}</h4>
