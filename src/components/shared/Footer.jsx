@@ -35,15 +35,15 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to="#"
+                    to="/about-us"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
-                    <span>About</span>
+                    <span>About Us</span>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="#"
+                    to="/contact-us"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Contact Us
@@ -53,7 +53,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li className="mx-5">
                   <Link
-                    to="#"
+                    to="/services"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Services
@@ -61,7 +61,7 @@ const Footer = () => {
                 </li>
                 <li className="mx-5">
                   <Link
-                    to="#"
+                    to="/blogs"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Blog
@@ -69,7 +69,7 @@ const Footer = () => {
                 </li>
                 <li className="mx-5">
                   <Link
-                    to="#get-device"
+                    to="/#get-device"
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device

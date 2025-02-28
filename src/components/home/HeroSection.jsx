@@ -39,7 +39,7 @@ export default function HeroSection() {
             Get Your Device Now <FaArrowRight />
           </motion.a>
           <motion.a
-            href="#"
+            href="/contact-us"
             className="flex items-center gap-2 hover:bg-primary text-white text-lg font-semibold px-6 py-3 rounded-lg shadow-md bg-secondary transition-all duration-300"
             whileHover={{ scale: 1.05 }}
           >

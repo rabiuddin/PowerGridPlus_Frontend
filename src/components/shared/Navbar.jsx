@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoLogInOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
@@ -15,21 +15,18 @@ import React from "react";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleScrollToSection = (e) => {
     e.preventDefault();
-    const targetId = e.currentTarget.getAttribute("href").slice(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/", { state: { scrollTo: "get-device" } });
   };
 
   return (
     <header className="bg-white">
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:pl-8 lg:pr-6"
       >
         <div className="flex lg:flex-1">
           <Link to={"/"} className="-m-1.5 p-1.5">
@@ -56,12 +53,12 @@ const Navbar = () => {
             Home
           </Link>
           <Link to={"/about-us"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
-            About
+            About Us
           </Link>
           <Link to={"/services"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             Services
           </Link>
-          <Link to={"/"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
+          <Link to={"/blogs"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
             Blog
           </Link>
           <Link to={"/contact-us"} className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out">
@@ -70,11 +67,11 @@ const Navbar = () => {
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
           <a
-            href="#get-device"
+            href="/#get-device"
             onClick={handleScrollToSection}
-            className="flex items-center bg-primary text-white font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-primary xl:text-[1em] text-sm"
+            className="flex items-center bg-primary text-white font-semibold px-4 py-2 rounded-md mr-3 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-primary xl:text-[1em] text-sm"
           >
-            GET YOUR DEVICE NOW
+            Get Your Device Now
           </a>
           <Link
             to="/login"
@@ -135,7 +132,7 @@ const Navbar = () => {
                       to={"/about-us"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
-                      About
+                      About Us
                     </Link>
                     <Link
                       to={"/services"}
@@ -144,7 +141,7 @@ const Navbar = () => {
                       Services
                     </Link>
                     <Link
-                      to={"/"}
+                      to={"/blogs"}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Blog
@@ -158,11 +155,11 @@ const Navbar = () => {
                   </div>
                   <div className="py-6">
                     <a
-                      href="#get-device"
+                      href="/#get-device"
                       onClick={handleScrollToSection}
                       className="bg-primary text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-primary"
                     >
-                      GET YOUR DEVICE NOW
+                      Get Your Device Now
                     </a>
                     <Link
                       to="/login"
