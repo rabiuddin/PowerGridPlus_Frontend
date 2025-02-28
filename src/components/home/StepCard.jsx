@@ -13,7 +13,7 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
       {/* Text Content */}
       {isReversed ? (
         <>
-          <div className="md:w-1/2 h-auto md:h-1/2 p-8">
+          <div className="md:w-3/5 h-auto md:h-1/2 p-8">
             <RevealFromRight>
               <div>
                 <h3 className="text-teal-500 text-md font-semibold">{step}</h3>
@@ -32,15 +32,15 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
               </div>
             </RevealFromRight>
           </div>
-          <div className="md:w-1/2 h-auto md:h-1/2">
+          <div className="md:w-2/5 h-auto md:h-1/2">
             <RevealFromLeft>
-              <img src={image} alt={title} className="w-full h-full object-cover" />
+              <img src={image} alt={title} className="w-full h-full object-cover mr-auto" />
             </RevealFromLeft>
           </div>
         </>
       ) : (
         <>
-          <div className="md:w-1/2 p-8 h-auto md:h-1/2 ">
+          <div className="md:w-3/5 p-8 h-auto md:h-1/2 ">
             <RevealFromLeft>
               <div>
                 <h3 className="text-teal-500 text-md font-semibold">{step}</h3>
@@ -59,9 +59,9 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
               </div>
             </RevealFromLeft>
           </div>
-          <div className="md:w-1/2 h-auto md:h-1/2">
+          <div className="md:w-2/5 h-auto md:h-1/2">
             <RevealFromRight>
-              <img src={image} alt={title} className="w-full h-full object-cover" />
+              <img src={image} alt={title} className="w-full h-full object-cover ml-auto" />
             </RevealFromRight>
           </div>
         </>
