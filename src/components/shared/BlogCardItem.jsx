@@ -25,10 +25,10 @@ const BlogCardItem = ({ item, variants }) => {
               {item.date}
             </span>
           </div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-3 group-hover:text-primary transition-colors duration-300">
+          <h3 title={item.title} className="text-lg font-semibold text-gray-800 mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-1">
             {item.title}
           </h3>
-          <p className="text-gray-600 text-sm mb-4">{item.excerpt}</p>
+          <p className="text-gray-600 text-sm mb-4 line-clamp-2">{item.excerpt}</p>
           <div className="flex items-center justify-end text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity hover:text-secondary duration-300 cursor-pointer">
             <p className="flex items-center">
               Read More

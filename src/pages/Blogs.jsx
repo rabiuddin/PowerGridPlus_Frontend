@@ -26,7 +26,6 @@ const Blogs = () => {
         </div>
       </Reveal>
       <div className="container mx-auto px-4 py-12">
-
         <motion.div
           variants={containerVariants}
           initial="hidden"

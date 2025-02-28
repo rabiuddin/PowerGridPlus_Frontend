@@ -2,8 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
+import { scrollToTop } from "../../utils/utils";
 
 const Footer = () => {
+  const handleScrollToSection = (e) => {
+    e.preventDefault();
+    navigate("/", { state: { scrollTo: "get-device" } });
+  };
+
   return (
     <footer className="bg-white">
       {/* Bottom Section: Footer Content */}
@@ -28,6 +34,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/"
+                    onClick={scrollToTop}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Home
@@ -36,6 +43,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/about-us"
+                    onClick={scrollToTop}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     <span>About Us</span>
@@ -44,6 +52,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/contact-us"
+                    onClick={scrollToTop}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Contact Us
@@ -54,6 +63,7 @@ const Footer = () => {
                 <li className="mx-5">
                   <Link
                     to="/services"
+                    onClick={scrollToTop}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Services
@@ -62,18 +72,20 @@ const Footer = () => {
                 <li className="mx-5">
                   <Link
                     to="/blogs"
+                    onClick={scrollToTop}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Blog
                   </Link>
                 </li>
                 <li className="mx-5">
-                  <Link
-                    to="/#get-device"
+                  <a
+                    href="/#get-device"
+                    onClick={handleScrollToSection}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

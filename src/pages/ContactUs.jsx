@@ -9,7 +9,7 @@ export default function ContactUs() {
   return (
     <MainLayout>
       <div className="min-h-screen bg-white">
-          <HeroSection />
+        <HeroSection />
         <ContactCards />
         <Reveal>
           <ContactForm />

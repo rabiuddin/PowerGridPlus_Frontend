@@ -15,6 +15,7 @@ export default function Login() {
     // Handle login logic here
   };
 
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative ">
       <Link

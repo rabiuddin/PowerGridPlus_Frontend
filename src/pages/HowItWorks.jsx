@@ -10,22 +10,21 @@ const steps = [
       <>
         Insert the AI smart plug into the power outlet to commence setup. The
         plugin sensor measurement specification for residential buildings
-        accommodates a peak of 3kW load, 16Amps standard (or range between
-        15Amp to 20 Amp), 240Volts AC working voltage range, and 50-60 Hz
+        accommodates a peak of 3kW load, 16Amps standard (or range between 15Amp
+        to 20 Amp), 240Volts AC working voltage range, and 50-60 Hz
         configuration.
         <br />
         <br />
         Power on the smart plug using the “Push Button” on the AI smart plug.
         Setup routines follow a few easy steps that allow customers to connect
-        the smart plug to a Wi-Fi network. The smart plug supports connection
-        to a 2.4GHz Wi-Fi network. Following connection, customers select the
-        AI mode that ensures they effortlessly add new appliances (for example,
+        the smart plug to a Wi-Fi network. The smart plug supports connection to
+        a 2.4GHz Wi-Fi network. Following connection, customers select the AI
+        mode that ensures they effortlessly add new appliances (for example,
         television, lamp, fridge, washing machine). Launch the PowergridPlus
         App, and iteratively plug in appliances until “New plug detected.” Tap
-        the “New plug” icon, followed by the “+” icon to complete setup, then
-        go to Step 3. This AI sensor sharing step gives the smart plug the
-        ability to automatically and intelligently identify and track different
-        loads.
+        the “New plug” icon, followed by the “+” icon to complete setup, then go
+        to Step 3. This AI sensor sharing step gives the smart plug the ability
+        to automatically and intelligently identify and track different loads.
         <br />
         <br />
         This compact design configuration allows clients to buy a single smart
@@ -63,14 +62,14 @@ const steps = [
     title: "Web and mobile application",
     description: (
       <>
-        Customers are required to download and register AI Smart plug apps
-        every time they buy a new device. This Smart Plug includes a convenient
-        energy and CO2 usage Dashboard and is compatible with the free
-        accompanying web and mobile app. All information regarding your devices
-        is transmitted to our online dashboard, where you can view reports on
-        your energy consumption, electricity price tracking, and CO2 emissions,
-        as well as manage the settings that control when your Smart plugs are
-        turned on and off.
+        Customers are required to download and register AI Smart plug apps every
+        time they buy a new device. This Smart Plug includes a convenient energy
+        and CO2 usage Dashboard and is compatible with the free accompanying web
+        and mobile app. All information regarding your devices is transmitted to
+        our online dashboard, where you can view reports on your energy
+        consumption, electricity price tracking, and CO2 emissions, as well as
+        manage the settings that control when your Smart plugs are turned on and
+        off.
         <br />
         <br />
         The PowergridPlus app Dashboard incorporates advanced user interfaces
@@ -79,9 +78,9 @@ const steps = [
         insights into electricity consumption and CO2 emissions. These advanced
         user interfaces help improve user experience and engagement with the
         sensing-as-a-service (S2aaS) platform. This approach allows you to gain
-        visibility into your energy consumption and easily identify the areas
-        in your home that are causing energy waste or contributing to the
-        biggest power bill every month.
+        visibility into your energy consumption and easily identify the areas in
+        your home that are causing energy waste or contributing to the biggest
+        power bill every month.
         <br />
         <br />
         Our Smart Plug utilizes AI to automatically detect and generate
