@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "How does the AI smart plug work?",
     answer:
-      "Our AI smart plug uses advanced algorithms to automatically detect and generate recommendations that help eliminate minor power waste from your devices, reducing both your carbon emissions and electricity costs.",
+      "Our AI smart plug uses advanced algorithms to automatically track all devices that was previously plugged into it and generate recommendations that help eliminate minor power waste from your devices, reducing both your carbon emissions and electricity costs.",
   },
   {
     question: "Is the PowergridPlus app compatible with all devices?",
@@ -15,7 +15,7 @@ const faqs = [
   {
     question: "How do I set up my AI smart plug?",
     answer:
-      "Setting up your AI smart plug is easy. Simply plug it into a power outlet, download and install the PowergridPlus app, and follow the in-app instructions to connect your smart plug to your Wi-Fi network. ",
+      "Setting up your AI smart plug is easy. Simply plug it into a power outlet, download and install the PowergridPlus app or sign-up on our web app, and follow the in-app instructions to connect your smart plug to your Wi-Fi network.",
   },
   {
     question: "How secure is my data with the PowergridPlus app?",

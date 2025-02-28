@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
-import { FaQuoteLeft } from "react-icons/fa"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FaQuoteLeft } from "react-icons/fa";
 
 // Sample testimonial data - replace with your actual data
 const testimonials = [
   {
     id: 1,
-    text: "PowergridPlus has revolutionized how we manage our energy infrastructure. The AI-driven insights have helped us reduce downtime by 45% and improve efficiency significantly.",
+    text: "",
     author: "Sarah Johnson",
     position: "Chief Technology Officer",
     company: "Prototypes for Humanity",
@@ -15,7 +15,7 @@ const testimonials = [
   },
   {
     id: 2,
-    text: "Implementation of PowergridPlus was seamless, and the results were immediate. Our grid reliability has improved by 60%, and we've seen substantial cost savings.",
+    text: "",
     author: "Michael Chen",
     position: "Operations Director",
     company: "Vidrik",
@@ -23,53 +23,55 @@ const testimonials = [
   },
   {
     id: 3,
-    text: "The predictive maintenance capabilities of PowergridPlus have transformed our operations. We can now address potential issues before they become problems.",
+    text: "",
     author: "Emily Rodriguez",
     position: "Infrastructure Manager",
     company: "Amplitude",
     logo: "/company-logo/companyLogo3.jpg",
   },
-]
+];
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
-    let interval
+    let interval;
 
     if (isAutoPlaying) {
       interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-      }, 5000)
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      }, 5000);
     }
 
-    return () => clearInterval(interval)
-  }, [isAutoPlaying])
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    setIsAutoPlaying(false)
-    setTimeout(()=>{
-      setIsAutoPlaying(true)
-    }, 5000)
-  }
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 5000);
+  };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-    setIsAutoPlaying(false)
-    setTimeout(()=>{
-      setIsAutoPlaying(true)
-    }, 5000)
-  }
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+    setIsAutoPlaying(false);
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 5000);
+  };
 
   return (
     <section className="relative bg-gradient-to-br from-[#f3fff9] to-[#edfff6] py-16 px-4 md:py-24">
       <div className="max-w-6xl mx-auto">
-      <div className="max-w-6xl mx-auto text-center">
-        <h1 className="main-heading">Trusted by Industry Leaders</h1>
-        <div className="w-16 h-1 bg-teal-600 mx-auto mb-10"></div>
-      </div>
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="main-heading">Trusted by Industry Leaders</h1>
+          <div className="w-16 h-1 bg-teal-600 mx-auto mb-10"></div>
+        </div>
 
         <div className="relative">
           <AnimatePresence mode="wait">
@@ -96,7 +98,9 @@ export default function Testimonials() {
               </blockquote>
 
               <div className="text-center">
-                <h4 className="font-semibold text-[#0b6a62] text-lg">{testimonials[currentIndex].company}</h4>
+                <h4 className="font-semibold text-[#0b6a62] text-lg">
+                  {testimonials[currentIndex].company}
+                </h4>
                 {/* <p className="text-gray-600">{testimonials[currentIndex].position}</p>
                 <p className="text-[#22a196]">{testimonials[currentIndex].company}</p> */}
               </div>
@@ -127,11 +131,11 @@ export default function Testimonials() {
             <button
               key={index}
               onClick={() => {
-                setCurrentIndex(index)
-                setIsAutoPlaying(false)
-                setTimeout(()=>{
-                  setIsAutoPlaying(true)
-                }, 5000)
+                setCurrentIndex(index);
+                setIsAutoPlaying(false);
+                setTimeout(() => {
+                  setIsAutoPlaying(true);
+                }, 5000);
               }}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                 index === currentIndex ? "bg-[#0b6a62] w-8" : "bg-[#22a196]/30"
@@ -142,6 +146,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
