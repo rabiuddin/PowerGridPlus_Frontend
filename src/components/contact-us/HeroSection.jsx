@@ -13,11 +13,6 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-[#0b6a62] mb-6 shimmer-primary bg-primary">
               <span className="flex justify-center items-center gap-2">
                 <span>Get in Touch</span>
-                <img
-                  src="/PwergridplusLogoOld.png"
-                  alt="Company Logo"
-                  className="h-11"
-                />
               </span>
             </h1>
             <p className="text-gray-600 text-lg">

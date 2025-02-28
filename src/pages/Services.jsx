@@ -9,8 +9,8 @@ const Services = () => {
     <MainLayout>
       <div className="bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5">
         <HeroSection />
-        <ServiceDetails />
         <BenefitsSection />
+        <ServiceDetails />
       </div>
     </MainLayout>
   );

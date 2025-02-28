@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
       <div className="relative container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h1 className="main-heading">
-            WHY CHOOSE POWERGRID PLUS?
+            WHY CHOOSE POWERGRIDPLUS?
           </h1>
         </div>
 

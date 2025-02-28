@@ -4,10 +4,10 @@ import { FiAward, FiBox, FiGlobe, FiUsers } from "react-icons/fi";
 
 const StatsSection = () => {
   const stats = [
-    { id: 1, number: "10K+", text: "Smart Devices Deployed", icon: <FiBox /> },
+    { id: 1, number: "100+", text: "Smart Devices Deployed", icon: <FiBox /> },
     { id: 2, number: "98%", text: "Customer Satisfaction", icon: <FiUsers /> },
-    { id: 3, number: "25+", text: "Countries Served", icon: <FiGlobe /> },
-    { id: 4, number: "15+", text: "Industry Awards", icon: <FiAward /> },
+    { id: 3, number: "5+", text: "Countries Served", icon: <FiGlobe /> },
+    { id: 4, number: "3+", text: "Industry Awards", icon: <FiAward /> },
   ];
 
   return (

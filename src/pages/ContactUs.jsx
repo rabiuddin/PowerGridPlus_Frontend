@@ -10,10 +10,8 @@ export default function ContactUs() {
     <MainLayout>
       <div className="min-h-screen bg-white">
         <HeroSection />
+        <ContactForm />
         <ContactCards />
-        <Reveal>
-          <ContactForm />
-        </Reveal>
         <Reveal>
           <MapSection />
         </Reveal>

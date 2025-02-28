@@ -10,11 +10,6 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
               <span className="flex justify-center items-center gap-2  shimmer-primary">
                 <span>What Services We Offer</span>
-                <img
-                  src="/PwergridplusLogoOld.png"
-                  alt="Company Logo"
-                  className="h-11"
-                />
               </span>
             </h1>
             <p className="text-gray-600 text-lg mb-12">

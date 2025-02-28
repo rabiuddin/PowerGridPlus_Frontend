@@ -10,9 +10,9 @@ export default function AboutUs() {
     <MainLayout>
       <div className="bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5">
         <HeroSection />
-        <StatsSection />
         <MissionAndVision />
         <TeamSection />
+        <StatsSection />
       </div>
     </MainLayout>
   );

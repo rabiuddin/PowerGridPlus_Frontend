@@ -23,11 +23,6 @@ export default function HeroSection() {
           <span className="flex flex-col items-center lg:items-start gap-4 shimmer justify-center lg:justify-start">
             <span className="flex justify-center items-center">
               <span>AI-Driven Energy</span>
-              <img
-                src="/PwergridplusLogoOld.png"
-                alt="Company Logo"
-                className="h-11"
-              />
             </span>
             <span>Monitoring for Efficiency</span>
           </span>

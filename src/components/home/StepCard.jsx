@@ -20,7 +20,7 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
                 <h2 className="text-2xl font-bold text-gray-800 mt-2">
                   {title}
                 </h2>
-                <div className="text-gray-600 mt-4 line-clamp-2">
+                <div className="text-gray-600 mt-4 line-clamp-4">
                   {description}
                 </div>
                 <Link
@@ -47,7 +47,7 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
                 <h2 className="text-2xl font-bold text-gray-800 mt-2">
                   {title}
                 </h2>
-                <div className="text-gray-600 mt-4 line-clamp-2">
+                <div className="text-gray-600 mt-4 line-clamp-4">
                   {description}
                 </div>
                 <Link

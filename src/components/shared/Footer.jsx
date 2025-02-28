@@ -24,7 +24,7 @@ const Footer = () => {
               className="w-52"
             />
 
-            <p className="mt-2 black text-sm">PowerGridPlus - © 2024</p>
+            <p className="mt-2 black text-sm">PowerGridPlus - © 2025</p>
           </div>
 
           {/* Navigation Links */}
