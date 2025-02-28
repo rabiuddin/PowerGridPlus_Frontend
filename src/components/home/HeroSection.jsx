@@ -3,6 +3,7 @@ import { FaArrowRight, FaBrain } from "react-icons/fa";
 import { MdAttachMoney, MdElectricBolt } from "react-icons/md";
 import { FcElectricity } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../utils/utils";
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Link
+              onClick={scrollToTop}
               to={"/contact-us"}
               className="flex items-center gap-2 text-white"
             >

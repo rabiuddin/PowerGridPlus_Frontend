@@ -3,6 +3,7 @@ import { FiArrowRight } from "react-icons/fi";
 import BlogCardItem from "../shared/BlogCardItem";
 import { blogData, itemVariants, containerVariants } from "../../data/blogs";
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../../utils/utils";
 
 export default function Blogs() {
   return (
@@ -38,6 +39,7 @@ export default function Blogs() {
           className="mt-16"
         >
           <Link
+          onClick={scrollToTop}
             to={"/blogs"}
             className="inline-flex items-center text-primary text-lg font-semibold px-6 py-3 rounded-md border border-primary hover:bg-primary hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
           >
