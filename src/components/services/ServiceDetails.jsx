@@ -4,48 +4,36 @@ import { motion } from "framer-motion";
 const services = [
   {
     id: 1,
-    title: "Smart Monitoring",
+    title: "Chatbot technology",
     description:
-      "Our smart monitoring solutions provide real-time insights into your energy consumption, allowing you to track and manage your power usage effectively.",
+      "Enhance customer engagement with AI-driven chatbots. Get instant responses and personalized interactions to improve user experience.",
   },
   {
     id: 2,
-    title: "Energy Analytics",
+    title: "Recommendations services",
     description:
-      "Utilize our advanced analytics tools to identify patterns and trends in your energy usage, helping you make informed decisions to optimize efficiency.",
+      "Identify patterns in your energy usage with advanced analytics. Make informed decisions to optimize efficiency.",
   },
   {
     id: 3,
-    title: "Cost Reduction",
+    title: "Elastic sensing technology",
     description:
-      "Our services are designed to help you reduce energy waste and lower costs, ensuring that you get the most out of your energy consumption.",
+      "Reduce energy waste and lower costs with our innovative sensing technology. Maximize your energy consumption efficiency.",
   },
   {
     id: 4,
-    title: "Efficiency Improvement",
+    title: "Remote control",
     description:
-      "Improve your overall energy efficiency with our tailored solutions, designed to meet the unique needs of your business or household.",
-  },
-  {
-    id: 5,
-    title: "Sustainability",
-    description:
-      "Contribute to a more sustainable future by optimizing your energy usage and reducing your carbon footprint with our innovative services.",
-  },
-  {
-    id: 6,
-    title: "Support & Maintenance",
-    description:
-      "Our dedicated support team is here to assist you with any issues or questions you may have, ensuring that your energy management system runs smoothly.",
+      "Control your energy devices remotely for better efficiency and convenience. Manage your energy usage from anywhere.",
   },
 ];
 
 const ServiceDetails = () => {
   return (
     <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white">
-      <div className="container mx-auto px-6 lg:px-20">
+      <div className="container mx-auto px-6 lg:px-0">
         <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
           {services.map((service, index) => (
             <motion.div
               key={service.id}

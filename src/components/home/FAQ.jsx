@@ -8,7 +8,7 @@ const faqs = [
       "Our AI smart plug uses advanced algorithms to automatically detect and generate recommendations that help eliminate minor power waste from your devices, reducing both your carbon emissions and electricity costs.",
   },
   {
-    question: "s the PowergridPlus app compatible with all devices?",
+    question: "Is the PowergridPlus app compatible with all devices?",
     answer:
       "The PowergridPlus app is designed to be compatible with most smartphones and tablets. It supports both iOS and Android operating systems.",
   },

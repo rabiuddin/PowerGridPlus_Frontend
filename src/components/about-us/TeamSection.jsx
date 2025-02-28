@@ -5,28 +5,17 @@ const TeamSection = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Onile Abiodun Emmanuel",
       role: "Chief Executive Officer",
       image: "/placeholder.svg?height=400&width=400",
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "Chief Technology Officer",
-      image: "/placeholder.svg?height=400&width=400",
-    },
-    {
-      id: 3,
-      name: "Emily Rodriguez",
+      name: "Vjatseslav Keksin",
       role: "Head of Innovation",
       image: "/placeholder.svg?height=400&width=400",
     },
-    {
-      id: 4,
-      name: "David Kim",
-      role: "Head of Operations",
-      image: "/placeholder.svg?height=400&width=400",
-    },
+   
   ];
   return (
     <>
@@ -46,7 +35,7 @@ const TeamSection = () => {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:mx-50 xl:mx-80 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.id}
