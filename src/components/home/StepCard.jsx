@@ -2,6 +2,7 @@ import React from "react";
 import RevealFromLeft from "../shared/RevealFromLeft";
 import RevealFromRight from "../shared/RevealFromRight";
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../../utils/utils";
 
 const StepCard = ({ step, title, description, image, isReversed }) => {
   return (
@@ -24,6 +25,7 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
                   {description}
                 </div>
                 <Link
+                onClick={scrollToTop}
                   to="/how-it-works"
                   className="inline-block mt-4 text-sm font-semibold text-teal-500 hover:text-teal-700 transition-colors"
                 >
@@ -51,6 +53,7 @@ const StepCard = ({ step, title, description, image, isReversed }) => {
                   {description}
                 </div>
                 <Link
+                onClick={scrollToTop}
                   to="/how-it-works"
                   className="inline-block mt-4 text-sm font-semibold text-teal-500 hover:text-teal-700 transition-colors"
                 >

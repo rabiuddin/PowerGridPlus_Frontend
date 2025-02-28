@@ -79,7 +79,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.02 }}
           >
             <IoLogInOutline className="text-lg"/>
-            LOGIN
+            Login
           </Link>
         </div>
       </nav>
@@ -153,21 +153,21 @@ const Navbar = () => {
                       Contact Us
                     </Link>
                   </div>
-                  <div className="py-6">
-                    <a
-                      href="/#get-device"
+                  <div className="py-6 flex flex-col">
+                    <Link
+                      to="/#get-device"
                       onClick={handleScrollToSection}
-                      className="bg-primary text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-primary"
+                      className="w-fit bg-primary text-white text-sm/6 font-semibold px-4 py-2 rounded-md mr-6 hover:scale-102 hover:bg-white hover:text-primary transition-all duration-300 ease-in-out hover:outline-2 hover:outline-primary"
                     >
                       Get Your Device Now
-                    </a>
+                    </Link>
                     <Link
                       to="/login"
-                      className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5 w-[188px]"
+                      className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
                       whileHover={{ scale: 1.02 }}
                     >
                       <IoLogInOutline className="text-lg"/>
-                      LOGIN
+                      Login
                     </Link>
                   </div>
                 </div>
