@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
-import { FaArrowRight, FaBrain  } from "react-icons/fa";
+import { FaArrowRight, FaBrain } from "react-icons/fa";
 import { MdAttachMoney, MdElectricBolt } from "react-icons/md";
 import { FcElectricity } from "react-icons/fc";
-import { IoAirplaneOutline } from "react-icons/io5";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+  const handleScrollToSection = (e) => {
+    e.preventDefault();
+    navigate("/", { state: { scrollTo: "get-device" } });
+  };
   return (
     <section className="relative lg:h-[90vh] flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-16 bg-gradient-to-br from-[#f3fff9] to-[#edfff6]">
       {/* Left Content */}
@@ -18,7 +23,11 @@ export default function HeroSection() {
           <span className="flex flex-col items-center lg:items-start gap-4 shimmer justify-center lg:justify-start">
             <span className="flex justify-center items-center">
               <span>AI-Driven Energy</span>
-              <img src="/PwergridplusLogoOld.png" alt="Company Logo" className="h-11"/>
+              <img
+                src="/PwergridplusLogoOld.png"
+                alt="Company Logo"
+                className="h-11"
+              />
             </span>
             <span>Monitoring for Efficiency</span>
           </span>
@@ -35,16 +44,21 @@ export default function HeroSection() {
             href="#get-device"
             className="flex items-center gap-2 bg-white text-primary text-lg font-semibold px-6 py-3 rounded-lg border border-primary shadow-md hover:bg-primary hover:text-white transition-all duration-300"
             whileHover={{ scale: 1.05 }}
+            onClick={handleScrollToSection}
           >
             Get Your Device Now <FaArrowRight />
           </motion.a>
-          <motion.a
-            href="/contact-us"
+          <motion.div
             className="flex items-center gap-2 hover:bg-primary text-white text-lg font-semibold px-6 py-3 rounded-lg shadow-md bg-secondary transition-all duration-300"
             whileHover={{ scale: 1.05 }}
           >
-            Get in Touch <FaArrowRight />
-          </motion.a>
+            <Link
+              to={"/contact-us"}
+              className="flex items-center gap-2 text-white"
+            >
+              Get in Touch <FaArrowRight />
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
 
@@ -73,7 +87,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <MdAttachMoney  className="text-primary text-2xl" />
+          <MdAttachMoney className="text-primary text-2xl" />
           <div>
             <h3 className="text-gray-800 font-bold">Cost Saving</h3>
             <p className="text-gray-600 text-xs hidden sm:block">

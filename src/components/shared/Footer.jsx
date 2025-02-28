@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { scrollToTop } from "../../utils/utils";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const handleScrollToSection = (e) => {
     e.preventDefault();
     navigate("/", { state: { scrollTo: "get-device" } });
