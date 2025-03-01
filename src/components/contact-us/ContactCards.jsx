@@ -8,22 +8,19 @@ const ContactCards = () => {
       id: 1,
       icon: <FiPhone className="w-6 h-6" />,
       title: "Phone",
-      info: "+1 (555) 123-4567",
-      subInfo: "Monday to Friday, 9am to 6pm",
+      info: "+37253676853",
     },
     {
       id: 2,
       icon: <FiMail className="w-6 h-6" />,
       title: "Email",
-      info: "contact@powergridplus.com",
-      subInfo: "We'll respond within 24 hours",
+      info: "abiodun.onile@powergridplus.com",
     },
     {
       id: 3,
       icon: <FiMapPin className="w-6 h-6" />,
       title: "Office",
-      info: "123 Innovation Drive",
-      subInfo: "Silicon Valley, CA 94025",
+      info: "Tallinn, Estonia",
     },
   ];
   return (
@@ -45,7 +42,6 @@ const ContactCards = () => {
                   {item.title}
                 </h3>
                 <p className="text-white/80 font-medium">{item.info}</p>
-                <p className="text-white/80 text-sm">{item.subInfo}</p>
               </motion.div>
             ))}
           </div>

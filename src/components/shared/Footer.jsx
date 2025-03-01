@@ -100,11 +100,11 @@ const Footer = () => {
             <div className="mt-2 space-y-2">
               <p className="flex items-center justify-center md:justify-start">
                 <MdEmail className="mr-2 text-xl text-secondary" />{" "}
-                info@powergridplus.ee
+                abiodun.onile@powergridplus.com
               </p>
               <p className="flex items-center justify-center md:justify-start">
                 <MdPhone className="mr-2 text-xl text-secondary" />{" "}
-                +372-555-599-65
+                +37253676853
               </p>
             </div>
             {/* Social Media Icons */}
