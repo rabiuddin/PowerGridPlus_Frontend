@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
-import BlogCardItem from "../shared/BlogCardItem";
+import BlogCardItem from "../blogs/BlogCardItem";
 import { blogData, itemVariants, containerVariants } from "../../data/blogs";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../utils/utils";
+import useScroll from "../../hooks/useScroll";
 
 export default function Blogs() {
+
+  const { scrollToTop } = useScroll();
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container mx-auto px-6 text-center">

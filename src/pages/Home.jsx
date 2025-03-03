@@ -5,22 +5,15 @@ import WhyChooseUs from "../components/home/WhyChooseUs";
 import HowItWorks from "../components/home/HowItWorks";
 import FAQ from "../components/home/FAQ";
 import CallToAction from "../components/home/CallToAction";
-import Reveal from "../components/shared/Reveal";
+import Reveal from "../components/shared/framer-motion/Reveal";
 import MainLayout from "../layouts/MainLayout";
 import Blogs from "../components/home/Blogs";
 import Testimonials from "../components/home/Testimonials";
+import useScrollTo from "../components/home/hooks/useScrollTo";
 
 const Home = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state && location.state.scrollTo) {
-      const targetElement = document.getElementById(location.state.scrollTo);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, [location]);
+  // for scrolling to a section in home, which is triggered from another page
+  useScrollTo();
 
   return (
     <MainLayout>

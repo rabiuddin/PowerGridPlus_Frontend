@@ -1,6 +1,6 @@
 import React from "react";
-import RevealFromLeft from "../shared/RevealFromLeft";
-import RevealFromRight from "../shared/RevealFromRight";
+import RevealFromLeft from "../shared/framer-motion/RevealFromLeft";
+import RevealFromRight from "../shared/framer-motion/RevealFromRight";
 
 const MissionAndVision = () => {
   return (

@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import { blogData } from "../data/blogs";
-import CommentSection from "../components/blogs/CommentSection";
-import Reveal from "../components/shared/Reveal";
+import CommentSection from "../components/blog-post/CommentSection";
+import Reveal from "../components/shared/framer-motion/Reveal";
+import useScroll from "../hooks/useScroll";
 
 const BlogPost = () => {
   const { id } = useParams();
   const blog = blogData.find((post) => post.id === parseInt(id));
 
+  const {scrollToTop} = useScroll()
+
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    scrollToTop();
   }, [id]);
 
   if (!blog) {

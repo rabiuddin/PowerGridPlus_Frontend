@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import BlogCardItem from "../components/shared/BlogCardItem";
+import BlogCardItem from "../components/blogs/BlogCardItem";
 import MainLayout from "../layouts/MainLayout";
 import { blogData, itemVariants, containerVariants } from "../data/blogs";
-import Reveal from "../components/shared/Reveal";
+import Reveal from "../components/shared/framer-motion/Reveal";
 
 const Blogs = () => {
   return (

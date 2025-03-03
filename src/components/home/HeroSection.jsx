@@ -2,15 +2,11 @@ import { motion } from "framer-motion";
 import { FaArrowRight, FaBrain } from "react-icons/fa";
 import { MdAttachMoney, MdElectricBolt } from "react-icons/md";
 import { FcElectricity } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
-import { scrollToTop } from "../../utils/utils";
+import { Link } from "react-router-dom";
+import useScroll from "../../hooks/useScroll";
 
 export default function HeroSection() {
-  const navigate = useNavigate();
-  const handleScrollToSection = (e) => {
-    e.preventDefault();
-    navigate("/", { state: { scrollTo: "get-device" } });
-  };
+  const {handleScrollToSection, scrollToTop} = useScroll()
   return (
     <section className="relative lg:h-[90vh] flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-16 bg-gradient-to-br from-[#f3fff9] to-[#edfff6]">
       {/* Left Content */}
@@ -36,14 +32,13 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-          <motion.a
-            href="#get-device"
-            className="flex items-center gap-2 bg-white text-primary text-lg font-semibold px-6 py-3 rounded-lg border border-primary shadow-md hover:bg-primary hover:text-white transition-all duration-300"
+          <motion.div
+            className="cursor-pointer flex items-center gap-2 bg-white text-primary text-lg font-semibold px-6 py-3 rounded-lg border border-primary shadow-md hover:bg-primary hover:text-white transition-all duration-300"
             whileHover={{ scale: 1.05 }}
-            onClick={handleScrollToSection}
+            onClick={(e)=>{handleScrollToSection(e, "get-device")}}
           >
             Get Your Device Now <FaArrowRight />
-          </motion.a>
+          </motion.div>
           <motion.div
             className="flex items-center gap-2 hover:bg-primary text-white text-lg font-semibold px-6 py-3 rounded-lg shadow-md bg-secondary transition-all duration-300"
             whileHover={{ scale: 1.05 }}

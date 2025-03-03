@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import Reveal from "../components/shared/Reveal";
+import Reveal from "../components/shared/framer-motion/Reveal";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);

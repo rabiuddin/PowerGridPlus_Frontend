@@ -2,68 +2,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaQuoteLeft } from "react-icons/fa";
-
-// Sample testimonial data - replace with your actual data
-const testimonials = [
-  {
-    id: 1,
-    text: "",
-    author: "Sarah Johnson",
-    position: "Chief Technology Officer",
-    company: "Prototypes for Humanity",
-    logo: "/company-logo/companyLogo1.jpg",
-  },
-  {
-    id: 2,
-    text: "",
-    author: "Michael Chen",
-    position: "Operations Director",
-    company: "Vidrik",
-    logo: "/company-logo/companyLogo2.jpg",
-  },
-  {
-    id: 3,
-    text: "",
-    author: "Emily Rodriguez",
-    position: "Infrastructure Manager",
-    company: "Amplitude",
-    logo: "/company-logo/companyLogo3.jpg",
-  },
-];
+import { testimonials } from "../../data/home";
+import useTestimonials from "./hooks/useTestimonials";
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  useEffect(() => {
-    let interval;
-
-    if (isAutoPlaying) {
-      interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-      }, 5000);
-    }
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => {
-      setIsAutoPlaying(true);
-    }, 5000);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
-    setIsAutoPlaying(false);
-    setTimeout(() => {
-      setIsAutoPlaying(true);
-    }, 5000);
-  };
+  const { currentIndex, nextSlide, prevSlide } = useTestimonials();
 
   return (
     <section className="relative bg-gradient-to-br from-[#f3fff9] to-[#edfff6] py-16 px-4 md:py-24">

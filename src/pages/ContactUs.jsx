@@ -3,7 +3,7 @@ import HeroSection from "../components/contact-us/HeroSection";
 import ContactCards from "../components/contact-us/ContactCards";
 import ContactForm from "../components/contact-us/ContactForm";
 import MapSection from "../components/contact-us/MapSection";
-import Reveal from "../components/shared/Reveal";
+import Reveal from "../components/shared/framer-motion/Reveal";
 
 export default function ContactUs() {
   return (

@@ -1,26 +1,8 @@
 import React from "react";
+import { reason } from "../../data/home";
 
 const WhyChooseUs = () => {
-  const reason = [
-    {
-      title: "Alleviate cost of adoption of energy",
-      description:
-        "Lowering the financial burden associated with adopting energy solutions helps encourage wider usage. Making energy more affordable ensures accessibility for individuals and businesses.",
-      bgColor: "bg-slate-50/95",
-    },
-    {
-      title: "Minimizing Sensor Requirements",
-      description:
-        "Optimizing technology to rely on fewer sensors reduces costs, simplifies deployment, and enhances efficiency. This approach improves scalability while maintaining accurate data collection.",
-      bgColor: "bg-violet-50/95",
-    },
-    {
-      title: "Real-Time Energy Analysis",
-      description:
-        "Monitoring energy waste, costs, and CO₂ emissions at the asset level enables proactive decision-making. This helps optimize energy usage, reduce expenses, and lower environmental impact.",
-      bgColor: "bg-orange-50/95",
-    },
-  ];
+  
   return (
     <section className="relative overflow-hidden py-16 sm:py-24">
       {/* Background Layers */}
