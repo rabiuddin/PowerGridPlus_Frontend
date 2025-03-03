@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-import Reveal from "../shared/Reveal";
+import Reveal from "../shared/framer-motion/Reveal";
 
 const ContactForm = () => {
   const handleSubmit = (e) => {

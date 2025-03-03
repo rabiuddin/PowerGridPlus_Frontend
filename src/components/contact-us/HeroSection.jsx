@@ -1,5 +1,5 @@
 import React from "react";
-import Reveal from "../shared/Reveal";
+import Reveal from "../shared/framer-motion/Reveal";
 const HeroSection = () => {
   return (
     <>

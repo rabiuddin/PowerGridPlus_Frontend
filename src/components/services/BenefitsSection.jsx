@@ -1,44 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-const benefits = [
-  {
-    id: 1,
-    title: "Real-Time Insights",
-    description:
-      "Gain real-time insights into your energy consumption, allowing you to make informed decisions and take immediate action to optimize usage.",
-  },
-  {
-    id: 2,
-    title: "Cost Savings",
-    description:
-      "Reduce energy waste and lower your energy bills with our cost-effective solutions designed to maximize efficiency.",
-  },
-  {
-    id: 3,
-    title: "Improved Efficiency",
-    description:
-      "Enhance your overall energy efficiency with our tailored services, helping you achieve your sustainability goals.",
-  },
-  {
-    id: 4,
-    title: "Sustainability",
-    description:
-      "Contribute to a greener future by reducing your carbon footprint and promoting sustainable energy practices.",
-  },
-  {
-    id: 5,
-    title: "Expert Support",
-    description:
-      "Our dedicated support team is always available to assist you with any questions or issues, ensuring a seamless experience.",
-  },
-  {
-    id: 6,
-    title: "Scalable Solutions",
-    description:
-      "Our services are scalable to meet the needs of both small businesses and large enterprises, providing flexible solutions for all.",
-  },
-];
+import { benefits } from "../../data/services";
 
 const BenefitsSection = () => {
   return (

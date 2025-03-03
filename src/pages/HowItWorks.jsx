@@ -1,5 +1,5 @@
 import React from "react";
-import StepCard from "../components/how-it-works/StepCard";
+import StepCard from "../components/how-it-works/step-card/StepCard";
 import MainLayout from "../layouts/MainLayout";
 
 const steps = [
@@ -105,7 +105,7 @@ const HowItWorksPage = () => {
         </div>
         <div className="space-y-12 px-4 md:px-0 md:w-[85%] sm:w-[92%] w-[98%] mx-auto">
           {steps.map((step, index) => (
-            <StepCard key={index} {...step} isReversed={index % 2 !== 0} />
+            <StepCard key={index} {...step} isReversed={index % 2 !== 0} stepContentClassName={"md:w-1/2 p-8"} stepImageClassName={"md:w-1/2 h-full"} />
           ))}
         </div>
       </div>

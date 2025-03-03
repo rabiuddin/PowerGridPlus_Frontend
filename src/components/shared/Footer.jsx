@@ -1,15 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
-import { scrollToTop } from "../../utils/utils";
+import useScroll from "../../hooks/useScroll";
 
 const Footer = () => {
-  const navigate = useNavigate();
-  const handleScrollToSection = (e) => {
-    e.preventDefault();
-    navigate("/", { state: { scrollTo: "get-device" } });
-  };
+
+  const {handleScrollToSection, scrollToTop} = useScroll();
 
   return (
     <footer className="bg-white">
@@ -82,7 +79,7 @@ const Footer = () => {
                 <li className="mx-5">
                   <a
                     href="/#get-device"
-                    onClick={handleScrollToSection}
+                    onClick={(e)=>{handleScrollToSection(e, "get-device")}}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Get your Device
