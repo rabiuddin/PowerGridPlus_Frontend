@@ -41,7 +41,7 @@ const ContactCards = () => {
                 <h3 className="text-xl font-semibold  mb-2">
                   {item.title}
                 </h3>
-                <p className="text-white/80 font-medium">{item.info}</p>
+                <p className="text-white/80 font-medium break-words">{item.info}</p>
               </motion.div>
             ))}
           </div>
