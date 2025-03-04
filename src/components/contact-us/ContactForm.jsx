@@ -2,12 +2,12 @@ import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Reveal from "../shared/framer-motion/Reveal";
+import { useContactForm } from "./hooks/useContactForm";
 
 const ContactForm = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add form submission logic here
-  };
+
+  const {handleFormSubmit, handleInputChange, formData, loading} = useContactForm()
+  const {firstName ,lastName, email, message} = formData
 
   return (
     <>
@@ -22,13 +22,16 @@ const ContactForm = () => {
                   <h2 className="text-2xl font-bold text-primary mb-6">
                     Send us a Message
                   </h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-gray-700 mb-2">
                           First Name
                         </label>
                         <input
+                        value={firstName}
+                        onChange={handleInputChange}
+                          name="firstName"
                           type="text"
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                           required
@@ -39,6 +42,9 @@ const ContactForm = () => {
                           Last Name
                         </label>
                         <input
+                        value={lastName}
+                        onChange={handleInputChange}
+                        name="lastName"
                           type="text"
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                           required
@@ -48,6 +54,9 @@ const ContactForm = () => {
                     <div>
                       <label className="block text-gray-700 mb-2">Email</label>
                       <input
+                      value={email}
+                      onChange={handleInputChange}
+                      name="email"
                         type="email"
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                         required
@@ -58,12 +67,16 @@ const ContactForm = () => {
                         Message
                       </label>
                       <textarea
+                      value={message}
+                      onChange={handleInputChange}
+                      name="message"
                         rows="4"
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
                         required
                       ></textarea>
                     </div>
                     <button
+                    disabled={loading}
                       type="submit"
                       className="group relative inline-flex items-center px-6 py-3 overflow-hidden rounded-md bg-primary border-2 cursor-pointer hover:bg-white hover:text-primary text-white transform hover:scale-105 transition-all duration-300"
                     >

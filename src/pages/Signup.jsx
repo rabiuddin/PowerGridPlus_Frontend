@@ -1,26 +1,20 @@
-import { useState } from "react";
 import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/shared/framer-motion/Reveal";
+import { useSignup } from "../components/signup/hooks/useSignup";
 
 export default function Signup() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle signup logic here
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    // Proceed with signup...
-  };
+  const {
+    formData,
+    handleInputChange,
+    handleSignup,
+    loading,
+    showPassword,
+    setShowPassword,
+    showConfirmPassword,
+    setShowConfirmPassword,
+  } = useSignup();
+  const { email, password, confirmPassword } = formData;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative">
@@ -49,7 +43,7 @@ export default function Signup() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSignup} className="space-y-6">
               <div className="space-y-2">
                 <label
                   htmlFor="email"
@@ -60,13 +54,12 @@ export default function Signup() {
                 <input
                   id="email"
                   type="email"
+                  name="email"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                   placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  value={email}
+                  onChange={handleInputChange}
                 />
               </div>
 
@@ -79,15 +72,14 @@ export default function Signup() {
                 </label>
                 <div className="relative">
                   <input
+                    name="password"
                     id="password"
                     type={showPassword ? "text" : "password"}
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                     placeholder="Enter your password"
-                    value={formData.password}
-                    onChange={(e) =>
-                      setFormData({ ...formData, password: e.target.value })
-                    }
+                    value={password}
+                    onChange={handleInputChange}
                   />
                   <button
                     type="button"
@@ -112,18 +104,14 @@ export default function Signup() {
                 </label>
                 <div className="relative">
                   <input
+                    name="confirmPassword"
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                     placeholder="Confirm your password"
-                    value={formData.confirmPassword}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        confirmPassword: e.target.value,
-                      })
-                    }
+                    value={confirmPassword}
+                    onChange={handleInputChange}
                   />
                   <button
                     type="button"
@@ -144,11 +132,11 @@ export default function Signup() {
                   id="terms"
                   type="checkbox"
                   required
-                  className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                  className="h-4 w-4 rounded cursor-pointer border-gray-300 text-primary focus:ring-primary"
                 />
                 <label
                   htmlFor="terms"
-                  className="ml-2 block text-sm text-gray-700"
+                  className="ml-2 cursor-pointer block text-sm text-gray-700"
                 >
                   I agree to the{" "}
                   <Link to={"#"} className="text-primary hover:text-secondary">
@@ -158,8 +146,9 @@ export default function Signup() {
               </div>
 
               <button
+                disabled={loading}
                 type="submit"
-                className="w-full py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline-2 hover:outline-gradient-to-r hover:outline-primary"
+                className="w-full cursor-pointer py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline-2 hover:outline-gradient-to-r hover:outline-primary"
               >
                 Sign up
               </button>
