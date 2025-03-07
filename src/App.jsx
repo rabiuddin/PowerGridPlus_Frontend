@@ -9,6 +9,8 @@ import Services from "./pages/Services";
 import HowItWorks from "./pages/HowItWorks";
 import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogPost />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </Router>
   );

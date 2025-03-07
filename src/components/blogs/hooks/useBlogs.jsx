@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
   getAllBlogsApiCall,
-  getBlogPostByIdApiCall,
   getLatestBlogsApiCall,
 } from "../../../api/blogs.api";
+import { getBlogPostByIdApiCall } from "../../../api/blogPost.api";
 
 export const useBlogs = () => {
   // states
