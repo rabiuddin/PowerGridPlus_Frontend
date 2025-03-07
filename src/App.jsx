@@ -11,6 +11,8 @@ import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Dashboard from "./pages/dashboard/Dashboard";
+import ElectricityCost from "./pages/dashboard/ElectricityCost";
 
 const App = () => {
   return (
@@ -27,6 +29,11 @@ const App = () => {
         <Route path="/blogs/:id" element={<BlogPost />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard/electricity-cost"
+          element={<ElectricityCost />}
+        />
       </Routes>
     </Router>
   );
