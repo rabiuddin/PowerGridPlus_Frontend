@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import BlogCardItem from "../components/blogs/BlogCardItem";
 import MainLayout from "../layouts/MainLayout";
 import { blogData, itemVariants, containerVariants } from "../data/blogs";
 import Reveal from "../components/shared/framer-motion/Reveal";
+import { useBlogs } from "../components/blogs/hooks/useBlogs";
 
 const Blogs = () => {
+  const { allBlogs, getAllBlogs } = useBlogs();
+
+  useEffect(() => {
+    getAllBlogs();
+  }, []);
+
+  if (!allBlogs) return <>Loading...</>;
   return (
     <MainLayout>
       <Reveal>
