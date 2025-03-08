@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -15,13 +20,15 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import ElectricityCost from "./pages/dashboard/ElectricityCost";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import NotFound from "./pages/NotFound";
 
-const logout = () => {
+const Logout = () => {
   localStorage.clear();
+  return <Navigate to="/login" />;
 };
 
 const LogoutAndSignup = () => {
-  logout();
+  localStorage.clear();
   return <Signup />;
 };
 
@@ -34,6 +41,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<LogoutAndSignup />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/services" element={<Services />} />
@@ -58,6 +66,7 @@ const App = () => {
               </ProtectedRoutes>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>

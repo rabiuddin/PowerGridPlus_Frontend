@@ -39,3 +39,24 @@ export const refreshTokenApiCall = async (body) => {
     return e.response.data;
   }
 };
+
+export const getCurrentUserApiCall = async () => {
+  try {
+    const response = {
+      data: {
+        success: true,
+        message: "User fetched",
+        data: {
+          user: {
+            id: 6,
+            email: "kmaal@example.com",
+            created_at: "2025-03-08T18:42:10.145732Z",
+          },
+        },
+      },
+    };
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

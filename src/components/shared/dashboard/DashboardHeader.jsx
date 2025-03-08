@@ -10,6 +10,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function DashboardHeader({
   title,
@@ -18,6 +19,7 @@ export default function DashboardHeader({
 }) {
   const [showSearch, setShowSearch] = useState(false);
   const [notifications, setNotifications] = useState(3);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <div className="bg-white z-10">
@@ -97,7 +99,7 @@ export default function DashboardHeader({
                     <FiUser className="h-4 w-4" />
                   </div>
                   <span className="text-sm font-medium text-gray-700 hidden sm:inline-block">
-                    Admin
+                    {user.email}
                   </span>
                 </button>
               </div>

@@ -2,20 +2,40 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../config/constants";
 import { jwtDecode } from "jwt-decode";
-import { refreshTokenApiCall } from "../api/users.api";
+import { getCurrentUserApiCall, refreshTokenApiCall } from "../api/users.api";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/slices/userSlice";
 
 const ProtectedRoutes = ({ children }) => {
   // states
   const [isAuthorized, setIsAuthorized] = useState(null);
+  const dispatch = useDispatch();
 
   // functions
+  const getUser = async () => {
+    try {
+      const response = await getCurrentUserApiCall();
+
+      if (response.success) {
+        dispatch(setUser(response.data.user));
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsAuthorized(false);
+    }
+  };
+
   const refreshToken = async () => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
     try {
       const response = await refreshTokenApiCall({ refresh: refreshToken });
 
       if (response.success) {
-        localStorage.setItem(ACCESS_TOKEN, response.access_token);
+        localStorage.setItem(ACCESS_TOKEN, response.data.tokens.access);
+        dispatch(setUser(response.data.user));
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
@@ -42,13 +62,14 @@ const ProtectedRoutes = ({ children }) => {
     if (tokenExpiration < now) {
       await refreshToken();
     } else {
-      setIsAuthorized(true);
+      await getUser();
     }
   };
 
   // use effects
   useEffect(() => {
     auth().catch((error) => {
+      console.log(error);
       setIsAuthorized(false);
     });
   }, []);

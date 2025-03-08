@@ -1,33 +1,30 @@
 import { useState } from "react";
-import {
-  getAllBlogsApiCall,
-  getLatestBlogsApiCall,
-} from "../../../api/blogs.api";
+import { getBlogsApiCall } from "../../../api/blogs.api";
 import { getBlogPostByIdApiCall } from "../../../api/blogPost.api";
 
 export const useBlogs = () => {
   // states
   const [latestBlogs, setLatestBlogs] = useState(null);
-  const [allBlogs, setAllBlogs] = useState(null);
+  const [blogs, setBlogs] = useState(null);
   const [blogPost, setBlogPost] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
   // functions
   const getLatestBlogs = async () => {
-    const response = await getLatestBlogsApiCall();
+    const response = await getBlogsApiCall();
 
     if (response.success) {
-      setLatestBlogs(response.data);
-      console.log(response.message);
+      setLatestBlogs(response.data.results.slice(0, 4));
     } else {
       console.error(response.message);
     }
   };
 
-  const getAllBlogs = async () => {
-    const response = await getAllBlogsApiCall();
+  const getBlogs = async (pageNumber) => {
+    const response = await getBlogsApiCall(pageNumber);
 
     if (response.success) {
-      setAllBlogs(response.data);
+      setBlogs(response.data.results);
       console.log(response.message);
     } else {
       console.error(response.message);
@@ -47,9 +44,11 @@ export const useBlogs = () => {
   return {
     getLatestBlogs,
     latestBlogs,
-    allBlogs,
-    getAllBlogs,
+    blogs,
+    getBlogs,
     getBlogPostById,
     blogPost,
+    pageNumber,
+    setPageNumber,
   };
 };

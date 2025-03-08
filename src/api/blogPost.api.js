@@ -1,14 +1,10 @@
-import { blogData } from "../data/blogs";
+import api from "../config/axios.config";
 
-export const getBlogPostByIdApiCall = (id) => {
+const path = "/api/blogs";
+
+export const getBlogPostByIdApiCall = async (id) => {
   try {
-    const response = {
-      data: {
-        success: true,
-        message: "Blog Post Fetched Successfully",
-        data: blogData.find((post) => post.id === parseInt(id)),
-      },
-    };
+    const response = await api.get(`${path}/${id}/`);
     return response.data;
   } catch (e) {
     return e.response.data;

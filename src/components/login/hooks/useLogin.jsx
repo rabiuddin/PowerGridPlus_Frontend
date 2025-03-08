@@ -3,6 +3,8 @@ import { loginApiCall } from "../../../api/users.api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../config/constants";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/slices/userSlice";
 
 export const useLogin = () => {
   // use states
@@ -14,6 +16,7 @@ export const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // functions
   const handleInputChange = (e) => {
@@ -31,10 +34,11 @@ export const useLogin = () => {
     const response = await loginApiCall(formData);
 
     if (response.success) {
-      const { access, refresh } = response.data;
+      const { user, tokens } = response.data;
+      const { access, refresh } = tokens;
       localStorage.setItem(ACCESS_TOKEN, access);
       localStorage.setItem(REFRESH_TOKEN, refresh);
-      // dispatch(setUser(user));
+      dispatch(setUser(user));
       toast.success(response.message);
       navigate("/dashboard");
     } else {
