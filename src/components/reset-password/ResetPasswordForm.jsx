@@ -1,6 +1,7 @@
 import React from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import PasswordStrengthIndicator from "./PasswordStrengthIndicator";
+import PasswordStrengthIndicator from "../shared/PasswordStrengthIndicator";
+import FormError from "../shared/FormError";
 
 const ResetPasswordForm = ({ useResetPasswordInstance }) => {
   const {
@@ -15,6 +16,7 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
     setConfirmPassword,
     error,
     isSubmitting,
+    passwordStrength,
   } = useResetPasswordInstance;
   return (
     <>
@@ -47,9 +49,7 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
 
           {/* Password Strength Indicator */}
           {password && (
-            <PasswordStrengthIndicator
-              useResetPasswordInstance={useResetPasswordInstance}
-            />
+            <PasswordStrengthIndicator passwordStrength={passwordStrength} />
           )}
         </div>
 
@@ -87,11 +87,7 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
           )}
         </div>
 
-        {error && (
-          <div className="text-red-500 text-sm bg-red-50 p-3 rounded-lg">
-            {error}
-          </div>
-        )}
+        <FormError error={error} />
 
         <button
           type="submit"

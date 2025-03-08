@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { signupApiCall } from "../../../api/auth.api";
+import { useEffect, useState } from "react";
+import { signupApiCall } from "../../../api/users.api";
+import { calculatePasswordStrength } from "../../../utils/password.utils";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../config/constants";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/slices/userSlice";
 
 export const useSignup = () => {
   // use states
@@ -11,6 +17,10 @@ export const useSignup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState(0);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // functions
   const handleInputChange = (e) => {
@@ -22,25 +32,44 @@ export const useSignup = () => {
 
   const handleSignup = async (e) => {
     setLoading(true);
+    setError("");
     e.preventDefault();
 
     // validation
-    if (formData.password != formData.confirmPassword) {
-      console.log("Passwords do not match");
-      setLoading(false)
+    if (passwordStrength < 3) {
+      setError("Please choose a stronger password");
+      setLoading(false);
       return;
     }
 
-    const response = await signupApiCall(formData);
+    if (formData.password != formData.confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+
+    const response = await signupApiCall({
+      email: formData.email,
+      password: formData.password,
+    });
 
     if (response.success) {
-      console.log(response.message);
+      const { access, refresh, user } = response.data;
+      localStorage.setItem(ACCESS_TOKEN, access);
+      localStorage.setItem(REFRESH_TOKEN, refresh);
+      dispatch(setUser(user));
+      toast.success(response.message);
+      navigate("/dashboard");
     } else {
-      console.error(response.message);
+      setError(response.message);
     }
 
     setLoading(false);
   };
+
+  useEffect(() => {
+    setPasswordStrength(calculatePasswordStrength(formData.password));
+  }, [formData.password]);
 
   return {
     formData,
@@ -51,5 +80,7 @@ export const useSignup = () => {
     setShowPassword,
     showConfirmPassword,
     setShowConfirmPassword,
+    passwordStrength,
+    error,
   };
 };

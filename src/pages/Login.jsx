@@ -2,6 +2,8 @@ import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/shared/framer-motion/Reveal";
 import { useLogin } from "../components/login/hooks/useLogin";
+import FormError from "../components/shared/FormError";
+import ButtonWithLoading from "../components/shared/button/ButtonWithLoading";
 
 export default function Login() {
   const {
@@ -11,6 +13,7 @@ export default function Login() {
     loading,
     showPassword,
     setShowPassword,
+    error,
   } = useLogin();
   const { email, password } = formData;
 
@@ -112,13 +115,9 @@ export default function Login() {
                 </Link>
               </div>
 
-              <button
-                disabled={loading}
-                type="submit"
-                className="w-full cursor-pointer py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline-2  hover:outline-gradient-to-r hover:outline-primary "
-              >
-                Log in
-              </button>
+              <FormError error={error} />
+
+              <ButtonWithLoading text={"Log In"} loading={loading} />
 
               <div className="text-center">
                 <span className="text-gray-600">Don't have an account? </span>

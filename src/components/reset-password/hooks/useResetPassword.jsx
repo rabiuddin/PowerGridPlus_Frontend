@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { calculatePasswordStrength } from "../../../utils/password.utils";
-import { resetPasswordApiCall } from "../../../api/auth.api";
+import { resetPasswordApiCall } from "../../../api/users.api";
 
 export const useResetPassword = () => {
   // states
@@ -22,13 +22,13 @@ export const useResetPassword = () => {
     e.preventDefault();
     setError("");
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
+    if (passwordStrength < 3) {
+      setError("Please choose a stronger password");
       return;
     }
 
-    if (passwordStrength < 3) {
-      setError("Please choose a stronger password");
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 

@@ -2,6 +2,10 @@ import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/shared/framer-motion/Reveal";
 import { useSignup } from "../components/signup/hooks/useSignup";
+import PasswordStrengthIndicator from "../components/shared/PasswordStrengthIndicator";
+import FormError from "../components/shared/FormError";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import ButtonWithLoading from "../components/shared/button/ButtonWithLoading";
 
 export default function Signup() {
   const {
@@ -13,7 +17,10 @@ export default function Signup() {
     setShowPassword,
     showConfirmPassword,
     setShowConfirmPassword,
+    passwordStrength,
+    error,
   } = useSignup();
+
   const { email, password, confirmPassword } = formData;
 
   return (
@@ -95,6 +102,12 @@ export default function Signup() {
                 </div>
               </div>
 
+              {password && (
+                <PasswordStrengthIndicator
+                  passwordStrength={passwordStrength}
+                />
+              )}
+
               <div className="space-y-2">
                 <label
                   htmlFor="confirmPassword"
@@ -145,13 +158,9 @@ export default function Signup() {
                 </label>
               </div>
 
-              <button
-                disabled={loading}
-                type="submit"
-                className="w-full cursor-pointer py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline-2 hover:outline-gradient-to-r hover:outline-primary"
-              >
-                Sign up
-              </button>
+              <FormError error={error} />
+
+              <ButtonWithLoading text={"Sign Up"} loading={loading} />
 
               <div className="text-center">
                 <span className="text-gray-600">Already have an account? </span>
