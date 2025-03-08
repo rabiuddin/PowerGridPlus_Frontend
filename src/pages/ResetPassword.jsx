@@ -3,6 +3,7 @@ import { FiLock, FiArrowLeft } from "react-icons/fi";
 import PasswordUpdated from "../components/reset-password/PasswordUpdated";
 import { useResetPassword } from "../components/reset-password/hooks/useResetPassword";
 import ResetPasswordForm from "../components/reset-password/ResetPasswordForm";
+import { Link } from "react-router-dom";
 
 export default function ResetPassword() {
   // hooks
@@ -37,13 +38,13 @@ export default function ResetPassword() {
               />
 
               <div className="mt-6 text-center">
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="inline-flex items-center text-[#0b6a62] hover:text-[#22a196] transition-colors"
                 >
                   <FiArrowLeft className="mr-2" />
                   Back to Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>

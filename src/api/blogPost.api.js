@@ -1,3 +1,5 @@
+import { blogData } from "../data/blogs";
+
 export const getBlogPostByIdApiCall = (id) => {
   try {
     const response = {
