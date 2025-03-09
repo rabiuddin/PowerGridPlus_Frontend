@@ -4,9 +4,9 @@ import { FiHelpCircle } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import { userDashboardMenuItems } from "../../../data/sidebar";
 
-export default function Sidebar({ user }) {
+export default function Sidebar({ isUser }) {
   const location = useLocation();
-  const menuItems = user ? userDashboardMenuItems : userDashboardMenuItems;
+  const menuItems = isUser ? userDashboardMenuItems : userDashboardMenuItems;
   const [activeItem, setActiveItem] = useState(location.pathname);
 
   return (

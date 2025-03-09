@@ -16,7 +16,7 @@ export default function Blogs() {
     getLatestBlogs();
   }, []);
 
-  if (!latestBlogs) return <>Loading...</>;
+  if (!latestBlogs) return <></>;
 
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">

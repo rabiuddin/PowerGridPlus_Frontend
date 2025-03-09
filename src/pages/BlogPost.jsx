@@ -5,6 +5,7 @@ import CommentSection from "../components/blog-post/CommentSection";
 import Reveal from "../components/shared/framer-motion/Reveal";
 import useScroll from "../hooks/useScroll";
 import { useBlogs } from "../components/blogs/hooks/useBlogs";
+import { BACKEND_URL } from "../config/constants";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -36,13 +37,15 @@ const BlogPost = () => {
                 {blogPost.title}
               </h1>
               <div className="flex items-center justify-center">
-                <span className="font-medium">{blogPost.author.name}</span>
+                <span className="font-medium">{blogPost.author_name}</span>
               </div>
             </header>
 
             <div className="mb-10">
               <img
-                src={blogPost.imageUrl || "/placeholder.svg"}
+                src={
+                  BACKEND_URL + "/" + blogPost.imageUrl || "/placeholder.svg"
+                }
                 alt={blogPost.title}
                 className="w-full h-[400px] object-cover rounded-xl mb-8"
               />

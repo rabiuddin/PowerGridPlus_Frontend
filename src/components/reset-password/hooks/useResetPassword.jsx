@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { calculatePasswordStrength } from "../../../utils/password.utils";
-import { resetPasswordApiCall } from "../../../api/auth.api";
+import { resetPasswordApiCall } from "../../../api/users.api";
+import { useParams } from "react-router-dom";
 
 export const useResetPassword = () => {
   // states
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { uidb64, token } = useParams();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -22,21 +24,20 @@ export const useResetPassword = () => {
     e.preventDefault();
     setError("");
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
+    if (passwordStrength < 3) {
+      setError("Please choose a stronger password");
       return;
     }
 
-    if (passwordStrength < 3) {
-      setError("Please choose a stronger password");
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 
     setIsSubmitting(true);
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    const response = await resetPasswordApiCall({ resetToken, password });
+    const response = await resetPasswordApiCall(uidb64, token, { password });
 
     if (response.success) {
       setIsSuccess(true);

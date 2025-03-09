@@ -3,11 +3,12 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Reveal from "../shared/framer-motion/Reveal";
 import { useContactForm } from "./hooks/useContactForm";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 const ContactForm = () => {
-
-  const {handleFormSubmit, handleInputChange, formData, loading} = useContactForm()
-  const {firstName ,lastName, email, message} = formData
+  const { handleFormSubmit, handleInputChange, formData, loading } =
+    useContactForm();
+  const { firstName, lastName, email, message } = formData;
 
   return (
     <>
@@ -29,8 +30,8 @@ const ContactForm = () => {
                           First Name
                         </label>
                         <input
-                        value={firstName}
-                        onChange={handleInputChange}
+                          value={firstName}
+                          onChange={handleInputChange}
                           name="firstName"
                           type="text"
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
@@ -42,9 +43,9 @@ const ContactForm = () => {
                           Last Name
                         </label>
                         <input
-                        value={lastName}
-                        onChange={handleInputChange}
-                        name="lastName"
+                          value={lastName}
+                          onChange={handleInputChange}
+                          name="lastName"
                           type="text"
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                           required
@@ -54,9 +55,9 @@ const ContactForm = () => {
                     <div>
                       <label className="block text-gray-700 mb-2">Email</label>
                       <input
-                      value={email}
-                      onChange={handleInputChange}
-                      name="email"
+                        value={email}
+                        onChange={handleInputChange}
+                        name="email"
                         type="email"
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                         required
@@ -67,23 +68,28 @@ const ContactForm = () => {
                         Message
                       </label>
                       <textarea
-                      value={message}
-                      onChange={handleInputChange}
-                      name="message"
+                        value={message}
+                        onChange={handleInputChange}
+                        name="message"
                         rows="4"
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
                         required
                       ></textarea>
                     </div>
                     <button
-                    disabled={loading}
+                      disabled={loading}
                       type="submit"
-                      className="group relative inline-flex items-center px-6 py-3 overflow-hidden rounded-md bg-primary border-2 cursor-pointer hover:bg-white hover:text-primary text-white transform hover:scale-105 transition-all duration-300"
+                      className={`${
+                        loading
+                          ? "bg-gradient-to-r from-gray-400 to-gray-500 cursor-not-allowed  "
+                          : "hover:bg-white hover:text-primary hover:scale-105 bg-primary cursor-pointer"
+                      } group relative inline-flex gap-2 items-center px-6 py-3 overflow-hidden rounded-md  border-2  text-white transform  transition-all duration-300`}
                     >
-                      <span className="relative flex items-center">
-                        Send Message
-                        <FiSend className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      </span>
+                      {loading && (
+                        <ArrowPathIcon className="w-5 h-5 animate-spin text-white" />
+                      )}
+                      Send Message
+                      <FiSend />
                     </button>
                   </form>
                 </div>

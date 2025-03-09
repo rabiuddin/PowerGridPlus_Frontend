@@ -5,8 +5,7 @@ import {
   getStrengthText,
 } from "../../utils/password.utils";
 
-const PasswordStrengthIndicator = ({ useResetPasswordInstance }) => {
-  const { passwordStrength } = useResetPasswordInstance;
+const PasswordStrengthIndicator = ({ passwordStrength }) => {
   return (
     <>
       <div className="mt-2">
