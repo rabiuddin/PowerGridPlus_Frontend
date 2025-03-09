@@ -20,11 +20,12 @@ export const signupApiCall = async (formData) => {
   }
 };
 
-export const resetPasswordApiCall = async (body) => {
+export const resetPasswordApiCall = async (uidb64, token, body) => {
   try {
-    const response = {
-      data: { success: true, message: "Password reset Successfully" },
-    };
+    const response = await api.post(
+      `${path}/password-reset-confirm/${uidb64}/${token}/`,
+      body
+    );
     return response.data;
   } catch (e) {
     return e.response.data;
@@ -42,19 +43,7 @@ export const refreshTokenApiCall = async (body) => {
 
 export const getCurrentUserApiCall = async () => {
   try {
-    const response = {
-      data: {
-        success: true,
-        message: "User fetched",
-        data: {
-          user: {
-            id: 6,
-            email: "kmaal@example.com",
-            created_at: "2025-03-08T18:42:10.145732Z",
-          },
-        },
-      },
-    };
+    const response = await api.get(`${path}/get-user/`);
     return response.data;
   } catch (e) {
     return e.response.data;

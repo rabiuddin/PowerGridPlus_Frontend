@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { resetPasswordMailApiCall } from "../../../api/mail.api";
+import { resetPasswordMailApiCall } from "../../../api/emails.api";
 
 export const useForgotPassword = () => {
   //states
@@ -15,8 +15,7 @@ export const useForgotPassword = () => {
     setIsSubmitting(true);
 
     // API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    const response = await resetPasswordMailApiCall(email);
+    const response = await resetPasswordMailApiCall({ email });
 
     if (response.success) {
       setIsSuccess(true);

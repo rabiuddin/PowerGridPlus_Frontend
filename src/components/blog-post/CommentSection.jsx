@@ -1,4 +1,7 @@
+import { ArrowPathIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useCommentSection } from "./hooks/useCommentSection";
+import { useSelector } from "react-redux";
+import { DeleteIcon } from "lucide-react";
 
 export default function CommentSection({ blogPost }) {
   const {
@@ -7,7 +10,12 @@ export default function CommentSection({ blogPost }) {
     comments,
     handleLike,
     handleSubmitComment,
+    loading,
+    handleUnlike,
+    handleDeleteComment,
+    deleting,
   } = useCommentSection(blogPost);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <div>
@@ -23,7 +31,12 @@ export default function CommentSection({ blogPost }) {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary cursor-pointer">
+        <button
+          disabled={loading}
+          type="submit"
+          className="btn btn-primary cursor-pointer flex gap-2"
+        >
+          {loading && <ArrowPathIcon className="w-5 h-5 animate-spin" />}
           Post Comment
         </button>
       </form>
@@ -38,18 +51,45 @@ export default function CommentSection({ blogPost }) {
                   <span className="text-gray-500 text-sm ml-2">
                     {comment.date}
                   </span>
+                  {user && comment.author === user.email && (
+                    <span className="text-end flex-1">
+                      <button
+                        title="Delete"
+                        disabled={deleting}
+                        onClick={() => {
+                          handleDeleteComment(comment.id);
+                        }}
+                      >
+                        <TrashIcon className="w-4 h-4 hover:scale-105 hover:text-red-600 transition-scale duration-300" />
+                      </button>
+                    </span>
+                  )}
                 </div>
                 <p className="text-gray-700 mb-3">{comment.content}</p>
                 <button
-                  onClick={() => handleLike(comment.id)}
+                  onClick={() => {
+                    if (user && comment.liked_by.includes(user.id)) {
+                      handleUnlike(comment.id);
+                    } else {
+                      handleLike(comment.id);
+                    }
+                  }}
                   className="text-gray-500 hover:text-primary flex items-center text-sm cursor-pointer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 mr-1"
-                    fill="none"
+                    fill={
+                      user && comment.liked_by.includes(user.id)
+                        ? "#0b6a62"
+                        : "none"
+                    }
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    stroke={
+                      user && comment.liked_by.includes(user.id)
+                        ? "#0b6a62"
+                        : "currentColor"
+                    }
                   >
                     <path
                       strokeLinecap="round"

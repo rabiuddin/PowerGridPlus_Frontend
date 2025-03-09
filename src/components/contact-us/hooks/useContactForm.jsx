@@ -1,40 +1,41 @@
-import { useState } from "react"
-import { contactUsApiCall } from "../../../api/api"
+import { useState } from "react";
+import { contactUsApiCall } from "../../../api/emails.api";
+import toast from "react-hot-toast";
 
 export const useContactForm = () => {
+  // use states
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  };
+  const [formData, setFormData] = useState(initialState);
+  const [loading, setLoading] = useState(false);
 
-    // use states
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email:"",
-        message:""
-    })
-    const [loading, setLoading] = useState(false)
+  // functions
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    // functions
-    const handleInputChange = (e)=>{
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
+  const handleFormSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    const response = await contactUsApiCall(formData);
+
+    if (response.success) {
+      toast.success(response.message);
+      setFormData(initialState);
+    } else {
+      console.error(response.message);
     }
 
-    const handleFormSubmit = async (e)=>{
-        setLoading(true);
-        e.preventDefault()
-        
-        const response = await contactUsApiCall(formData);
+    setLoading(false);
+  };
 
-        if (response.success){
-            console.log(response.message)
-        }
-        else{
-            console.error(response.message)
-        }
-
-        setLoading(false)
-    }
-
-  return {formData, handleInputChange, handleFormSubmit, loading}
-}
+  return { formData, handleInputChange, handleFormSubmit, loading };
+};

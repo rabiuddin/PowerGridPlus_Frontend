@@ -11,14 +11,36 @@ export const getBlogPostByIdApiCall = async (id) => {
   }
 };
 
-export const addCommentToBlogPostApiCall = (body) => {
+export const addCommentToBlogPostApiCall = async (body, blogId) => {
   try {
-    const response = {
-      data: {
-        success: true,
-        message: "Comment Added Successfully",
-      },
-    };
+    const response = await api.post(`${path}/comments/${blogId}/`, body);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};
+
+export const addLikeToCommentApiCall = async (commentId) => {
+  try {
+    const response = await api.post(`${path}/comments/${commentId}/like/`);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};
+
+export const unLikeCommentApiCall = async (commentId) => {
+  try {
+    const response = await api.delete(`${path}/comments/${commentId}/like/`);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};
+
+export const deleteCommentApiCall = async (commentId) => {
+  try {
+    const response = await api.delete(`${path}/comments/${commentId}/delete/`);
     return response.data;
   } catch (e) {
     return e.response.data;

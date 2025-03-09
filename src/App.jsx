@@ -49,7 +49,10 @@ const App = () => {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogPost />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            path="/reset-password/:uidb64/:token"
+            element={<ResetPassword />}
+          />
           <Route
             path="/dashboard"
             element={

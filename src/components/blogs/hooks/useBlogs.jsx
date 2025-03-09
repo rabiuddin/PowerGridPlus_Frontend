@@ -25,7 +25,6 @@ export const useBlogs = () => {
 
     if (response.success) {
       setBlogs(response.data.results);
-      console.log(response.message);
     } else {
       console.error(response.message);
     }
@@ -36,7 +35,6 @@ export const useBlogs = () => {
 
     if (response.success) {
       setBlogPost(response.data);
-      console.log(response.message);
     } else {
       console.error(response.message);
     }
