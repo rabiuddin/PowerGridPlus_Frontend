@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import BlogCardItem from "../components/blogs/BlogCardItem";
 import MainLayout from "../layouts/MainLayout";
-import { blogData, itemVariants, containerVariants } from "../data/blogs";
+import { itemVariants, containerVariants } from "../data/blogs";
 import Reveal from "../components/shared/framer-motion/Reveal";
+import { useBlogs } from "../components/blogs/hooks/useBlogs";
 
 const Blogs = () => {
+  const { blogs, getBlogs, pageNumber, setPageNumber } = useBlogs();
+
+  useEffect(() => {
+    getBlogs(pageNumber);
+  }, [pageNumber]);
+
+  if (!blogs) return <>Loading...</>;
   return (
     <MainLayout>
       <Reveal>
@@ -28,9 +36,11 @@ const Blogs = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {blogData.map((item) => (
-            <BlogCardItem key={item.id} item={item} variants={itemVariants} />
-          ))}
+          {blogs.length > 0 &&
+            blogs.map((item) => (
+              <BlogCardItem key={item.id} item={item} variants={itemVariants} />
+            ))}
+          {blogs.length == 0 && <>No Blogs Found</>}
         </motion.div>
       </div>
     </MainLayout>

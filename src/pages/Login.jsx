@@ -1,20 +1,21 @@
-import { useState } from "react";
 import { EyeIcon, EyeOffIcon, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/shared/framer-motion/Reveal";
+import { useLogin } from "../components/login/hooks/useLogin";
+import FormError from "../components/shared/FormError";
+import ButtonWithLoading from "../components/shared/button/ButtonWithLoading";
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle login logic here
-  };
-
+  const {
+    formData,
+    handleInputChange,
+    handleLogin,
+    loading,
+    showPassword,
+    setShowPassword,
+    error,
+  } = useLogin();
+  const { email, password } = formData;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative ">
@@ -40,7 +41,7 @@ export default function Login() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
                 <label
                   htmlFor="email"
@@ -51,13 +52,12 @@ export default function Login() {
                 <input
                   id="email"
                   type="email"
+                  name="email"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                   placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  value={email}
+                  onChange={handleInputChange}
                 />
               </div>
 
@@ -70,15 +70,14 @@ export default function Login() {
                 </label>
                 <div className="relative">
                   <input
+                    name="password"
                     id="password"
                     type={showPassword ? "text" : "password"}
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                     placeholder="Enter your password"
-                    value={formData.password}
-                    onChange={(e) =>
-                      setFormData({ ...formData, password: e.target.value })
-                    }
+                    value={password}
+                    onChange={handleInputChange}
                   />
                   <button
                     type="button"
@@ -109,19 +108,16 @@ export default function Login() {
                   </label>
                 </div>
                 <Link
-                  to={"#"}
+                  to={"/forgot-password"}
                   className="text-sm font-medium text-primary hover:text-secondary"
                 >
                   Forgot password?
                 </Link>
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:outline-2  hover:outline-gradient-to-r hover:outline-primary "
-              >
-                Log in
-              </button>
+              <FormError error={error} />
+
+              <ButtonWithLoading text={"Log In"} loading={loading} />
 
               <div className="text-center">
                 <span className="text-gray-600">Don't have an account? </span>

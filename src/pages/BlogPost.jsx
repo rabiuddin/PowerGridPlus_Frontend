@@ -1,23 +1,24 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import { blogData } from "../data/blogs";
 import CommentSection from "../components/blog-post/CommentSection";
 import Reveal from "../components/shared/framer-motion/Reveal";
 import useScroll from "../hooks/useScroll";
+import { useBlogs } from "../components/blogs/hooks/useBlogs";
+import { BACKEND_URL } from "../config/constants";
 
 const BlogPost = () => {
   const { id } = useParams();
-  const blog = blogData.find((post) => post.id === parseInt(id));
-
-  const {scrollToTop} = useScroll()
+  const { blogPost, getBlogPostById } = useBlogs();
+  const { scrollToTop } = useScroll();
 
   useEffect(() => {
+    getBlogPostById(id);
     scrollToTop();
   }, [id]);
 
-  if (!blog) {
-    return <div>Blog post not found</div>;
+  if (!blogPost) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -28,27 +29,29 @@ const BlogPost = () => {
             <header className="mb-8 text-center">
               <div className="flex items-center justify-center mb-4 space-x-2">
                 <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">
-                  {blog.category}
+                  {blogPost.category}
                 </span>
-                <span className="text-gray-500 text-sm">{blog.date}</span>
+                <span className="text-gray-500 text-sm">{blogPost.date}</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                {blog.title}
+                {blogPost.title}
               </h1>
               <div className="flex items-center justify-center">
-                <span className="font-medium">{blog.author.name}</span>
+                <span className="font-medium">{blogPost.author_name}</span>
               </div>
             </header>
 
             <div className="mb-10">
               <img
-                src={blog.imageUrl || "/placeholder.svg"}
-                alt={blog.title}
+                src={
+                  BACKEND_URL + "/" + blogPost.imageUrl || "/placeholder.svg"
+                }
+                alt={blogPost.title}
                 className="w-full h-[400px] object-cover rounded-xl mb-8"
               />
 
               <div className="prose prose-lg max-w-none">
-                {blog.content.map((paragraph, index) => (
+                {blogPost.content.map((paragraph, index) => (
                   <p key={index} className="mb-4">
                     {paragraph}
                   </p>
@@ -57,7 +60,7 @@ const BlogPost = () => {
             </div>
 
             <div className="border-t border-gray-200 pt-8">
-              <CommentSection blogId={blog.id} />
+              <CommentSection blogPost={blogPost} />
             </div>
           </article>
         </div>
