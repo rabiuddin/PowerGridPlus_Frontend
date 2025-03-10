@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../config/constants";
 import { jwtDecode } from "jwt-decode";
 import { getCurrentUserApiCall, refreshTokenApiCall } from "../api/users.api";
@@ -10,6 +10,7 @@ const ProtectedRoutes = ({ children }) => {
   // states
   const [isAuthorized, setIsAuthorized] = useState(null);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   // functions
   const getUser = async () => {
@@ -32,8 +33,8 @@ const ProtectedRoutes = ({ children }) => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
     try {
       const response = await refreshTokenApiCall({ refresh: refreshToken });
-
       if (response.success) {
+        console.log(response.message);
         localStorage.setItem(ACCESS_TOKEN, response.data.tokens.access);
         dispatch(setUser(response.data.user));
         setIsAuthorized(true);
@@ -78,7 +79,11 @@ const ProtectedRoutes = ({ children }) => {
     return <>Loading...</>;
   }
 
-  return isAuthorized ? children : <Navigate to="/login" />;
+  return isAuthorized ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 export default ProtectedRoutes;

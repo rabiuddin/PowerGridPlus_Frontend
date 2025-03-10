@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FiHelpCircle } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import { userDashboardMenuItems } from "../../../data/sidebar";
+import { LogOutIcon } from "lucide-react";
 
 export default function Sidebar({ isUser }) {
   const location = useLocation();
@@ -61,10 +62,13 @@ export default function Sidebar({ isUser }) {
 
       {/* Support Button */}
       <div className="p-6">
-        <button className="w-full cursor-pointer flex items-center justify-center px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors duration-300">
-          <FiHelpCircle className="w-5 h-5 mr-2" />
-          SUPPORT
-        </button>
+        <Link
+          to="/logout"
+          className="w-full cursor-pointer flex items-center justify-center px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition-colors duration-300"
+        >
+          <LogOutIcon className="w-5 h-5 mr-2" />
+          Logout
+        </Link>
       </div>
     </div>
   );

@@ -103,8 +103,9 @@ const ContactForm = () => {
                   </p>
                   <div className="space-y-4">
                     <a
-                      href="#"
+                      href="https://www.linkedin.com/in/powergridplus-o%C3%BC-1593a1355/"
                       className="flex items-center space-x-3 hover:text-white/80 transition-colors"
+                      target="_blank"
                     >
                       <FaLinkedin className="w-6 h-6" />
                       <span>LinkedIn</span>
