@@ -21,13 +21,19 @@ import ElectricityCost from "./pages/dashboard/ElectricityCost";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotFound from "./pages/NotFound";
+import { useDispatch } from "react-redux";
+import { setUser } from "./redux/slices/userSlice";
 
 const Logout = () => {
+  const dispatch = useDispatch();
+  dispatch(setUser(null));
   localStorage.clear();
   return <Navigate to="/login" />;
 };
 
 const LogoutAndSignup = () => {
+  const dispatch = useDispatch();
+  dispatch(setUser(null));
   localStorage.clear();
   return <Signup />;
 };

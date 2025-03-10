@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { unixToDate } from "../../../utils/utils";
 
 ChartJS.register(
   CategoryScale,
@@ -20,13 +21,23 @@ ChartJS.register(
   Legend
 );
 
-export default function ElectricityGraph() {
+export default function ElectricityGraph({ graphData }) {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function (context) {
+            const label = context.dataset.label || "";
+            const value = context.raw;
+            return `${label}: ${value}`;
+          },
+        },
       },
     },
     scales: {
@@ -44,28 +55,30 @@ export default function ElectricityGraph() {
   };
 
   const data = {
-    labels: ["17:00", "18:00", "19:00"],
+    labels: graphData.map((item) => unixToDate(item.timestamp)),
     datasets: [
       {
-        data: [0, 5, 3, 7, 2],
+        label: "Price",
+        data: graphData.map((item) => item.price),
         borderColor: "#22a196",
         tension: 0.4,
-        pointRadius: 0,
+        pointRadius: 3, // Increase radius for better hover interaction
+        pointHoverRadius: 6, // Larger radius on hover
       },
     ],
   };
 
   return (
-    <div className="bg-white p-6">
+    <div className="bg-white p-6 ">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center space-x-2">
           <span className="text-sm font-medium">AT</span>
         </div>
-        <button className="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
+        {/* <button className="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
           Download as CSV
-        </button>
+        </button> */}
       </div>
-      <div className="h-[400px]">
+      <div className="h-[400px] w-full overflow-auto">
         <Line options={options} data={data} />
       </div>
     </div>

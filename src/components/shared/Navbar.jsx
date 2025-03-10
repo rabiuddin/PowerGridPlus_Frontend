@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoLogInOutline } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useScroll from "../../hooks/useScroll";
 import { useDispatch, useSelector } from "react-redux";
 import { FiUser } from "react-icons/fi";
@@ -20,6 +20,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const getUser = async () => {
     setLoading(true);
@@ -125,6 +126,8 @@ const Navbar = () => {
               {" "}
               <Link
                 to={!loading && "/login"}
+                state={{ from: location }}
+                replace
                 className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
                 whileHover={{ scale: 1.02 }}
               >
@@ -241,6 +244,8 @@ const Navbar = () => {
                         {" "}
                         <Link
                           to={!loading && "/login"}
+                          state={{ from: location }}
+                          replace
                           className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
                           whileHover={{ scale: 1.02 }}
                         >
