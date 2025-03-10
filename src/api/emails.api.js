@@ -1,8 +1,9 @@
 import api from "../config/axios.config";
 const path = "/api/emails";
+
 export const resetPasswordMailApiCall = async (body) => {
   try {
-    const response = await api.post(`${path}/password-reset/`, body);
+    const response = await api.post(`/api/users/password-reset/`, body);
     return response.data;
   } catch (e) {
     return e.response.data;
