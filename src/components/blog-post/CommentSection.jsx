@@ -39,7 +39,11 @@ export default function CommentSection({ blogPost }) {
         <button
           disabled={loading}
           type="submit"
-          className="btn btn-primary cursor-pointer flex gap-2"
+          className={`${
+            loading
+              ? "bg-gradient-to-r from-gray-400 to-gray-500 cursor-not-allowed"
+              : "bg-primary hover:bg-white hover:text-primary cursor-pointer"
+          } inline-flex gap-2 items-center  text-white text-lg font-semibold px-8 py-2 border-[1px] border-primary rounded-md   transition-all duration-300 ease-in-out`}
         >
           {loading && <ArrowPathIcon className="w-5 h-5 animate-spin" />}
           Post Comment

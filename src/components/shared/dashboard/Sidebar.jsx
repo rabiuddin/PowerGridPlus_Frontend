@@ -15,7 +15,7 @@ export default function Sidebar({ isUser }) {
       {/* Logo */}
       <div className="p-6">
         <div className="flex lg:flex-1">
-          <Link to={"/"} target="_blank" className="-m-1.5 p-1.5">
+          <Link to={"/"} className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               src="/PwergridplusLogoOld4.png"
