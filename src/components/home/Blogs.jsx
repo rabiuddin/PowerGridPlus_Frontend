@@ -1,13 +1,23 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import BlogCardItem from "../blogs/BlogCardItem";
-import { blogData, itemVariants, containerVariants } from "../../data/blogs";
+import { itemVariants, containerVariants } from "../../data/blogs";
 import { Link } from "react-router-dom";
 import useScroll from "../../hooks/useScroll";
+import { useBlogs } from "../blogs/hooks/useBlogs";
+import { useEffect } from "react";
 
 export default function Blogs() {
-
   const { scrollToTop } = useScroll();
+  const { getLatestBlogs, latestBlogs } = useBlogs();
+
+  // use effects
+  useEffect(() => {
+    getLatestBlogs();
+  }, []);
+
+  if (!latestBlogs) return <></>;
+
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container mx-auto px-6 text-center">
@@ -28,7 +38,7 @@ export default function Blogs() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {blogData.slice(0, 4).map((item) => (
+          {latestBlogs.map((item) => (
             <BlogCardItem key={item.id} item={item} variants={itemVariants} />
           ))}
         </motion.div>
@@ -41,7 +51,7 @@ export default function Blogs() {
           className="mt-16"
         >
           <Link
-          onClick={scrollToTop}
+            onClick={scrollToTop}
             to={"/blogs"}
             className="inline-flex items-center text-primary text-lg font-semibold px-6 py-3 rounded-md border border-primary hover:bg-primary hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
           >

@@ -1,7 +1,8 @@
 export const blogData = [
   {
     id: 1,
-    title: "How AI is Revolutionizing Energy Efficiency: Cutting Your Electric Bill",
+    title:
+      "How AI is Revolutionizing Energy Efficiency: Cutting Your Electric Bill",
     excerpt:
       "Discover how artificial intelligence is transforming energy consumption, reducing waste, and optimizing power usage to save on electricity bills.",
     content: [
@@ -17,6 +18,24 @@ export const blogData = [
     author: {
       name: "Alex Johnson",
     },
+    comments: [
+      {
+        id: 1,
+        author: "Alex Johnson",
+        date: "2 days ago",
+        content:
+          "This article was incredibly insightful! I especially enjoyed the section about the practical applications.",
+        likes: 5,
+      },
+      {
+        id: 2,
+        author: "Sam Rivera",
+        date: "1 week ago",
+        content:
+          "Great read! I would love to see a follow-up article that dives deeper into this topic.",
+        likes: 3,
+      },
+    ],
   },
   {
     id: 2,
@@ -36,6 +55,24 @@ export const blogData = [
     author: {
       name: "Maya Patel",
     },
+    comments: [
+      {
+        id: 1,
+        author: "Alex Johnson",
+        date: "2 days ago",
+        content:
+          "This article was incredibly insightful! I especially enjoyed the section about the practical applications.",
+        likes: 5,
+      },
+      {
+        id: 2,
+        author: "Sam Rivera",
+        date: "1 week ago",
+        content:
+          "Great read! I would love to see a follow-up article that dives deeper into this topic.",
+        likes: 3,
+      },
+    ],
   },
   {
     id: 3,
@@ -55,11 +92,30 @@ export const blogData = [
     author: {
       name: "Jordan Lee",
     },
+    comments: [
+      {
+        id: 1,
+        author: "Alex Johnson",
+        date: "2 days ago",
+        content:
+          "This article was incredibly insightful! I especially enjoyed the section about the practical applications.",
+        likes: 5,
+      },
+      {
+        id: 2,
+        author: "Sam Rivera",
+        date: "1 week ago",
+        content:
+          "Great read! I would love to see a follow-up article that dives deeper into this topic.",
+        likes: 3,
+      },
+    ],
   },
   {
     id: 4,
     title: "The Role of AI in Predictive Energy Management",
-    excerpt: "Learn how AI-powered predictive analytics are reshaping energy management and reducing power consumption in homes and industries.",
+    excerpt:
+      "Learn how AI-powered predictive analytics are reshaping energy management and reducing power consumption in homes and industries.",
     content: [
       "AI-driven predictive analytics is helping businesses and homeowners optimize their energy use by forecasting demand and suggesting efficient energy consumption patterns.",
       "Smart grid technology utilizes AI to balance energy loads, prevent power outages, and distribute energy efficiently, reducing costs for users and suppliers alike.",
@@ -71,11 +127,30 @@ export const blogData = [
     author: {
       name: "Samantha Green",
     },
+    comments: [
+      {
+        id: 1,
+        author: "Alex Johnson",
+        date: "2 days ago",
+        content:
+          "This article was incredibly insightful! I especially enjoyed the section about the practical applications.",
+        likes: 5,
+      },
+      {
+        id: 2,
+        author: "Sam Rivera",
+        date: "1 week ago",
+        content:
+          "Great read! I would love to see a follow-up article that dives deeper into this topic.",
+        likes: 3,
+      },
+    ],
   },
   {
     id: 5,
     title: "Smart Lighting Systems: A Bright Idea for Energy Savings",
-    excerpt: "Discover how smart lighting systems are revolutionizing energy efficiency in homes and businesses.",
+    excerpt:
+      "Discover how smart lighting systems are revolutionizing energy efficiency in homes and businesses.",
     content: [
       "Smart lighting systems utilize sensors, automation, and AI to adjust lighting based on occupancy, natural light availability, and user preferences, reducing unnecessary energy use.",
       "LED smart bulbs consume significantly less power than traditional bulbs and can be programmed to operate only when needed, further cutting down on electricity bills.",
@@ -87,11 +162,30 @@ export const blogData = [
     author: {
       name: "David Carter",
     },
+    comments: [
+      {
+        id: 1,
+        author: "Alex Johnson",
+        date: "2 days ago",
+        content:
+          "This good article was incredibly insightful! I especially enjoyed the section about the practical applications.",
+        likes: 5,
+      },
+      {
+        id: 2,
+        author: "Sam Rivera",
+        date: "1 week ago",
+        content:
+          "Great read! I would love to see a follow-up article that dives deeper into this topic.",
+        likes: 3,
+      },
+    ],
   },
   {
     id: 6,
     title: "Home Energy Storage: How Batteries Are Changing Power Consumption",
-    excerpt: "Learn how home energy storage solutions are helping homeowners save money and use power more efficiently.",
+    excerpt:
+      "Learn how home energy storage solutions are helping homeowners save money and use power more efficiently.",
     content: [
       "Home energy storage systems, such as Tesla Powerwall and LG Chem batteries, store excess energy from solar panels or the grid for later use, reducing reliance on peak-hour electricity.",
       "With smart AI integration, these systems can predict energy demand and optimize battery usage to lower electricity costs and improve efficiency.",
@@ -103,24 +197,41 @@ export const blogData = [
     author: {
       name: "Olivia Martinez",
     },
-  }
-]
+    comments: [
+      {
+        id: 1,
+        author: "Alex Johnson",
+        date: "2 days ago",
+        content:
+          "This article was incredibly insightful! I especially enjoyed the section about the practical applications.",
+        likes: 5,
+      },
+      {
+        id: 2,
+        author: "Sam Rivera",
+        date: "1 week ago",
+        content:
+          "Great read! I would love to see a follow-up article that dives deeper into this topic.",
+        likes: 3,
+      },
+    ],
+  },
+];
 
 export const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
     },
-}
+  },
+};
 
 export const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-}
-
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};

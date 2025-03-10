@@ -1,14 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog, PopoverGroup } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowPathIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoLogInOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import useScroll from "../../hooks/useScroll";
+import { useDispatch, useSelector } from "react-redux";
+import { FiUser } from "react-icons/fi";
+import { getCurrentUserApiCall } from "../../api/users.api";
+import { setUser } from "../../redux/slices/userSlice";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { handleScrollToSection } = useScroll();
+  const { user } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const getUser = async () => {
+    setLoading(true);
+    try {
+      const response = await getCurrentUserApiCall();
+      if (response.success) {
+        dispatch(setUser(response.data.user));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <header className="bg-white">
@@ -79,14 +108,39 @@ const Navbar = () => {
           >
             Get Your Device Now
           </a>
-          <Link
-            to="/login"
-            className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
-            whileHover={{ scale: 1.02 }}
-          >
-            <IoLogInOutline className="text-lg" />
-            Login
-          </Link>
+          {user ? (
+            <>
+              {" "}
+              <Link
+                to="/dashboard"
+                className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
+                whileHover={{ scale: 1.02 }}
+              >
+                <FiUser className="h-4 w-4" />
+                Dashboard
+              </Link>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link
+                to={!loading && "/login"}
+                className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
+                whileHover={{ scale: 1.02 }}
+              >
+                {loading ? (
+                  <span className="px-10 cursor-not-allowed text-primary ">
+                    <ArrowPathIcon className="w-5 h-5 animate-spin " />
+                  </span>
+                ) : (
+                  <>
+                    <IoLogInOutline className="text-lg" />
+                    Login
+                  </>
+                )}
+              </Link>
+            </>
+          )}
         </div>
       </nav>
       <AnimatePresence>
@@ -169,14 +223,40 @@ const Navbar = () => {
                     >
                       Get Your Device Now
                     </Link>
-                    <Link
-                      to="/login"
-                      className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <IoLogInOutline className="text-lg" />
-                      Login
-                    </Link>
+
+                    {user ? (
+                      <>
+                        {" "}
+                        <Link
+                          to="/dashboard"
+                          className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          <FiUser className="h-4 w-4" />
+                          Dashboard
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        {" "}
+                        <Link
+                          to={!loading && "/login"}
+                          className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          {loading ? (
+                            <span className="px-10 cursor-not-allowed text-primary ">
+                              <ArrowPathIcon className="w-5 h-5 animate-spin " />
+                            </span>
+                          ) : (
+                            <>
+                              <IoLogInOutline className="text-lg" />
+                              Login
+                            </>
+                          )}
+                        </Link>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
