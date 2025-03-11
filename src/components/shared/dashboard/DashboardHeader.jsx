@@ -6,7 +6,6 @@ import {
   FiHome,
   FiChevronRight,
   FiUser,
-  FiMenu,
   FiSearch,
   FiBell,
   FiSettings,
@@ -15,7 +14,6 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsNavOpen } from "../../../redux/slices/utilitySlice";
 
 export default function DashboardHeader({
   title,
@@ -24,14 +22,9 @@ export default function DashboardHeader({
 }) {
   const { user } = useSelector((state) => state.user);
   const { isNavOpen } = useSelector((state) => state.utility);
-  const dispatch = useDispatch();
   const [showSearch, setShowSearch] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [notifications] = useState(3); // Example notification count
-
-  const toggleNav = () => {
-    dispatch(setIsNavOpen(!isNavOpen));
-  };
 
   return (
     <motion.div
@@ -50,14 +43,6 @@ export default function DashboardHeader({
           <div className="flex items-center justify-between">
             {/* Left side - Title and mobile menu */}
             <div className="flex items-center">
-              <motion.button
-                onClick={toggleNav}
-                className="mr-4 p-2 rounded-full text-gray-500 hover:bg-gray-100 md:hidden"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FiMenu className="h-5 w-5" />
-              </motion.button>
               <motion.div
                 className="flex items-center"
                 initial={{ opacity: 0 }}
