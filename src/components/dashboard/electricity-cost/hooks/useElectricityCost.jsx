@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getElectricityCostApiCall } from "../../../../api/dashboard.api";
 import { dummyGraphData } from "../../../../data/blogs";
+import { processGraphData } from "../../../../utils/utils";
 
 export const useElectricityCost = () => {
   // states
@@ -11,16 +12,7 @@ export const useElectricityCost = () => {
 
     if (response.success) {
       const { ee } = response.data;
-      //   const toSkip = ee.length / 52;
-      //   let count = 0;
-      //   ee.filter((item) => {
-      //     console.log("sad");
-      //     if (count == toSkip) {
-      //       count = 0;
-      //       return item;
-      //     }
-      //     count++;
-      //   });
+      // const updatedData = await processGraphData(ee);
       setGraphData(ee);
     }
   };
