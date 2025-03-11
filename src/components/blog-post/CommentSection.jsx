@@ -68,7 +68,32 @@ export default function CommentSection({ blogPost }) {
                 <p className="text-gray-700 mb-3">{comment.content}</p>
                 <button
                   onClick={() => {
-                    if (user && comment.liked_by.includes(user.id)) {
+                    if (!user) {
+                      toast.error(
+                        <>
+                          <div className="flex items-center gap-4">
+                            <span>Please Login first</span>
+
+                            <span
+                              className="cursor-pointer w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white hover:scale-102 font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
+                              onClick={() => {
+                                toast.dismiss();
+                                navigate("/login", {
+                                  state: { from: location },
+                                  replace: true,
+                                });
+                              }}
+                            >
+                              <IoLogInOutline className="text-lg" />
+                              Login
+                            </span>
+                          </div>
+                        </>
+                      );
+                      return;
+                    }
+
+                    if (comment.liked_by.includes(user.id)) {
                       handleUnlike(comment.id);
                     } else {
                       handleLike(comment.id);

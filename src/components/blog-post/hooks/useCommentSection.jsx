@@ -35,8 +35,7 @@ export const useCommentSection = (blogPost) => {
             <span>Please Login first</span>
 
             <span
-              className="cursor-pointer w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
-              whileHover={{ scale: 1.02 }}
+              className="cursor-pointer hover:scale-102 w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
               onClick={() => {
                 navigate("/login");
               }}

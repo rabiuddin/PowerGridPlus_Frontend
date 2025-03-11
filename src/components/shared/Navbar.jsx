@@ -113,8 +113,7 @@ const Navbar = () => {
               {" "}
               <Link
                 to="/dashboard"
-                className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
-                whileHover={{ scale: 1.02 }}
+                className="hover:scale-102 flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
               >
                 <FiUser className="h-4 w-4" />
                 Dashboard
@@ -125,8 +124,9 @@ const Navbar = () => {
               {" "}
               <Link
                 to={!loading && "/login"}
-                className="flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
-                whileHover={{ scale: 1.02 }}
+                state={{ from: location }}
+                replace
+                className="hover:scale-102 flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold px-3 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
               >
                 {loading ? (
                   <span className="px-10 cursor-not-allowed text-primary ">
@@ -229,8 +229,7 @@ const Navbar = () => {
                         {" "}
                         <Link
                           to="/dashboard"
-                          className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
-                          whileHover={{ scale: 1.02 }}
+                          className="hover:scale-102 w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
                         >
                           <FiUser className="h-4 w-4" />
                           Dashboard
@@ -241,6 +240,8 @@ const Navbar = () => {
                         {" "}
                         <Link
                           to={!loading && "/login"}
+                          state={{ from: location }}
+                          replace
                           className="w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm mt-5"
                           whileHover={{ scale: 1.02 }}
                         >
