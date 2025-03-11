@@ -12,9 +12,8 @@ export const useElectricityCost = () => {
 
     if (response.success) {
       const { ee } = response.data;
-      const updatedData = await processGraphData(ee);
-      setGraphData(updatedData);
-      console.log(updatedData);
+      // const updatedData = await processGraphData(ee);
+      setGraphData(ee);
     }
   };
   // useEffects

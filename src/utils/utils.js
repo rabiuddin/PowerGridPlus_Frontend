@@ -3,13 +3,15 @@ export const unixToDate = (unixTimestamp) => {
   // Convert to JavaScript Date object (multiply by 1000 to convert seconds to milliseconds)
   const date = new Date(unixTimestamp * 1000);
 
-  // Extract day, month, and year with padding
+  // Extract day, month, year, hours, and minutes with padding
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
   const year = String(date.getFullYear()).slice(-2); // Get last two digits for year
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
 
   // Combine into the desired format
-  const formattedDate = `${day}-${month}-${year}`;
+  const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
   return formattedDate;
 };
 

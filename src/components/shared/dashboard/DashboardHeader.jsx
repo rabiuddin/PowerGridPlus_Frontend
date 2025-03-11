@@ -65,61 +65,6 @@ export default function DashboardHeader({
 
             {/* Right side - Search, notifications, profile */}
             <div className="flex items-center space-x-1 sm:space-x-4">
-              {/* Search */}
-              <div className="relative">
-                {showSearch ? (
-                  <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: "200px", opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="relative"
-                  >
-                    <input
-                      type="text"
-                      placeholder="Search..."
-                      className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0b6a62]/20 focus:border-[#0b6a62]"
-                      autoFocus
-                      onBlur={() => setShowSearch(false)}
-                    />
-                    <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                  </motion.div>
-                ) : (
-                  <motion.button
-                    onClick={() => setShowSearch(true)}
-                    className="p-2 rounded-full hover:bg-gray-100 text-gray-500 transition-colors hidden sm:flex"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label="Search"
-                  >
-                    <FiSearch className="h-5 w-5" />
-                  </motion.button>
-                )}
-              </div>
-
-              {/* Notifications */}
-              <motion.div className="relative" whileHover={{ scale: 1.05 }}>
-                <button
-                  className="p-2 rounded-full hover:bg-gray-100 text-gray-500 transition-colors relative"
-                  aria-label="Notifications"
-                >
-                  <FiBell className="h-5 w-5" />
-                  {notifications > 0 && (
-                    <motion.span
-                      className="absolute top-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-[#22a196] rounded-full"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 500,
-                        damping: 30,
-                      }}
-                    >
-                      {notifications}
-                    </motion.span>
-                  )}
-                </button>
-              </motion.div>
-
               {/* User Profile */}
               <div className="relative">
                 <motion.button
@@ -159,17 +104,11 @@ export default function DashboardHeader({
                           {user?.email || "user@example.com"}
                         </p>
                       </div>
-                      <Link
-                        to="/profile"
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
+                      <Link className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                         <FiUser className="h-4 w-4 mr-2 text-gray-500" />
                         Profile
                       </Link>
-                      <Link
-                        to="/settings"
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
+                      <Link className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                         <FiSettings className="h-4 w-4 mr-2 text-gray-500" />
                         Settings
                       </Link>
@@ -191,7 +130,7 @@ export default function DashboardHeader({
 
         {/* Breadcrumbs */}
         <motion.div
-          className="px-4 sm:px-6 py-3 bg-gray-50 border-t border-b border-gray-100"
+          className="px-4 sm:px-6 py-3 border-t border-b border-gray-100"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}

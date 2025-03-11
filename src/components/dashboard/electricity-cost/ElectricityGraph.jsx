@@ -15,6 +15,7 @@ import {
   Filler,
 } from "chart.js";
 import { FiDownload, FiZoomIn, FiRefreshCw } from "react-icons/fi";
+import { unixToDate } from "../../../utils/utils";
 
 // Register Chart.js components
 ChartJS.register(
@@ -117,7 +118,7 @@ export default function ElectricityGraph({ graphData }) {
           size: 13,
         },
         callbacks: {
-          title: (tooltipItems) => `Week ${tooltipItems[0].label}`,
+          title: (tooltipItems) => `${tooltipItems[0].label}`,
           label: (context) => `Price: €${context.raw.toFixed(2)}`,
           labelTextColor: () => "#333",
         },
@@ -139,7 +140,7 @@ export default function ElectricityGraph({ graphData }) {
         },
         title: {
           display: true,
-          text: "Week",
+          text: "Day",
           color: "#666",
           font: {
             size: 12,
@@ -190,7 +191,7 @@ export default function ElectricityGraph({ graphData }) {
 
   // Chart data
   const data = {
-    labels: filteredData?.map((item) => item.week) || [],
+    labels: filteredData?.map((item) => unixToDate(item.timestamp)) || [],
     datasets: [
       {
         label: "Price",

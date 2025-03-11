@@ -171,7 +171,7 @@ export default function Sidebar({ isUser }) {
                   <FiX className="h-6 w-6" />
                 </button>
               )}
-              <Link to={"/"} target="_blank" className="flex items-center">
+              <Link to={"/"} className="flex items-center">
                 <img
                   src="/PwergridplusLogoOld4.png"
                   alt="Company Logo"
@@ -182,11 +182,7 @@ export default function Sidebar({ isUser }) {
           )}
 
           {!isNavOpen && (
-            <Link
-              to={"/"}
-              target="_blank"
-              className="flex items-center justify-center"
-            >
+            <Link to={"/"} className="flex items-center justify-center">
               <div className="w-10 h-10 rounded-full bg-[#0b6a62] flex items-center justify-center">
                 <span className="text-white font-bold text-lg">P</span>
               </div>

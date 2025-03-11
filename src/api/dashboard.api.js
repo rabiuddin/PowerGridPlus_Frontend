@@ -5,7 +5,7 @@ export const getElectricityCostApiCall = async () => {
   try {
     const currentDate = new Date();
     const previousYearDate = new Date();
-    previousYearDate.setFullYear(currentDate.getFullYear() - 1);
+    previousYearDate.setDate(currentDate.getDate() - 2);
 
     // Format the dates to ISO strings with time and proper encoding
     const startDate = previousYearDate.toISOString();
