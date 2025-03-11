@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 export const unixToDate = (unixTimestamp) => {
   // Convert to JavaScript Date object (multiply by 1000 to convert seconds to milliseconds)
   const date = new Date(unixTimestamp * 1000);
@@ -10,4 +11,28 @@ export const unixToDate = (unixTimestamp) => {
   // Combine into the desired format
   const formattedDate = `${day}-${month}-${year}`;
   return formattedDate;
+};
+
+export const processGraphData = async (data) => {
+  // Object to hold the latest price per week
+  const weeklyData = {};
+
+  data.forEach((item) => {
+    // Convert timestamp to the start of the week
+    const week = dayjs
+      .unix(item.timestamp)
+      .startOf("week")
+      .format("YYYY-MM-DD");
+
+    // If no entry or current item is later, update it
+    if (!weeklyData[week] || item.timestamp > weeklyData[week].timestamp) {
+      weeklyData[week] = { timestamp: item.timestamp, price: item.price };
+    }
+  });
+
+  // Prepare final data (latest price by week)
+  return Object.keys(weeklyData).map((week) => ({
+    week,
+    price: weeklyData[week].price,
+  }));
 };
