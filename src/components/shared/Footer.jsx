@@ -107,8 +107,9 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex justify-center md:justify-start space-x-4 mt-4">
               <Link
-                to="#"
+                to="https://www.linkedin.com/in/powergridplus-o%C3%BC-1593a1355/"
                 className="bg-teal-800 text-white p-2 rounded-full hover:bg-gray-300 hover:text-teal-800 transition-all duration-200 ease-in-out"
+                target="_blank"
               >
                 <FaLinkedinIn />
               </Link>

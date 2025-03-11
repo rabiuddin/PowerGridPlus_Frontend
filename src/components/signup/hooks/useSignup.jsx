@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { signupApiCall } from "../../../api/users.api";
 import { calculatePasswordStrength } from "../../../utils/password.utils";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../config/constants";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/slices/userSlice";
@@ -20,7 +20,9 @@ export const useSignup = () => {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
+  const from = location.state?.from?.pathname || "/";
 
   // functions
   const handleInputChange = (e) => {
@@ -59,7 +61,7 @@ export const useSignup = () => {
       localStorage.setItem(REFRESH_TOKEN, refresh);
       dispatch(setUser(user));
       toast.success(response.message);
-      navigate("/dashboard");
+      navigate(from, { replace: true });
     } else {
       setError(response.message);
     }
