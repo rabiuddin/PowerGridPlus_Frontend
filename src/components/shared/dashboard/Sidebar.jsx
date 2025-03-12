@@ -23,7 +23,6 @@ export default function Sidebar({ isUser }) {
   const dispatch = useDispatch();
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Sidebar({ isUser }) {
       // On desktop, we want the sidebar to be visible by default
       // but respect the collapsed/expanded state
       if (!mobile) {
-        setIsSidebarVisible(true);
+        dispatch(setIsNavOpen(true));
       }
     };
 
@@ -54,11 +53,6 @@ export default function Sidebar({ isUser }) {
     // Update active item when location changes
     setActiveItem(location.pathname);
   }, [location.pathname]);
-
-  // Toggle sidebar visibility on mobile
-  const toggleSidebarVisibility = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  };
 
   // Toggle sidebar collapsed state (using Redux)
   const toggleCollapsed = () => {
@@ -115,13 +109,13 @@ export default function Sidebar({ isUser }) {
     <>
       {/* Mobile backdrop overlay */}
       <AnimatePresence>
-        {isMobile && isSidebarVisible && (
+        {isMobile && isNavOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black z-10"
-            onClick={toggleSidebarVisibility}
+            onClick={toggleCollapsed}
           />
         )}
       </AnimatePresence>
@@ -130,7 +124,7 @@ export default function Sidebar({ isUser }) {
       <motion.div
         variants={sidebarVariants}
         initial={false}
-        animate={isMobile ? (isSidebarVisible ? "open" : "closed") : "open"}
+        animate={isMobile ? (isNavOpen ? "open" : "closed") : "open"}
         className={`
           fixed md:relative w-[280px] ${
             !isNavOpen ? "md:w-20" : "md:w-[280px]"
@@ -165,7 +159,7 @@ export default function Sidebar({ isUser }) {
             <div className="flex items-center">
               {isMobile && (
                 <button
-                  onClick={toggleSidebarVisibility}
+                  onClick={toggleCollapsed}
                   className="mr-2 p-1 rounded-full text-gray-500 hover:bg-gray-100 md:hidden"
                 >
                   <FiX className="h-6 w-6" />
@@ -255,7 +249,7 @@ export default function Sidebar({ isUser }) {
                   onClick={() => {
                     setActiveItem(item.href);
                     if (isMobile) {
-                      setIsSidebarVisible(false);
+                      dispatch(setIsNavOpen(false));
                     }
                   }}
                 >
@@ -366,7 +360,7 @@ export default function Sidebar({ isUser }) {
 
       {/* Mobile toggle button - fixed at the bottom */}
       <button
-        onClick={toggleSidebarVisibility}
+        onClick={toggleCollapsed}
         className="md:hidden fixed bottom-4 right-4 z-30 w-12 h-12 rounded-full bg-[#0b6a62] text-white shadow-lg flex items-center justify-center"
       >
         <FiMenu className="h-6 w-6" />
