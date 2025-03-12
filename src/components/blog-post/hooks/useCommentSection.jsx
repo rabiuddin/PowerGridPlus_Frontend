@@ -7,7 +7,7 @@ import {
 } from "../../../api/blogPost.api";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoLogInOutline } from "react-icons/io5";
 
 export const useCommentSection = (blogPost) => {
@@ -16,6 +16,7 @@ export const useCommentSection = (blogPost) => {
   const [comments, setComments] = useState(blogPost.comments);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
@@ -35,10 +36,13 @@ export const useCommentSection = (blogPost) => {
             <span>Please Login first</span>
 
             <span
-              className="cursor-pointer w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
-              whileHover={{ scale: 1.02 }}
+              className="cursor-pointer hover:scale-102 w-fit flex items-center gap-1 hover:bg-secondary outline-secondary outline-1 text-secondary hover:text-white font-semibold ps-3 pe-4 py-1 rounded-md shadow-md bg-white transition-all duration-300 xl:text-[1em] text-sm"
               onClick={() => {
-                navigate("/login");
+                toast.dismiss();
+                navigate("/login", {
+                  state: { from: location },
+                  replace: true,
+                });
               }}
             >
               <IoLogInOutline className="text-lg" />
