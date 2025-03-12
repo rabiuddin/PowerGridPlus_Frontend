@@ -34,7 +34,9 @@ export const resetPasswordApiCall = async (uidb64, token, body) => {
 
 export const refreshTokenApiCall = async (body) => {
   try {
-    const response = await api.post(`${path}/refresh-token/`, body);
+    const response = await api.post(`${path}/refresh-token/`, body, {
+      skipInterceptor: true, // This will skip the interceptor
+    });
     return response.data;
   } catch (e) {
     return e.response.data;
