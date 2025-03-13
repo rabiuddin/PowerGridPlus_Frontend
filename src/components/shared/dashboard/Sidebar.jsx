@@ -178,7 +178,9 @@ export default function Sidebar({ isUser }) {
           {!isNavOpen && (
             <Link to={"/"} className="flex items-center justify-center">
               <div className="w-10 h-10 rounded-full bg-[#0b6a62] flex items-center justify-center">
-                <span className="text-white font-bold text-lg">P</span>
+                <span className="text-white font-bold text-lg">
+                  <img src="/PwergridplusLogoOld.png" alt="P" className="h-6" />
+                </span>
               </div>
             </Link>
           )}
