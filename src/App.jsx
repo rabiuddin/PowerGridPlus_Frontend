@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,6 +23,8 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotFound from "./pages/NotFound";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
+import { getCurrentUserApiCall } from "./api/users.api";
+import { setFetchingUser } from "./redux/slices/utilitySlice";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -39,6 +41,26 @@ const LogoutAndSignup = () => {
 };
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  const getUser = async () => {
+    dispatch(setFetchingUser(true));
+    try {
+      const response = await getCurrentUserApiCall();
+      if (response.success) {
+        dispatch(setUser(response.data.user));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(setFetchingUser(false));
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <>
       <Toaster position="right-top" />

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isNavOpen: false,
+  fetchingUser: false,
 };
 
 const utilitySlice = createSlice({
@@ -11,8 +12,12 @@ const utilitySlice = createSlice({
     setIsNavOpen: (state, action) => {
       state.isNavOpen = action.payload;
     },
+
+    setFetchingUser: (state, action) => {
+      state.fetchingUser = action.payload;
+    },
   },
 });
 
-export const { setIsNavOpen } = utilitySlice.actions;
+export const { setIsNavOpen, setFetchingUser } = utilitySlice.actions;
 export default utilitySlice.reducer;

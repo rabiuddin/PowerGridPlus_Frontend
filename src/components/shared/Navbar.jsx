@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Dialog, PopoverGroup } from "@headlessui/react";
 import {
   ArrowPathIcon,
@@ -7,38 +7,18 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoLogInOutline } from "react-icons/io5";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useScroll from "../../hooks/useScroll";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FiUser } from "react-icons/fi";
-import { getCurrentUserApiCall } from "../../api/users.api";
-import { setUser } from "../../redux/slices/userSlice";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { handleScrollToSection } = useScroll();
   const { user } = useSelector((state) => state.user);
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const { fetchingUser } = useSelector((state) => state.utility);
+  const loading = fetchingUser;
   const location = useLocation();
-
-  const getUser = async () => {
-    setLoading(true);
-    try {
-      const response = await getCurrentUserApiCall();
-      if (response.success) {
-        dispatch(setUser(response.data.user));
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
 
   return (
     <header className="bg-white">
@@ -269,4 +249,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);
