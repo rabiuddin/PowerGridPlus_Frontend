@@ -5,6 +5,8 @@ import MainLayout from "../layouts/MainLayout";
 import { itemVariants, containerVariants } from "../data/blogs";
 import Reveal from "../components/shared/framer-motion/Reveal";
 import { useBlogs } from "../components/blogs/hooks/useBlogs";
+import FullScreenLoader from "../components/shared/loader/FullScreenLoader";
+import NoBlogsFound from "../components/blogs/NoBlogsFound";
 
 const Blogs = () => {
   const { blogs, getBlogs, pageNumber, setPageNumber } = useBlogs();
@@ -13,7 +15,12 @@ const Blogs = () => {
     getBlogs(pageNumber);
   }, [pageNumber]);
 
-  if (!blogs) return <>Loading...</>;
+  if (!blogs)
+    return (
+      <>
+        <FullScreenLoader isLoading={!blogs} />
+      </>
+    );
   return (
     <MainLayout>
       <Reveal>
@@ -40,8 +47,12 @@ const Blogs = () => {
             blogs.map((item) => (
               <BlogCardItem key={item.id} item={item} variants={itemVariants} />
             ))}
-          {blogs.length == 0 && <>No Blogs Found</>}
         </motion.div>
+        {blogs.length == 0 && (
+          <>
+            <NoBlogsFound />
+          </>
+        )}
       </div>
     </MainLayout>
   );

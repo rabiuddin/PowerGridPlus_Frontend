@@ -219,7 +219,10 @@ const ElectricityCost = () => {
           <div className="p-6">
             {isLoading ? (
               <div className="h-80 w-full bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
-                <span className="text-gray-400">Loading data...</span>
+                <div className="flex flex-col items-center">
+                  <div className="w-10 h-10 border-4 border-[#0b6a62]/20 border-t-[#0b6a62] rounded-full animate-spin"></div>
+                  <p className="mt-3 text-sm text-gray-600">Loading data...</p>
+                </div>
               </div>
             ) : graphData && graphData.length > 0 ? (
               <ElectricityGraph graphData={graphData} />

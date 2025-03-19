@@ -301,7 +301,7 @@ export default function ElectricityGraph({ graphData }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {isLoading ? (
+          {!graphData ? (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-50 bg-opacity-75 rounded-lg z-10">
               <div className="flex flex-col items-center">
                 <div className="w-10 h-10 border-4 border-[#0b6a62]/20 border-t-[#0b6a62] rounded-full animate-spin"></div>

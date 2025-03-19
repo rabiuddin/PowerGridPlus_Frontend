@@ -6,6 +6,7 @@ import Reveal from "../components/shared/framer-motion/Reveal";
 import useScroll from "../hooks/useScroll";
 import { useBlogs } from "../components/blogs/hooks/useBlogs";
 import { BACKEND_URL } from "../config/constants";
+import FullScreenLoader from "../components/shared/loader/FullScreenLoader";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -18,7 +19,11 @@ const BlogPost = () => {
   }, [id]);
 
   if (!blogPost) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <FullScreenLoader isLoading={!blogPost} />
+      </>
+    );
   }
 
   return (
