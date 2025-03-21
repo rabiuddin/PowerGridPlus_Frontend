@@ -41,7 +41,7 @@ const DashboardLayout = ({ children }) => {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
+    <div className="flex bg-gray-50 h-screen overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
 
@@ -65,7 +65,7 @@ const DashboardLayout = ({ children }) => {
       >
         {/* Content Container */}
         <main className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
-          <div className="min-h-full pb-16">{children}</div>
+          <div className="min-h-full">{children}</div>
 
           {/* Scroll to top button */}
           <AnimatePresence>
@@ -75,7 +75,7 @@ const DashboardLayout = ({ children }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 onClick={scrollToTop}
-                className="fixed bottom-6 right-6 p-3 rounded-full bg-[#0b6a62] text-white shadow-lg hover:bg-[#22a196] transition-colors z-50"
+                className="bg-[#0b6a62] p-3 rounded-full shadow-lg text-white bottom-6 fixed hover:bg-[#22a196] right-6 transition-colors z-50"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -86,7 +86,7 @@ const DashboardLayout = ({ children }) => {
         </main>
 
         {/* Footer */}
-        <footer className="bg-white border-t border-gray-200 py-3 px-6 text-center text-xs text-gray-500">
+        <footer className="bg-white border-gray-200 border-t text-center text-gray-500 text-xs px-6 py-3">
           <p>
             © {new Date().getFullYear()} PowergridPlus. All rights reserved.
           </p>
