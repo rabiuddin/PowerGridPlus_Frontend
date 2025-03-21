@@ -24,9 +24,9 @@ const Blogs = () => {
   return (
     <MainLayout>
       <Reveal>
-        <div className="text-center py-6 mx-auto bg-gradient-to-br from-[#f3fff9] to-[#edfff6]">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0b6a62] mb-6">
-            <span className="flex justify-center items-center gap-2  shimmer-primary">
+        <div className="bg-gradient-to-br text-center from-[#f3fff9] mx-auto py-6 to-[#edfff6]">
+          <h1 className="text-4xl text-primary font-bold mb-6 md:text-5xl">
+            <span className="flex justify-center gap-2 items-center shimmer-primary">
               <span>Our Blog</span>
             </span>
           </h1>
@@ -41,7 +41,7 @@ const Blogs = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 gap-8 lg:grid-cols-3 sm:grid-cols-2"
         >
           {blogs.length > 0 &&
             blogs.map((item) => (

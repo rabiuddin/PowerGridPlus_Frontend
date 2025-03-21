@@ -45,9 +45,9 @@ export default function FullScreenLoader({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5 backdrop-blur-sm"
+          className="flex flex-col bg-gradient-to-br justify-center backdrop-blur-sm fixed from-primary/5 inset-0 items-center to-[#22a196]/5 z-50"
         >
-          <div className="relative flex flex-col items-center">
+          <div className="flex flex-col items-center relative">
             {/* Logo */}
             {showLogo && (
               <motion.div
@@ -80,7 +80,7 @@ export default function FullScreenLoader({
                     },
                   },
                 }}
-                className="w-24 h-24 rounded-full border-4 border-t-[#0b6a62] border-r-[#22a196] border-b-[#0b6a62]/30 border-l-[#22a196]/30"
+                className="border-4 border-b-primary/30 border-l-[#22a196]/30 border-r-[#22a196] border-t-primary h-24 rounded-full w-24"
               />
 
               {/* Inner pulsing circle */}
@@ -95,7 +95,7 @@ export default function FullScreenLoader({
                     ease: "easeInOut",
                   },
                 }}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-[#0b6a62] to-[#22a196] rounded-full"
+                className="bg-gradient-to-r h-12 rounded-full w-12 -translate-x-1/2 -translate-y-1/2 absolute from-primary left-1/2 to-[#22a196] top-1/2 transform"
               />
 
               {/* Center dot */}
@@ -103,7 +103,7 @@ export default function FullScreenLoader({
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5 }}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full"
+                className="bg-white h-4 rounded-full w-4 -translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 transform"
               />
             </div>
 
@@ -112,7 +112,7 @@ export default function FullScreenLoader({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8 text-[#0b6a62] font-medium"
+              className="text-primary font-medium mt-8"
             >
               {text}
             </motion.div>
@@ -123,20 +123,20 @@ export default function FullScreenLoader({
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "100%" }}
                 transition={{ delay: 0.4 }}
-                className="mt-4 w-48 h-1 bg-gray-200 rounded-full overflow-hidden"
+                className="bg-gray-200 h-1 rounded-full w-48 mt-4 overflow-hidden"
               >
                 <motion.div
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
-                  className="h-full bg-gradient-to-r from-[#0b6a62] to-[#22a196]"
+                  className="bg-gradient-to-r h-full from-primary to-[#22a196]"
                 />
               </motion.div>
             )}
           </div>
 
           {/* Background decorative elements */}
-          <div className="fixed top-1/4 left-1/4 w-64 h-64 bg-[#0b6a62]/10 rounded-full filter blur-3xl -z-10 animate-pulse"></div>
-          <div className="fixed bottom-1/4 right-1/4 w-64 h-64 bg-[#22a196]/10 rounded-full filter blur-3xl -z-10 animate-pulse delay-1000"></div>
+          <div className="bg-primary/10 h-64 rounded-full w-64 -z-10 animate-pulse blur-3xl filter fixed left-1/4 top-1/4"></div>
+          <div className="bg-[#22a196]/10 h-64 rounded-full w-64 -z-10 animate-pulse blur-3xl bottom-1/4 delay-1000 filter fixed right-1/4"></div>
         </motion.div>
       )}
     </AnimatePresence>

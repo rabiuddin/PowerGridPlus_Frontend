@@ -58,7 +58,7 @@ const ModelSelector = ({ currentModel }) => {
                       model.disabled
                         ? "text-gray-400 cursor-not-allowed"
                         : model.id === currentModel
-                        ? "bg-[#0b6a62]/10 text-[#0b6a62]"
+                        ? "bg-primary/10 text-primary"
                         : "text-gray-700 hover:bg-gray-50"
                     }`}
                     disabled={model.disabled}

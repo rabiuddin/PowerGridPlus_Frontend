@@ -75,7 +75,7 @@ const DashboardLayout = ({ children }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 onClick={scrollToTop}
-                className="bg-[#0b6a62] p-3 rounded-full shadow-lg text-white bottom-6 fixed hover:bg-[#22a196] right-6 transition-colors z-50"
+                className="bg-primary p-3 rounded-full shadow-lg text-white bottom-6 fixed hover:bg-[#22a196] right-6 transition-colors z-50"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >

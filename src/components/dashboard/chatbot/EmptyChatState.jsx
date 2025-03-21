@@ -1,4 +1,3 @@
-"use client";
 import { motion } from "framer-motion";
 import { FiMessageSquare, FiPlus } from "react-icons/fi";
 
@@ -12,8 +11,8 @@ const EmptyChatState = ({ createNewChat }) => {
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         className="text-center"
       >
-        <div className="flex bg-[#0b6a62]/10 h-20 justify-center rounded-full w-20 items-center mb-6 mx-auto">
-          <FiMessageSquare className="h-10 text-[#0b6a62] w-10" />
+        <div className="flex bg-primary/10 h-20 justify-center rounded-full w-20 items-center mb-6 mx-auto">
+          <FiMessageSquare className="h-10 text-primary w-10" />
         </div>
 
         <h2 className="text-2xl text-gray-800 font-bold mb-3">
@@ -29,7 +28,7 @@ const EmptyChatState = ({ createNewChat }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={createNewChat}
-          className="flex bg-[#0b6a62] justify-center rounded-lg text-white hover:bg-[#22a196] items-center mx-auto px-6 py-3 transition-colors"
+          className="flex bg-primary justify-center rounded-lg text-white hover:bg-[#22a196] items-center mx-auto px-6 py-3 transition-colors"
         >
           <FiPlus className="mr-2" />
           Start a New Chat

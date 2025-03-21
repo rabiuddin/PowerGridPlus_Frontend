@@ -1,42 +1,29 @@
-"use client";
 import { motion } from "framer-motion";
 
 // Message component displays a single message in the chat
 const Message = ({ message }) => {
-  // Format timestamp to a readable time
-  const formatTime = (timestamp) => {
-    const date = new Date(timestamp);
-    return date.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
       className={`flex gap-4 ${
-        message.isUser ? "justify-end" : "justify-start"
+        message.is_user_message ? "justify-end" : "justify-start"
       }`}
     >
       {/* Avatar */}
-      {!message.isUser && (
-        <div
-          className={`w-8 h-8 rounded-full flex items-center justify-center text-white 
-          bg-[#0b6a62]
-        `}
-        >
+      {!message.is_user_message && (
+        <div className="flex bg-primary h-8 justify-center rounded-full text-white w-8 items-center">
           AI
         </div>
       )}
 
       {/* Message content */}
-      <div className={`${!message.isUser && "flex-1"}`}>
+      <div className={`${!message.is_user_message && "flex-1"}`}>
         <div
           className={` ${
-            message.isUser && "bg-white rounded-3xl py-3 px-4 shadow-sm"
+            message.is_user_message &&
+            "bg-white rounded-3xl py-3 px-4 shadow-sm"
           }`}
         >
           <p className="text-gray-800 leading-loose whitespace-pre-wrap">

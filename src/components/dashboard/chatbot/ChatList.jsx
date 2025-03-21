@@ -1,6 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import { FiPlus, FiMessageSquare, FiTrash2 } from "react-icons/fi";
+import {
+  FiPlus,
+  FiMessageSquare,
+  FiTrash2,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
+import { formatDate } from "../../../utils/utils";
+import { FaCog } from "react-icons/fa";
 
 // ChatList component displays the list of chats and allows creating new ones
 const ChatList = ({
@@ -11,24 +19,16 @@ const ChatList = ({
   deleteChat,
   isCollapsed,
   toggleCollapse,
+  gettingChats,
+  handleChatClick,
 }) => {
-  // Format date to a readable string
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
   // Get the first message content or a placeholder
   const getPreviewText = (messages) => {
+    if (!messages) return;
     if (messages.length === 0) return "No messages yet";
-    return messages[0].content.length > 35
-      ? messages[0].content.substring(0, 35) + "..."
-      : messages[0].content;
+    return messages[messages.length - 1].content.length > 35
+      ? messages[messages.length - 1].content.substring(0, 35) + "..."
+      : messages[messages.length - 1].content;
   };
 
   return (
@@ -44,35 +44,9 @@ const ChatList = ({
                   bg-white rounded-r-md shadow-md border border-l-0 border-gray-200 z-[5]"
       >
         {isCollapsed ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-[#0b6a62]"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+          <FiChevronRight className="text-primary" />
         ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-[#0b6a62]"
-          >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
+          <FiChevronLeft className="text-primary" />
         )}
       </button>
 
@@ -82,12 +56,12 @@ const ChatList = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={createNewChat}
-          disabled={chats.length >= 3}
+          disabled={chats.length >= 3 || gettingChats}
           className={`w-full py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 
             ${
-              chats.length >= 3
+              chats.length >= 3 || gettingChats
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                : "bg-[#0b6a62] text-white hover:bg-[#22a196]"
+                : "bg-primary text-white hover:bg-[#22a196]"
             } 
             transition-colors`}
         >
@@ -105,7 +79,11 @@ const ChatList = ({
 
       {/* Chat list */}
       <div className="flex-1 overflow-y-auto">
-        {chats.length === 0 ? (
+        {gettingChats ? (
+          <>
+            <FaCog className="h-4 text-6xl text-gray-500 w-4 animate-spin mt-4 mx-auto" />
+          </>
+        ) : chats.length === 0 ? (
           !isCollapsed && (
             <div className="p-6 text-center text-gray-500">
               <p>No chats yet</p>
@@ -117,20 +95,21 @@ const ChatList = ({
             {chats.map((chat) => (
               <motion.li
                 key={chat.id}
-                whileHover={{ backgroundColor: "rgba(11, 106, 98, 0.05)" }}
-                className={`relative ${
-                  activeChat === chat.id ? "bg-[#0b6a62]/10" : ""
+                className={`relative hover:bg-[#0B6A620D] ${
+                  activeChat == chat.id ? "bg-primary/10" : ""
                 }`}
               >
                 <button
-                  onClick={() => setActiveChat(chat.id)}
+                  onClick={() => {
+                    handleChatClick(chat.id);
+                  }}
                   className={`w-full text-left p-4 ${
                     isCollapsed ? "pr-4" : "pr-12"
                   }`}
                 >
                   <div className="flex gap-3 items-start">
-                    <div className="flex-shrink-0 bg-[#0b6a62]/10 p-2 rounded-lg">
-                      <FiMessageSquare className="h-4 text-[#0b6a62] w-4" />
+                    <div className="flex-shrink-0 bg-primary/10 p-2 rounded-lg">
+                      <FiMessageSquare className="h-4 text-primary w-4" />
                     </div>
                     {!isCollapsed && (
                       <div className="flex-1 min-w-0">
@@ -141,7 +120,7 @@ const ChatList = ({
                           {getPreviewText(chat.messages)}
                         </p>
                         <p className="text-gray-400 text-xs mt-1">
-                          {formatDate(chat.createdAt)}
+                          {formatDate(chat.created_at)}
                         </p>
                       </div>
                     )}

@@ -37,14 +37,14 @@ export default function NoBlogsFound({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+      className="bg-white border border-gray-100 rounded-xl shadow-sm w-full overflow-hidden"
     >
       <div className="flex flex-col md:flex-row">
         {/* Left side - Illustration */}
-        <div className="bg-gradient-to-br from-[#0b6a62]/10 to-[#22a196]/10 p-8 md:p-12 flex items-center justify-center md:w-1/3">
+        <div className="flex bg-gradient-to-br justify-center p-8 from-primary/10 items-center md:p-12 md:w-1/3 to-[#22a196]/10">
           <motion.div variants={itemVariants} className="relative">
-            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center">
-              <FiBookOpen className="w-12 h-12 md:w-16 md:h-16 text-[#0b6a62]" />
+            <div className="flex bg-white/80 h-24 justify-center rounded-full w-24 backdrop-blur-sm items-center md:h-32 md:w-32">
+              <FiBookOpen className="h-12 text-primary w-12 md:h-16 md:w-16" />
             </div>
             <motion.div
               initial={{ scale: 0 }}
@@ -57,18 +57,18 @@ export default function NoBlogsFound({
                   ease: "easeInOut",
                 },
               }}
-              className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-[#22a196] flex items-center justify-center text-white shadow-lg"
+              className="flex bg-[#22a196] h-10 justify-center rounded-full shadow-lg text-white w-10 -bottom-2 -right-2 absolute items-center"
             >
-              <FiMail className="w-5 h-5" />
+              <FiMail className="h-5 w-5" />
             </motion.div>
           </motion.div>
         </div>
 
         {/* Right side - Content */}
-        <div className="p-8 md:p-12 flex flex-col justify-center md:w-2/3">
+        <div className="flex flex-col justify-center p-8 md:p-12 md:w-2/3">
           <motion.h2
             variants={itemVariants}
-            className="text-2xl md:text-3xl font-bold text-gray-800 mb-4"
+            className="text-2xl text-gray-800 font-bold mb-4 md:text-3xl"
           >
             {message}
           </motion.h2>
@@ -79,14 +79,14 @@ export default function NoBlogsFound({
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col gap-4 sm:flex-row"
           >
             {isFiltered && (
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={onResetFilters}
-                className="px-6 py-3 bg-[#0b6a62] text-white rounded-lg hover:bg-[#22a196] transition-colors flex items-center justify-center"
+                className="flex bg-primary justify-center rounded-lg text-white hover:bg-[#22a196] items-center px-6 py-3 transition-colors"
               >
                 <FiRefreshCw className="mr-2" />
                 Reset Filters

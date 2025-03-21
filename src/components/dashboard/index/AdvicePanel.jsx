@@ -75,33 +75,33 @@ const AdvicePanel = () => {
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-full flex flex-col"
+      className="flex flex-col bg-white border border-gray-100 h-full rounded-xl shadow-sm overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       {/* Header */}
-      <div className="p-6 border-b border-gray-100">
+      <div className="border-b border-gray-100 p-6">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold text-gray-800 flex items-center">
-            <FiInfo className="w-5 h-5 mr-2 text-[#0b6a62]" />
+          <h2 className="flex text-gray-800 text-lg font-semibold items-center">
+            <FiInfo className="h-5 text-primary w-5 mr-2" />
             Smart Advice
           </h2>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="p-2 text-gray-500 hover:text-[#0b6a62] hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-primary transition-colors"
             title="Refresh Advice"
           >
-            <FiRefreshCw className="w-5 h-5" />
+            <FiRefreshCw className="h-5 w-5" />
           </motion.button>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="px-6 pt-4 border-b border-gray-100">
-        <div className="flex space-x-2 overflow-x-auto pb-4 scrollbar-thin">
+      <div className="border-b border-gray-100 pt-4 px-6">
+        <div className="flex overflow-x-auto pb-4 scrollbar-thin space-x-2">
           <TabButton
             active={activeTab === "all"}
             onClick={() => setActiveTab("all")}
@@ -111,25 +111,25 @@ const AdvicePanel = () => {
             active={activeTab === "tip"}
             onClick={() => setActiveTab("tip")}
             label="Tips"
-            icon={<FiZap className="w-4 h-4 mr-1" />}
+            icon={<FiZap className="h-4 w-4 mr-1" />}
           />
           <TabButton
             active={activeTab === "alert"}
             onClick={() => setActiveTab("alert")}
             label="Alerts"
-            icon={<FiAlertTriangle className="w-4 h-4 mr-1" />}
+            icon={<FiAlertTriangle className="h-4 w-4 mr-1" />}
           />
           <TabButton
             active={activeTab === "security"}
             onClick={() => setActiveTab("security")}
             label="Security"
-            icon={<FiShield className="w-4 h-4 mr-1" />}
+            icon={<FiShield className="h-4 w-4 mr-1" />}
           />
           <TabButton
             active={activeTab === "maintenance"}
             onClick={() => setActiveTab("maintenance")}
             label="Maintenance"
-            icon={<FiTool className="w-4 h-4 mr-1" />}
+            icon={<FiTool className="h-4 w-4 mr-1" />}
           />
         </div>
       </div>
@@ -137,7 +137,7 @@ const AdvicePanel = () => {
       {/* Advice List */}
       <div className="flex-grow overflow-auto">
         {filteredAdvice.length > 0 ? (
-          <div className="divide-y divide-gray-100">
+          <div className="divide-gray-100 divide-y">
             {filteredAdvice.map((advice) => (
               <AdviceItem key={advice.id} advice={advice} />
             ))}
@@ -152,8 +152,8 @@ const AdvicePanel = () => {
       </div>
 
       {/* Footer */}
-      <div className="p-4 bg-gray-50 border-t border-gray-100">
-        <button className="w-full py-2 text-[#0b6a62] hover:bg-[#0b6a62]/5 rounded-lg transition-colors text-sm font-medium flex items-center justify-center">
+      <div className="bg-gray-50 border-gray-100 border-t p-4">
+        <button className="flex justify-center rounded-lg text-primary text-sm w-full font-medium hover:bg-primary/5 items-center py-2 transition-colors">
           View All Recommendations
           <FiChevronRight className="ml-1" />
         </button>
@@ -171,7 +171,7 @@ const TabButton = ({ active, onClick, label, icon }) => (
     className={`px-3 py-1.5 rounded-md text-sm font-medium whitespace-nowrap flex items-center
       ${
         active
-          ? "bg-[#0b6a62] text-white"
+          ? "bg-primary text-white"
           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
       }`}
   >
@@ -192,13 +192,13 @@ const AdviceItem = ({ advice }) => (
       </div>
 
       <div className="flex-1">
-        <h3 className="font-medium text-gray-900">{advice.title}</h3>
-        <p className="text-sm text-gray-600 mt-1">{advice.description}</p>
+        <h3 className="text-gray-900 font-medium">{advice.title}</h3>
+        <p className="text-gray-600 text-sm mt-1">{advice.description}</p>
 
-        <div className="mt-3 flex justify-end">
-          <button className="text-xs text-[#0b6a62] hover:underline flex items-center">
+        <div className="flex justify-end mt-3">
+          <button className="flex text-primary text-xs hover:underline items-center">
             Learn more
-            <FiChevronRight className="ml-1 h-3 w-3" />
+            <FiChevronRight className="h-3 w-3 ml-1" />
           </button>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default function DashboardHeader({
 
   return (
     <motion.div
-      className="bg-white z-10 shadow-sm"
+      className="bg-white shadow-sm z-10"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
@@ -40,7 +40,7 @@ export default function DashboardHeader({
             isNavOpen ? "md:ml-0" : "md:ml-0"
           }`}
         >
-          <div className="flex items-center justify-between">
+          <div className="flex justify-between items-center">
             {/* Left side - Title and mobile menu */}
             <div className="flex items-center">
               <motion.div
@@ -49,14 +49,14 @@ export default function DashboardHeader({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#0b6a62]/10 mr-3 shadow-sm">
-                  <Icon className="h-5 w-5 text-[#0b6a62]" />
+                <div className="flex bg-primary/10 h-10 justify-center rounded-lg shadow-sm w-10 items-center mr-3">
+                  <Icon className="h-5 text-primary w-5" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-semibold text-gray-800">
+                  <h1 className="text-gray-800 text-xl font-semibold">
                     {title}
                   </h1>
-                  <p className="text-xs text-gray-500 hidden sm:block">
+                  <p className="text-gray-500 text-xs hidden sm:block">
                     Welcome back to your dashboard
                   </p>
                 </div>
@@ -64,19 +64,19 @@ export default function DashboardHeader({
             </div>
 
             {/* Right side - Search, notifications, profile */}
-            <div className="flex items-center space-x-1 sm:space-x-4">
+            <div className="flex items-center sm:space-x-4 space-x-1">
               {/* User Profile */}
               <div className="relative">
                 <motion.button
-                  className="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200"
+                  className="flex border border-transparent p-1.5 rounded-lg hover:bg-gray-100 hover:border-gray-200 items-center space-x-2 transition-colors"
                   onClick={() => setShowUserMenu(!showUserMenu)}
                   whileHover={{ y: -1 }}
                   whileTap={{ y: 1 }}
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#0b6a62] flex items-center justify-center text-white shadow-sm">
+                  <div className="flex bg-primary h-8 justify-center rounded-full shadow-sm text-white w-8 items-center">
                     <FiUser className="h-4 w-4" />
                   </div>
-                  <span className="text-sm font-medium text-gray-700 hidden sm:inline-block">
+                  <span className="text-gray-700 text-sm font-medium hidden sm:inline-block">
                     {user?.email || "User"}
                   </span>
                   <FiChevronDown
@@ -90,32 +90,32 @@ export default function DashboardHeader({
                 <AnimatePresence>
                   {showUserMenu && (
                     <motion.div
-                      className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50"
+                      className="bg-white border border-gray-200 rounded-lg shadow-lg w-48 absolute mt-2 py-1 right-0 z-50"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-sm font-medium text-gray-900">
+                      <div className="border-b border-gray-100 px-4 py-2">
+                        <p className="text-gray-900 text-sm font-medium">
                           {user?.name || "User"}
                         </p>
-                        <p className="text-xs text-gray-500 truncate">
+                        <p className="text-gray-500 text-xs truncate">
                           {user?.email || "user@example.com"}
                         </p>
                       </div>
-                      <Link className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                        <FiUser className="h-4 w-4 mr-2 text-gray-500" />
+                      <Link className="flex text-gray-700 text-sm hover:bg-gray-100 items-center px-4 py-2">
+                        <FiUser className="h-4 text-gray-500 w-4 mr-2" />
                         Profile
                       </Link>
-                      <Link className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                        <FiSettings className="h-4 w-4 mr-2 text-gray-500" />
+                      <Link className="flex text-gray-700 text-sm hover:bg-gray-100 items-center px-4 py-2">
+                        <FiSettings className="h-4 text-gray-500 w-4 mr-2" />
                         Settings
                       </Link>
-                      <div className="border-t border-gray-100 my-1"></div>
+                      <div className="border-gray-100 border-t my-1"></div>
                       <Link
                         to="/logout"
-                        className="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                        className="flex text-red-600 text-sm hover:bg-red-50 items-center px-4 py-2"
                       >
                         <FiLogOut className="h-4 w-4 mr-2" />
                         Logout
@@ -130,23 +130,23 @@ export default function DashboardHeader({
 
         {/* Breadcrumbs */}
         <motion.div
-          className="px-4 sm:px-6 py-3 border-t border-b border-gray-100"
+          className="border-b border-gray-100 border-t px-4 py-3 sm:px-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
           <nav className="flex" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-1 text-sm">
+            <ol className="flex text-sm items-center space-x-1">
               {breadcrumbs.map((crumb, index) => (
                 <li key={index} className="flex items-center">
                   {index > 0 && (
-                    <FiChevronRight className="h-4 w-4 text-gray-400 mx-1" />
+                    <FiChevronRight className="h-4 text-gray-400 w-4 mx-1" />
                   )}
                   <Link
                     to={crumb.href}
-                    className={`hover:text-[#0b6a62] transition-colors ${
+                    className={`hover:text-primary transition-colors ${
                       index === breadcrumbs.length - 1
-                        ? "text-[#0b6a62] font-medium"
+                        ? "text-primary font-medium"
                         : "text-gray-500"
                     }`}
                   >

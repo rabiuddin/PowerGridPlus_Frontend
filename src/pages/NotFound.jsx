@@ -39,20 +39,20 @@ export default function NotFound() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5 flex flex-col items-center justify-center p-4">
+    <div className="flex flex-col bg-gradient-to-br justify-center p-4 from-primary/5 items-center min-h-screen to-[#22a196]/5">
       <motion.div
-        className="max-w-3xl w-full text-center"
+        className="text-center w-full max-w-3xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* 404 Numbers */}
         <motion.div className="relative" variants={numberVariants}>
-          <div className="text-[180px] md:text-[250px] font-bold text-gray-100 leading-none select-none">
+          <div className="text-[180px] text-gray-100 font-bold leading-none md:text-[250px] select-none">
             404
           </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-[80px] md:text-[120px] font-bold bg-gradient-to-r from-[#0b6a62] to-[#22a196] text-transparent bg-clip-text leading-none select-none">
+          <div className="flex justify-center absolute inset-0 items-center">
+            <div className="bg-clip-text bg-gradient-to-r text-[80px] text-transparent font-bold from-primary leading-none md:text-[120px] select-none to-[#22a196]">
               404
             </div>
           </div>
@@ -60,14 +60,14 @@ export default function NotFound() {
 
         {/* Message */}
         <motion.h1
-          className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+          className="text-3xl text-gray-800 font-bold mb-4 md:text-4xl"
           variants={itemVariants}
         >
           Page Not Found
         </motion.h1>
 
         <motion.p
-          className="text-gray-600 text-lg mb-8 max-w-xl mx-auto"
+          className="text-gray-600 text-lg max-w-xl mb-8 mx-auto"
           variants={itemVariants}
         >
           The page you're looking for doesn't exist or has been moved.
@@ -75,14 +75,14 @@ export default function NotFound() {
 
         {/* Action Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col justify-center gap-4 items-center sm:flex-row"
           variants={itemVariants}
         >
           <Link to="/">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-[#0b6a62] text-white rounded-lg shadow-md hover:bg-[#22a196] transition-colors flex items-center justify-center w-full sm:w-auto"
+              className="flex bg-primary justify-center rounded-lg shadow-md text-white w-full hover:bg-[#22a196] items-center px-6 py-3 sm:w-auto transition-colors"
             >
               <FiHome className="mr-2" />
               Back to Home
@@ -93,7 +93,7 @@ export default function NotFound() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 border border-[#0b6a62] text-[#0b6a62] rounded-lg hover:bg-[#0b6a62]/5 transition-colors flex items-center justify-center w-full sm:w-auto"
+              className="flex border border-primary justify-center rounded-lg text-primary w-full hover:bg-primary/5 items-center px-6 py-3 sm:w-auto transition-colors"
             >
               <FiArrowLeft className="mr-2" />
               Go to Dashboard
@@ -102,13 +102,13 @@ export default function NotFound() {
         </motion.div>
 
         {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#0b6a62]/5 rounded-full filter blur-3xl -z-10 animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#22a196]/5 rounded-full filter blur-3xl -z-10 animate-pulse delay-1000"></div>
+        <div className="bg-primary/5 h-64 rounded-full w-64 -z-10 absolute animate-pulse blur-3xl filter left-1/4 top-1/4"></div>
+        <div className="bg-[#22a196]/5 h-64 rounded-full w-64 -z-10 absolute animate-pulse blur-3xl bottom-1/4 delay-1000 filter right-1/4"></div>
       </motion.div>
 
       {/* Footer */}
       <motion.div
-        className="mt-16 text-sm text-gray-500"
+        className="text-gray-500 text-sm mt-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
