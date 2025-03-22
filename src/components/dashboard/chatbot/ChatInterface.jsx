@@ -25,7 +25,7 @@ const ChatInterface = ({ chat, updateChatTitle, addMessage }) => {
   return (
     <div className="flex flex-col h-full">
       {/* Chat header with title and model selector */}
-      <div className="flex border-b border-gray-100 justify-between p-4 items-center">
+      <div className="flex flex-col lg:flex-row gap-2 lg:gap-0 border-b border-gray-100 justify-between p-4 items-center">
         <div className="flex items-center ms-6">
           {isEditingTitle ? (
             <div className="flex items-center">

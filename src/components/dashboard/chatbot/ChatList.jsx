@@ -33,15 +33,21 @@ const ChatList = ({
 
   return (
     <div
-      className={`relative border-r border-gray-100 flex flex-col h-full bg-gray-50 transition-all duration-300 ${
-        isCollapsed ? "w-16" : "w-80"
-      }`}
+      className={`position-fixed sm:relative border-r  border-gray-100 flex flex-col h-full bg-gray-50 transition-all duration-300 z-5
+        ${
+          isCollapsed
+            ? "-translate-x-full w-0 sm:translate-x-0 sm:w-16"
+            : "translate-x-0 w-[95vw] sm:w-72 md:w-80"
+        }`}
     >
-      {/* Collapse toggle button */}
+      {/* Collapse toggle button - visible on all screens */}
       <button
         onClick={toggleCollapse}
-        className="absolute -right-6.5 top-2 flex items-center justify-center w-6 h-12 
-                  bg-white rounded-r-md shadow-md border border-l-0 border-gray-200 z-[5]"
+        className={`absolute  sm:-right-6 top-2 flex items-center justify-center w-6 h-12 
+          bg-white rounded-r-md shadow-md border border-l-0 border-gray-200 z-[5] ${
+            isCollapsed ? "-right-6" : "-right-0"
+          }`}
+        aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
         {isCollapsed ? (
           <FiChevronRight className="text-primary" />
@@ -51,13 +57,14 @@ const ChatList = ({
       </button>
 
       {/* Header with New Chat button */}
-      <div className="border-b border-gray-100 px-2 py-4">
+      <div className="border-b border-gray-100 px-2 py-3 sm:py-4">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={createNewChat}
           disabled={chats.length >= 3 || gettingChats}
-          className={`w-full py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 
+          className={`w-full  rounded-lg flex items-center justify-center gap-2 
+            ${isCollapsed ? "sm:py-2.5 sm:px-4" : "py-2.5 px-4"}
             ${
               chats.length >= 3 || gettingChats
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
@@ -66,7 +73,9 @@ const ChatList = ({
             transition-colors`}
         >
           <FiPlus className="h-4 w-4" />
-          {!isCollapsed && <span>New Chat</span>}
+          {!isCollapsed && (
+            <span className="text-sm sm:text-base">New Chat</span>
+          )}
         </motion.button>
 
         {/* Show limit message if 3 chats exist */}
@@ -80,12 +89,12 @@ const ChatList = ({
       {/* Chat list */}
       <div className="flex-1 overflow-y-auto">
         {gettingChats ? (
-          <>
-            <FaCog className="h-4 text-6xl text-gray-500 w-4 animate-spin mt-4 mx-auto" />
-          </>
+          <div className="flex justify-center items-center h-32">
+            <FaCog className="h-4 text-4xl sm:text-6xl text-gray-500 w-4 animate-spin" />
+          </div>
         ) : chats.length === 0 ? (
           !isCollapsed && (
-            <div className="p-6 text-center text-gray-500">
+            <div className="p-4 sm:p-6 text-center text-gray-500">
               <p>No chats yet</p>
               <p className="text-sm mt-1">Create a new chat to get started</p>
             </div>
@@ -102,9 +111,13 @@ const ChatList = ({
                 <button
                   onClick={() => {
                     handleChatClick(chat.id);
+                    // On mobile, automatically collapse the sidebar after selecting a chat
+                    if (window.innerWidth < 640 && !isCollapsed) {
+                      toggleCollapse();
+                    }
                   }}
-                  className={`w-full text-left p-4 ${
-                    isCollapsed ? "pr-4" : "pr-12"
+                  className={`w-full text-left p-3 sm:p-4 ${
+                    isCollapsed ? "pr-3 sm:pr-4" : "pr-10 sm:pr-12"
                   }`}
                 >
                   <div className="flex gap-3 items-start">
@@ -113,10 +126,10 @@ const ChatList = ({
                     </div>
                     {!isCollapsed && (
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-gray-900 font-medium truncate">
+                        <h3 className="text-gray-900 font-medium truncate text-sm sm:text-base">
                           {chat.title}
                         </h3>
-                        <p className="text-gray-500 text-sm mt-1 truncate">
+                        <p className="text-gray-500 text-xs sm:text-sm mt-1 truncate">
                           {getPreviewText(chat.messages)}
                         </p>
                         <p className="text-gray-400 text-xs mt-1">
@@ -148,7 +161,7 @@ const ChatList = ({
 
       {/* Info footer - only show when not collapsed */}
       {!isCollapsed && (
-        <div className="bg-white border-gray-100 border-t p-4">
+        <div className="bg-white border-gray-100 border-t p-3 sm:p-4">
           <div className="text-gray-500 text-xs">
             <p className="font-medium">PowergridPlus AI Assistant</p>
             <p className="mt-1">
@@ -157,6 +170,15 @@ const ChatList = ({
             </p>
           </div>
         </div>
+      )}
+
+      {/* Overlay for mobile - only visible when sidebar is open on mobile */}
+      {!isCollapsed && (
+        <div
+          className="fixed inset-0  sm:hidden -z-10"
+          onClick={toggleCollapse}
+          aria-hidden="true"
+        />
       )}
     </div>
   );

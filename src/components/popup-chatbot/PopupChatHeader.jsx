@@ -1,7 +1,7 @@
 const PopupChatHeader = () => {
   return (
-    <div className="bg-primary text-white p-4 flex items-center">
-      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3">
+    <div className="bg-primary text-white p-3 sm:p-4 flex items-center">
+      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -17,9 +17,11 @@ const PopupChatHeader = () => {
         </svg>
       </div>
 
-      <div className="flex-1">
-        <h2 className="font-medium">Powergrid Assistant</h2>
-        <p className="text-xs text-white/70">
+      <div className="flex-1 min-w-0">
+        <h2 className="font-medium text-sm sm:text-base truncate">
+          PowergridPlus Assistant
+        </h2>
+        <p className="text-xs text-white/70 truncate">
           Ask me anything about power grids
         </p>
       </div>

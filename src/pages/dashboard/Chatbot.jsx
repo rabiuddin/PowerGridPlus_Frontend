@@ -43,28 +43,32 @@ const Chatbot = () => {
       />
 
       <motion.div
-        className="p-6 max-w-7xl mx-auto"
+        className="px-2 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div
-          className="bg-white border border-gray-100 h-[calc(100vh-12rem)] rounded-xl shadow-sm overflow-hidden"
+          className="bg-white border border-gray-100 h-[calc(100vh-8rem)] sm:h-[calc(100vh-10rem)] md:h-[calc(100vh-12rem)] rounded-lg sm:rounded-xl shadow-sm overflow-hidden"
           variants={itemVariants}
         >
           <div className="flex h-full">
-            {/* Chat List Sidebar */}
-            <ChatList
-              gettingChats={gettingChats}
-              chats={chats}
-              activeChat={activeChat}
-              setActiveChat={setActiveChat}
-              createNewChat={createNewChat}
-              deleteChat={deleteChat}
-              isCollapsed={isSidebarCollapsed}
-              toggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-              handleChatClick={handleChatClick}
-            />
+            {/* Chat List Sidebar - Hidden by default on mobile, shown when toggled */}
+            <div>
+              <ChatList
+                gettingChats={gettingChats}
+                chats={chats}
+                activeChat={activeChat}
+                setActiveChat={setActiveChat}
+                createNewChat={createNewChat}
+                deleteChat={deleteChat}
+                isCollapsed={isSidebarCollapsed}
+                toggleCollapse={() =>
+                  setIsSidebarCollapsed(!isSidebarCollapsed)
+                }
+                handleChatClick={handleChatClick}
+              />
+            </div>
 
             {/* Chat Interface or Empty State */}
             <div className="flex flex-1 flex-col h-full">
@@ -74,6 +78,10 @@ const Chatbot = () => {
                   gettingMessages={gettingMessages}
                   updateChatTitle={updateChatTitle}
                   addMessage={addMessage}
+                  toggleSidebar={() =>
+                    setIsSidebarCollapsed(!isSidebarCollapsed)
+                  }
+                  isSidebarCollapsed={isSidebarCollapsed}
                 />
               ) : (
                 <EmptyChatState createNewChat={createNewChat} />
