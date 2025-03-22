@@ -21,3 +21,12 @@ export const getElectricityCostApiCall = async () => {
     return error.response.data;
   }
 };
+
+export const getAdviceDataApiCall = async () => {
+  try {
+    const response = await api.get(`${path}/smart-advices/`);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

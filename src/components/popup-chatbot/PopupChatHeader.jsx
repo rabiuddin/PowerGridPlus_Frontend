@@ -19,10 +19,10 @@ const PopupChatHeader = () => {
 
       <div className="flex-1 min-w-0">
         <h2 className="font-medium text-sm sm:text-base truncate">
-          PowergridPlus Assistant
+          PowerGridPlus Assistant
         </h2>
         <p className="text-xs text-white/70 truncate">
-          Ask me anything about power grids
+          Ask me anything about PowerGridPlus
         </p>
       </div>
     </div>

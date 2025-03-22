@@ -10,61 +10,10 @@ import {
   FiTool,
   FiRefreshCw,
 } from "react-icons/fi";
-
-// Sample advice data
-const adviceData = [
-  {
-    id: 1,
-    type: "tip",
-    title: "Energy Saving Tip",
-    description:
-      "Lower your thermostat by 1°C to save up to 10% on your heating bill.",
-    icon: FiZap,
-    color: "text-blue-500",
-    bgColor: "bg-blue-100",
-  },
-  {
-    id: 2,
-    type: "alert",
-    title: "Maintenance Required",
-    description:
-      "Your Living Room Thermostat battery is below 20%. Consider replacing it soon.",
-    icon: FiAlertTriangle,
-    color: "text-amber-500",
-    bgColor: "bg-amber-100",
-  },
-  {
-    id: 3,
-    type: "security",
-    title: "Security Recommendation",
-    description:
-      "Update your Front Door Lock firmware to the latest version for improved security.",
-    icon: FiShield,
-    color: "text-purple-500",
-    bgColor: "bg-purple-100",
-  },
-  {
-    id: 4,
-    type: "maintenance",
-    title: "Scheduled Maintenance",
-    description: "Your smart home system is due for a routine check next week.",
-    icon: FiTool,
-    color: "text-gray-500",
-    bgColor: "bg-gray-100",
-  },
-  {
-    id: 5,
-    type: "tip",
-    title: "Optimize Your Devices",
-    description:
-      "Schedule your devices to turn off automatically when not in use to save energy.",
-    icon: FiZap,
-    color: "text-green-500",
-    bgColor: "bg-green-100",
-  },
-];
+import { useAdvicePanel } from "./hooks/useAdvicePanel";
 
 const AdvicePanel = () => {
+  const { adviceData, handleLearnMore } = useAdvicePanel();
   const [activeTab, setActiveTab] = useState("all");
 
   // Filter advice based on active tab
@@ -72,6 +21,8 @@ const AdvicePanel = () => {
     activeTab === "all"
       ? adviceData
       : adviceData.filter((advice) => advice.type === activeTab);
+
+  if (!adviceData) return <></>;
 
   return (
     <motion.div
@@ -139,7 +90,11 @@ const AdvicePanel = () => {
         {filteredAdvice.length > 0 ? (
           <div className="divide-gray-100 divide-y">
             {filteredAdvice.map((advice) => (
-              <AdviceItem key={advice.id} advice={advice} />
+              <AdviceItem
+                handleLearnMore={handleLearnMore}
+                key={advice.id}
+                advice={advice}
+              />
             ))}
           </div>
         ) : (
@@ -181,7 +136,7 @@ const TabButton = ({ active, onClick, label, icon }) => (
 );
 
 // Advice Item Component
-const AdviceItem = ({ advice }) => (
+const AdviceItem = ({ advice, handleLearnMore }) => (
   <motion.div
     className="p-4 hover:bg-gray-50 transition-colors"
     whileHover={{ x: 5 }}
@@ -196,7 +151,10 @@ const AdviceItem = ({ advice }) => (
         <p className="text-gray-600 text-sm mt-1">{advice.description}</p>
 
         <div className="flex justify-end mt-3">
-          <button className="flex text-primary text-xs hover:underline items-center">
+          <button
+            onClick={() => handleLearnMore(advice.description)}
+            className="flex text-primary text-xs hover:underline items-center"
+          >
             Learn more
             <FiChevronRight className="h-3 w-3 ml-1" />
           </button>

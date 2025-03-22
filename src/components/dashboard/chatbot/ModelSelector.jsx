@@ -5,7 +5,7 @@ import { FiChevronDown } from "react-icons/fi";
 
 // Available AI models
 const models = [
-  { id: "gpt4", name: "GPT-4", provider: "OpenAI" },
+  { id: "gpt4", name: "OpenAI", provider: "OpenAI" },
   // { id: "gemini", name: "Gemini", provider: "Google" },
   // { id: "claude", name: "Claude", provider: "Anthropic", disabled: true },
 ];
@@ -21,17 +21,17 @@ const ModelSelector = ({ currentModel }) => {
 
   return (
     <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex border border-gray-200 rounded-lg text-gray-700 text-sm gap-2 hover:bg-gray-50 items-center px-3 py-1.5"
+      <div
+        // onClick={() => setIsOpen(!isOpen)}
+        className="flex  rounded-lg text-gray-700 text-sm gap-2 items-center px-3 py-1.5"
       >
-        <span>Model: {getCurrentModel().name}</span>
-        <FiChevronDown
+        <span>{getCurrentModel().name}</span>
+        {/* <FiChevronDown
           className={`w-4 h-4 transition-transform ${
             isOpen ? "rotate-180" : ""
           }`}
-        />
-      </button>
+        /> */}
+      </div>
 
       <AnimatePresence>
         {isOpen && (

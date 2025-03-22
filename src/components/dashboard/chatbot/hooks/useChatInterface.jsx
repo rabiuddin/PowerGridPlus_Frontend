@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getAIResponseApiCall } from "../../../../api/chats.api";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useChatInterface = (chat, updateChatTitle, addMessage) => {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
@@ -8,11 +9,28 @@ export const useChatInterface = (chat, updateChatTitle, addMessage) => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const titleInputRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const hasSendPrompt = useRef(false);
 
   // Scroll to bottom when messages change
   useEffect(() => {
     scrollToBottom();
   }, [chat.messages]);
+
+  useEffect(() => {
+    if (chat.messages && !hasSendPrompt.current && location.state) {
+      setMessageInput(location.state);
+    }
+  }, [chat.messages]);
+
+  useEffect(() => {
+    if (!hasSendPrompt.current && location.state && messageInput.trim()) {
+      handleSendMessage();
+      navigate(location.pathname, { state: null, replace: true });
+      hasSendPrompt.current = true;
+    }
+  }, [messageInput]);
 
   // Focus title input when editing
   useEffect(() => {
@@ -44,7 +62,9 @@ export const useChatInterface = (chat, updateChatTitle, addMessage) => {
 
   // Handle message submission
   const handleSendMessage = async (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     if (!messageInput.trim() || isLoading) return;
 
