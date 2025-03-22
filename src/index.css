@@ -86,3 +86,65 @@ button{
   scrollbar-color: #d1d5db transparent;
 }
 
+/* MARKDOWN */
+
+/* Optional: Add this CSS file to your project for additional markdown styling */
+.markdown-content {
+  /* Base styles */
+  word-break: break-word;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content pre {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+  overflow: auto;
+}
+
+.markdown-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Ensure links are properly styled */
+.markdown-content a {
+  color: #0b6a62;
+  text-decoration: none;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure lists have proper spacing */
+.markdown-content ul,
+.markdown-content ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Ensure tables are properly styled */
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.markdown-content table th,
+.markdown-content table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+}
+
+/* Ensure images don't overflow */
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+}
+
