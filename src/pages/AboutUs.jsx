@@ -5,10 +5,9 @@ import MissionAndVision from "../components/about-us/MissionAndVision";
 import TeamSection from "../components/about-us/TeamSection";
 
 export default function AboutUs() {
-
   return (
     <MainLayout>
-      <div className="bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5">
+      <div className="bg-gradient-to-br from-primary/5 to-[#22a196]/5">
         <HeroSection />
         <MissionAndVision />
         <TeamSection />

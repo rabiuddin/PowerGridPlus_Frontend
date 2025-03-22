@@ -7,7 +7,7 @@ import BenefitsSection from "../components/services/BenefitsSection";
 const Services = () => {
   return (
     <MainLayout>
-      <div className="bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5">
+      <div className="bg-gradient-to-br from-primary/5 to-[#22a196]/5">
         <HeroSection />
         <BenefitsSection />
         <ServiceDetails />

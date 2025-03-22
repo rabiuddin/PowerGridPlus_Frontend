@@ -240,18 +240,18 @@ export default function ElectricityGraph({ graphData }) {
   return (
     <div className="bg-white rounded-lg">
       {/* Chart Controls */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 pt-4 pb-6 border-b border-gray-100">
+      <div className="flex flex-col border-b border-gray-100 justify-between items-start pb-6 pt-4 px-6 sm:flex-row sm:items-center">
         {/* Time Range Selector */}
-        <div className="flex items-center space-x-2 mb-4 sm:mb-0">
-          <span className="text-sm text-gray-500 mr-2">Time Range:</span>
-          <div className="flex bg-gray-100 rounded-lg p-1">
+        <div className="flex items-center mb-4 sm:mb-0 space-x-2">
+          <span className="text-gray-500 text-sm mr-2">Time Range:</span>
+          <div className="flex bg-gray-100 p-1 rounded-lg">
             {["day", "week", "month", "all"].map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
                   timeRange === range
-                    ? "bg-[#0b6a62] text-white shadow-sm"
+                    ? "bg-primary text-white shadow-sm"
                     : "text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -266,28 +266,28 @@ export default function ElectricityGraph({ graphData }) {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="p-2 text-gray-500 hover:text-[#0b6a62] hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-primary transition-colors"
             title="Refresh Data"
           >
-            <FiRefreshCw className="w-5 h-5" />
+            <FiRefreshCw className="h-5 w-5" />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="p-2 text-gray-500 hover:text-[#0b6a62] hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-primary transition-colors"
             title="Zoom In"
           >
-            <FiZoomIn className="w-5 h-5" />
+            <FiZoomIn className="h-5 w-5" />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={downloadCSV}
-            className="flex items-center px-4 py-2 bg-[#0b6a62] text-white rounded-lg text-sm font-medium hover:bg-[#22a196] transition-colors"
+            className="flex bg-primary rounded-lg text-sm text-white font-medium hover:bg-[#22a196] items-center px-4 py-2 transition-colors"
           >
-            <FiDownload className="w-4 h-4 mr-2" />
+            <FiDownload className="h-4 w-4 mr-2" />
             Download CSV
           </motion.button>
         </div>
@@ -301,11 +301,11 @@ export default function ElectricityGraph({ graphData }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {isLoading ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-50 bg-opacity-75 rounded-lg z-10">
+          {!graphData ? (
+            <div className="flex bg-gray-50 bg-opacity-75 justify-center rounded-lg absolute inset-0 items-center z-10">
               <div className="flex flex-col items-center">
-                <div className="w-10 h-10 border-4 border-[#0b6a62]/20 border-t-[#0b6a62] rounded-full animate-spin"></div>
-                <p className="mt-3 text-sm text-gray-600">Loading data...</p>
+                <div className="border-4 border-primary/20 border-t-primary h-10 rounded-full w-10 animate-spin"></div>
+                <p className="text-gray-600 text-sm mt-3">Loading data...</p>
               </div>
             </div>
           ) : null}
@@ -313,7 +313,7 @@ export default function ElectricityGraph({ graphData }) {
           {filteredData && filteredData.length > 0 ? (
             <Line ref={chartRef} options={options} data={data} />
           ) : (
-            <div className="h-full w-full flex items-center justify-center bg-gray-50 rounded-lg">
+            <div className="flex bg-gray-50 h-full justify-center rounded-lg w-full items-center">
               <p className="text-gray-500">
                 No data available for the selected time range
               </p>
@@ -322,23 +322,23 @@ export default function ElectricityGraph({ graphData }) {
         </motion.div>
 
         {/* Legend */}
-        <div className="mt-4 flex items-center justify-center">
+        <div className="flex justify-center items-center mt-4">
           <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-[#0b6a62] mr-2"></div>
-            <span className="text-sm text-gray-600">Price (EUR)</span>
+            <div className="bg-primary h-3 rounded-full w-3 mr-2"></div>
+            <span className="text-gray-600 text-sm">Price (EUR)</span>
           </div>
         </div>
       </div>
 
       {/* Chart Footer */}
-      <div className="px-6 py-3 bg-gray-50 border-t border-gray-100 rounded-b-lg">
+      <div className="bg-gray-50 border-gray-100 border-t rounded-b-lg px-6 py-3">
         <div className="flex justify-between items-center">
-          <p className="text-xs text-gray-500">
+          <p className="text-gray-500 text-xs">
             {filteredData && filteredData.length > 0
               ? `Showing ${filteredData.length} data points`
               : "No data available"}
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-gray-500 text-xs">
             Last updated: {new Date().toLocaleString()}
           </p>
         </div>

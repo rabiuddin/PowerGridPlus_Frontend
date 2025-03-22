@@ -1,4 +1,6 @@
-import { FiHome, FiZap, FiTrash2, FiCloud, FiUser } from "react-icons/fi";
+import { FaRobot } from "react-icons/fa";
+import { FiHome, FiZap } from "react-icons/fi";
+import { MdOutlineSmartToy } from "react-icons/md";
 
 export const userDashboardMenuItems = [
   { icon: FiHome, label: "Dashboard", href: "/dashboard" },
@@ -7,7 +9,9 @@ export const userDashboardMenuItems = [
     label: "Electricity cost",
     href: "/dashboard/electricity-cost",
   },
-  // { icon: FiTrash2, label: "Energy waste", href: "/dashboard/energy-waste" },
-  // { icon: FiCloud, label: "CO2 footprint", href: "/dashboard/co2-footprint" },
-  // { icon: FiUser, label: "My account", href: "/dashboard/my-account" },
+  {
+    icon: MdOutlineSmartToy,
+    label: "Chat Bot",
+    href: "/dashboard/chatbot",
+  },
 ];

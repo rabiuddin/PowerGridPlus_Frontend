@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { getCurrentUserApiCall, refreshTokenApiCall } from "../api/users.api";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/slices/userSlice";
+import FullScreenLoader from "./shared/loader/FullScreenLoader";
 
 const ProtectedRoutes = ({ children }) => {
   // states
@@ -76,7 +77,11 @@ const ProtectedRoutes = ({ children }) => {
   }, []);
 
   if (isAuthorized === null) {
-    return <>Loading...</>;
+    return (
+      <>
+        <FullScreenLoader isLoading={isAuthorized == null} />
+      </>
+    );
   }
 
   return isAuthorized ? (

@@ -9,7 +9,7 @@ const ForgotPasswordForm = ({ useForgotPasswordInstance }) => {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="text-gray-700 text-sm block font-medium mb-1"
           >
             Email Address
           </label>
@@ -19,7 +19,7 @@ const ForgotPasswordForm = ({ useForgotPasswordInstance }) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b6a62] focus:ring-2 focus:ring-[#0b6a62]/20 outline-none transition-all"
+              className="border border-gray-300 rounded-lg w-full focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none px-4 py-3 transition-all"
               placeholder="your@email.com"
               required
             />
@@ -27,7 +27,7 @@ const ForgotPasswordForm = ({ useForgotPasswordInstance }) => {
         </div>
 
         {error && (
-          <div className="text-red-500 text-sm bg-red-50 p-3 rounded-lg">
+          <div className="bg-red-50 p-3 rounded-lg text-red-500 text-sm">
             {error}
           </div>
         )}
@@ -35,9 +35,9 @@ const ForgotPasswordForm = ({ useForgotPasswordInstance }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group cursor-pointer relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden rounded-lg bg-primary border-2 border-primary text-white font-medium transition-all duration-300 hover:bg-white hover:text-primary disabled:opacity-70"
+          className="bg-primary border-2 border-primary justify-center rounded-lg text-white w-full cursor-pointer disabled:opacity-70 duration-300 font-medium group hover:bg-white hover:text-primary inline-flex items-center overflow-hidden px-6 py-3 relative transition-all"
         >
-          <span className="relative flex items-center justify-center w-full">
+          <span className="flex justify-center w-full items-center relative">
             {isSubmitting ? "Sending..." : "Send Reset Link"}
           </span>
         </button>
