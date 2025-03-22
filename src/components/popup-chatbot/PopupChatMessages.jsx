@@ -20,30 +20,35 @@ const PopupChatMessages = ({ messages, isLoading }) => {
   };
 
   return (
-    <div className="flex-1 bg-gray-50 p-4 overflow-y-auto">
+    <div className="flex-1 bg-gray-50 p-2 sm:p-3 md:p-4 overflow-y-auto">
       <AnimatePresence>
         {!messages ? (
           <>
-            <FaCog className="h-4 text-6xl text-gray-500 w-4 animate-spin mt-4 mx-auto" />
+            <FaCog className="h-4 w-4 text-4xl sm:text-5xl md:text-6xl text-gray-500 animate-spin mt-4 mx-auto" />
           </>
         ) : messages.length === 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-12"
+            className="text-center py-8 sm:py-10 md:py-12"
           >
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-xs sm:text-sm md:text-base">
               Send a message to start the conversation
             </p>
           </motion.div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {messages.map((message) => (
               <PopupChatMessage key={message.id} message={message} />
             ))}
 
             {/* Loading indicator */}
-            {isLoading && <ResponseLoading gap={2} />}
+            {isLoading && (
+              <ResponseLoading
+                gap={1}
+                className="scale-75 sm:scale-90 md:scale-100"
+              />
+            )}
           </div>
         )}
       </AnimatePresence>

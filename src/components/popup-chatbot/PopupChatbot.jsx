@@ -24,7 +24,7 @@ const PopupChatbot = () => {
   }, [isOpen]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
       {/* Chat toggle button */}
       <AnimatePresence>
         {!isOpen && (
@@ -35,9 +35,10 @@ const PopupChatbot = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="bg-primary text-white rounded-full p-4 shadow-lg flex items-center justify-center"
+            className="bg-primary text-white rounded-full p-3 sm:p-4 shadow-lg flex items-center justify-center"
+            aria-label="Open chat"
           >
-            <FiMessageSquare className="h-6 w-6" />
+            <FiMessageSquare className="h-5 w-5 sm:h-6 sm:w-6" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -50,12 +51,13 @@ const PopupChatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="absolute bottom-0 right-0 w-[400px] h-[500px] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200"
+            className="absolute bottom-0 right-0 w-[90vw] sm:w-[400px] max-w-[400px] h-[80vh] sm:h-[500px] max-h-[500px] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200"
           >
             {/* Close button */}
             <button
               onClick={() => setIsOpen(false)}
               className="absolute top-3 right-3 p-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 z-10 transition-colors"
+              aria-label="Close chat"
             >
               <FiX className="h-4 w-4" />
             </button>
