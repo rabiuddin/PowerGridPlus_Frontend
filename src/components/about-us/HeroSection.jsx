@@ -5,12 +5,12 @@ const HeroSection = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-16 overflow-hidden bg-gradient-to-br from-[#f3fff9] to-[#edfff6]">
+      <section className="bg-gradient-to-br from-[#f3fff9] overflow-hidden py-16 relative to-[#edfff6]">
         <div className="container mx-auto px-4">
           <Reveal>
             <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-[#0b6a62] mb-6">
-                <span className="flex justify-center items-center gap-2  shimmer-primary">
+              <h1 className="text-4xl text-primary font-bold mb-6 md:text-5xl">
+                <span className="flex justify-center gap-2 items-center shimmer-primary">
                   <span>Powering the Future of Smart Energy</span>
                 </span>
               </h1>

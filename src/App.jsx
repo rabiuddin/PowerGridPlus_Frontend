@@ -25,6 +25,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
 import { getCurrentUserApiCall } from "./api/users.api";
 import { setFetchingUser } from "./redux/slices/utilitySlice";
+import { ACCESS_TOKEN } from "./config/constants";
+import Chatbot from "./pages/dashboard/Chatbot";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -44,6 +46,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   const getUser = async () => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+
+    // if there is no token we do not need to get the instance of the user
+    if (!token) return;
     dispatch(setFetchingUser(true));
     try {
       const response = await getCurrentUserApiCall();
@@ -94,6 +100,14 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <ElectricityCost />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/dashboard/chatbot"
+            element={
+              <ProtectedRoutes>
+                <Chatbot />
               </ProtectedRoutes>
             }
           />

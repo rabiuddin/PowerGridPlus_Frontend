@@ -24,7 +24,7 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="text-gray-700 text-sm block font-medium mb-1"
           >
             New Password
           </label>
@@ -34,13 +34,13 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b6a62] focus:ring-2 focus:ring-[#0b6a62]/20 outline-none transition-all"
+              className="border border-gray-300 rounded-lg w-full focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none px-4 py-3 transition-all"
               placeholder="Enter new password"
               required
             />
             <button
               type="button"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="text-gray-500 -translate-y-1/2 absolute hover:text-gray-700 right-3 top-1/2"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
@@ -56,7 +56,7 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
         <div>
           <label
             htmlFor="confirmPassword"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="text-gray-700 text-sm block font-medium mb-1"
           >
             Confirm New Password
           </label>
@@ -69,14 +69,14 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
               className={`w-full px-4 py-3 rounded-lg border ${
                 confirmPassword && password !== confirmPassword
                   ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-300 focus:border-[#0b6a62] focus:ring-[#0b6a62]/20"
+                  : "border-gray-300 focus:border-primary focus:ring-primary/20"
               } outline-none transition-all`}
               placeholder="Confirm new password"
               required
             />
             <button
               type="button"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="text-gray-500 -translate-y-1/2 absolute hover:text-gray-700 right-3 top-1/2"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
@@ -92,9 +92,9 @@ const ResetPasswordForm = ({ useResetPasswordInstance }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group cursor-pointer relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden rounded-lg bg-primary border-2 border-primary text-white font-medium transition-all duration-300 hover:bg-white hover:text-primary disabled:opacity-70"
+          className="bg-primary border-2 border-primary justify-center rounded-lg text-white w-full cursor-pointer disabled:opacity-70 duration-300 font-medium group hover:bg-white hover:text-primary inline-flex items-center overflow-hidden px-6 py-3 relative transition-all"
         >
-          <span className="relative flex items-center justify-center w-full">
+          <span className="flex justify-center w-full items-center relative">
             {isSubmitting ? "Updating..." : "Update Password"}
           </span>
         </button>

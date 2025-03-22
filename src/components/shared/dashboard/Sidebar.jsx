@@ -114,7 +114,7 @@ export default function Sidebar({ isUser }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-10"
+            className="bg-black fixed inset-0 z-10"
             onClick={toggleCollapsed}
           />
         )}
@@ -143,9 +143,9 @@ export default function Sidebar({ isUser }) {
                     bg-white rounded-r-md shadow-md border border-l-0 border-gray-200 z-10"
         >
           {!isNavOpen ? (
-            <FiChevronRight className="text-[#0b6a62]" />
+            <FiChevronRight className="text-primary" />
           ) : (
-            <FiChevronLeft className="text-[#0b6a62]" />
+            <FiChevronLeft className="text-primary" />
           )}
         </motion.button>
 
@@ -160,7 +160,7 @@ export default function Sidebar({ isUser }) {
               {isMobile && (
                 <button
                   onClick={toggleCollapsed}
-                  className="mr-2 p-1 rounded-full text-gray-500 hover:bg-gray-100 md:hidden"
+                  className="p-1 rounded-full text-gray-500 hover:bg-gray-100 md:hidden mr-2"
                 >
                   <FiX className="h-6 w-6" />
                 </button>
@@ -176,9 +176,9 @@ export default function Sidebar({ isUser }) {
           )}
 
           {!isNavOpen && (
-            <Link to={"/"} className="flex items-center justify-center">
-              <div className="w-10 h-10 rounded-full bg-[#0b6a62] flex items-center justify-center">
-                <span className="text-white font-bold text-lg">
+            <Link to={"/"} className="flex justify-center items-center">
+              <div className="flex bg-primary h-10 justify-center rounded-full w-10 items-center">
+                <span className="text-lg text-white font-bold">
                   <img src="/PwergridplusLogoOld.png" alt="P" className="h-6" />
                 </span>
               </div>
@@ -188,7 +188,7 @@ export default function Sidebar({ isUser }) {
 
         {/* User profile section */}
         <motion.div
-          className={`px-4 py-3 mx-4 mb-4 bg-gradient-to-r from-[#0b6a62]/10 to-[#22a196]/10 rounded-xl
+          className={`px-4 py-3 mx-4 mb-4 bg-gradient-to-r from-primary/10 to-[#22a196]/10 rounded-xl
                       ${!isNavOpen ? "flex justify-center" : ""}`}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -197,18 +197,18 @@ export default function Sidebar({ isUser }) {
           {isNavOpen ? (
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-[#0b6a62] flex items-center justify-center text-white">
+                <div className="flex bg-primary h-10 justify-center rounded-full text-white w-10 items-center">
                   <FiUser className="h-5 w-5" />
                 </div>
-                <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                <span className="bg-green-500 border-2 border-white h-3 rounded-full w-3 absolute bottom-0 right-0"></span>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-gray-900 truncate">
+                <h3 className="text-gray-900 text-sm font-medium truncate">
                   Power User
                 </h3>
                 <p
                   title={user?.email}
-                  className="text-xs text-gray-500 truncate"
+                  className="text-gray-500 text-xs truncate"
                 >
                   {user?.email || "admin@powergridplus.com"}
                 </p>
@@ -216,16 +216,16 @@ export default function Sidebar({ isUser }) {
             </div>
           ) : (
             <div className="relative">
-              <div className="w-10 h-10 rounded-full bg-[#0b6a62] flex items-center justify-center text-white">
+              <div className="flex bg-primary h-10 justify-center rounded-full text-white w-10 items-center">
                 <FiUser className="h-5 w-5" />
               </div>
-              <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+              <span className="bg-green-500 border-2 border-white h-3 rounded-full w-3 absolute bottom-0 right-0"></span>
             </div>
           )}
         </motion.div>
 
         {/* Navigation Menu */}
-        <nav className="flex-1 overflow-y-auto overflow-x-visible px-4">
+        <nav className="flex-1 overflow-x-visible overflow-y-auto px-4">
           <ul className="space-y-1">
             {menuItems.map((item, index) => (
               <motion.li
@@ -240,10 +240,10 @@ export default function Sidebar({ isUser }) {
                   to={item.href}
                   className={`
                     flex items-center px-3 py-3 rounded-lg text-gray-600 
-                    hover:bg-[#0b6a62]/5 hover:text-[#0b6a62] transition-all duration-200
+                    hover:bg-primary/5 hover:text-primary transition-all duration-200
                     ${
                       activeItem === item.href
-                        ? "bg-[#0b6a62]/10 text-[#0b6a62] font-medium"
+                        ? "bg-primary/10 text-primary font-medium"
                         : ""
                     }
                     ${!isNavOpen ? "justify-center" : ""}
@@ -270,7 +270,7 @@ export default function Sidebar({ isUser }) {
                   {activeItem === item.href && (
                     <motion.div
                       layoutId="active-pill"
-                      className="absolute left-0 w-1 h-full bg-[#0b6a62] rounded-r-full"
+                      className="bg-primary h-full rounded-r-full w-1 absolute left-0"
                       initial={false}
                       transition={{
                         type: "spring",
@@ -286,7 +286,7 @@ export default function Sidebar({ isUser }) {
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="fixed ml-2 top-auto z-[100] px-3 py-2 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap shadow-lg"
+                    className="bg-gray-800 rounded-md shadow-lg text-sm text-white fixed ml-2 px-3 py-2 top-auto whitespace-nowrap z-[100]"
                     style={{
                       left: "80px", // Width of collapsed sidebar (20rem)
                       transform: `translateY(-50%)`,
@@ -346,7 +346,7 @@ export default function Sidebar({ isUser }) {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="fixed ml-2 z-[100] px-3 py-2 bg-gray-800 text-white text-sm rounded-md whitespace-nowrap shadow-lg"
+                className="bg-gray-800 rounded-md shadow-lg text-sm text-white fixed ml-2 px-3 py-2 whitespace-nowrap z-[100]"
                 style={{
                   left: "80px", // Width of collapsed sidebar
                   top: "10%",
@@ -363,7 +363,7 @@ export default function Sidebar({ isUser }) {
       {/* Mobile toggle button - fixed at the bottom */}
       <button
         onClick={toggleCollapsed}
-        className="md:hidden fixed bottom-4 right-4 z-30 w-12 h-12 rounded-full bg-[#0b6a62] text-white shadow-lg flex items-center justify-center"
+        className="flex bg-primary h-12 justify-center rounded-full shadow-lg text-white w-12 bottom-4 fixed items-center md:hidden right-4 z-30"
       >
         <FiMenu className="h-6 w-6" />
       </button>

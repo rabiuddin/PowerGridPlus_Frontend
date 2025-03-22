@@ -10,7 +10,7 @@ export default function ForgotPassword() {
   const useForgotPasswordInstance = useForgotPassword();
   const { email, isSuccess } = useForgotPasswordInstance;
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5 p-4">
+    <div className="flex bg-gradient-to-br justify-center p-4 from-primary/5 items-center min-h-screen to-[#22a196]/5">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,10 +21,10 @@ export default function ForgotPassword() {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="p-8">
               <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#0b6a62]/10 mb-4">
-                  <FiMail className="w-8 h-8 text-[#0b6a62]" />
+                <div className="bg-primary/10 h-16 justify-center rounded-full w-16 inline-flex items-center mb-4">
+                  <FiMail className="h-8 text-primary w-8" />
                 </div>
-                <h1 className="text-2xl font-bold text-gray-800">
+                <h1 className="text-2xl text-gray-800 font-bold">
                   Forgot Password
                 </h1>
                 <p className="text-gray-600 mt-2">
@@ -37,10 +37,10 @@ export default function ForgotPassword() {
                 useForgotPasswordInstance={useForgotPasswordInstance}
               />
 
-              <div className="mt-6 text-center">
+              <div className="text-center mt-6">
                 <Link
                   to="/login"
-                  className="inline-flex items-center text-primary hover:text-[#22a196] transition-colors"
+                  className="text-primary hover:text-[#22a196] inline-flex items-center transition-colors"
                 >
                   <FiArrowLeft className="mr-2" />
                   Back to Login
