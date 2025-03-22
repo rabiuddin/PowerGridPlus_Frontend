@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   createNewChatApiCall,
   deleteChatApiCall,
@@ -7,6 +7,7 @@ import {
   updateChatTitleApiCall,
 } from "../../../../api/chats.api";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useChatbot = () => {
   // State for managing chats
@@ -14,6 +15,8 @@ export const useChatbot = () => {
   const [activeChat, setActiveChat] = useState(null);
   const [gettingChats, setGettingChats] = useState(false);
   const [gettingMessages, setGettingMessages] = useState(false);
+  const location = useLocation();
+  const hasCreatedChat = useRef(false);
 
   // Add a new state for sidebar collapse
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
@@ -35,6 +38,16 @@ export const useChatbot = () => {
 
   // Load chats
   useEffect(() => {
+    if (!hasCreatedChat.current && chats && location.state) {
+      if (chats.length < 3) {
+        createNewChat();
+      } else {
+        setActiveChat(chats[0].id);
+      }
+      hasCreatedChat.current = true;
+      return;
+    }
+
     if (chats.length > 0) {
       // Set the active chat to the last used chat if available
       const lastActiveId = localStorage.getItem("lastActiveChatId");

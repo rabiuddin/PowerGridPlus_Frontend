@@ -33,31 +33,6 @@ const EmptyChatState = ({ createNewChat }) => {
           <FiPlus className="mr-2" />
           Start a New Chat
         </motion.button>
-
-        <div className="grid grid-cols-1 text-left gap-4 md:grid-cols-3 pt-4">
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h3 className="text-gray-800 font-medium mb-2">
-              Ask about Energy Efficiency
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Get tips on optimizing energy usage and reducing costs.
-            </p>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h3 className="text-gray-800 font-medium mb-2">Grid Management</h3>
-            <p className="text-gray-600 text-sm">
-              Learn about smart grid technologies and best practices.
-            </p>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h3 className="text-gray-800 font-medium mb-2">Sustainability</h3>
-            <p className="text-gray-600 text-sm">
-              Discover ways to implement sustainable energy solutions.
-            </p>
-          </div>
-        </div>
       </motion.div>
     </div>
   );
