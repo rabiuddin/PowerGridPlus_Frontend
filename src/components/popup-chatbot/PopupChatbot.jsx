@@ -50,7 +50,7 @@ const PopupChatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="absolute bottom-0 right-0 w-[350px] h-[500px] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200"
+            className="absolute bottom-0 right-0 w-[400px] h-[500px] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200"
           >
             {/* Close button */}
             <button
