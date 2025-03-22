@@ -16,7 +16,7 @@ export const useChatbot = () => {
   const [gettingMessages, setGettingMessages] = useState(false);
 
   // Add a new state for sidebar collapse
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
 
   const getChats = async () => {
     setGettingChats(true);
