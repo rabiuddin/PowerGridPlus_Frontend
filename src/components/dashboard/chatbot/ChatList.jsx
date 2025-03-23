@@ -62,11 +62,11 @@ const ChatList = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={createNewChat}
-          disabled={chats.length >= 3 || gettingChats}
+          disabled={gettingChats || chats?.length >= 3}
           className={`w-full  rounded-lg flex items-center justify-center gap-2 
             ${isCollapsed ? "sm:py-2.5 sm:px-4" : "py-2.5 px-4"}
             ${
-              chats.length >= 3 || gettingChats
+              gettingChats || chats?.length >= 3
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
                 : "bg-primary text-white hover:bg-[#22a196]"
             } 
@@ -79,7 +79,7 @@ const ChatList = ({
         </motion.button>
 
         {/* Show limit message if 3 chats exist */}
-        {chats.length >= 3 && !isCollapsed && (
+        {chats && chats.length >= 3 && !isCollapsed && (
           <p className="text-center text-gray-500 text-xs mt-2">
             Maximum of 3 chats allowed
           </p>
@@ -88,7 +88,7 @@ const ChatList = ({
 
       {/* Chat list */}
       <div className="flex-1 overflow-y-auto">
-        {gettingChats ? (
+        {gettingChats || !chats ? (
           <div className="flex justify-center items-center h-32">
             <FaCog className="h-4 text-4xl sm:text-6xl text-gray-500 w-4 animate-spin" />
           </div>

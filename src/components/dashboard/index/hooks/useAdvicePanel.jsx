@@ -12,7 +12,6 @@ export const useAdvicePanel = () => {
     if (response.success) {
       setAdviceData(
         response.data.map((advice) => ({
-          id: Date.now().toString,
           type: "tip",
           title: "New Advice",
           description: advice,
