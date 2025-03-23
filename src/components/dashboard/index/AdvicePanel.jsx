@@ -89,10 +89,10 @@ const AdvicePanel = () => {
       <div className="flex-grow overflow-auto">
         {filteredAdvice.length > 0 ? (
           <div className="divide-gray-100 divide-y">
-            {filteredAdvice.map((advice) => (
+            {filteredAdvice.map((advice, index) => (
               <AdviceItem
                 handleLearnMore={handleLearnMore}
-                key={advice.id}
+                key={index}
                 advice={advice}
               />
             ))}

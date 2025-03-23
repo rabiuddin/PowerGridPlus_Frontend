@@ -7,6 +7,8 @@ import { FaCog } from "react-icons/fa";
 
 // ChatInterface component handles the main chat area with messages and input
 const ChatInterface = ({ chat, updateChatTitle, addMessage }) => {
+  if (!chat) return;
+
   const {
     isEditingTitle,
     titleInputRef,

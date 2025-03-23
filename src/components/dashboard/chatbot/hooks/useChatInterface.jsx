@@ -25,12 +25,17 @@ export const useChatInterface = (chat, updateChatTitle, addMessage) => {
   }, [chat.messages]);
 
   useEffect(() => {
-    if (!hasSendPrompt.current && location.state && messageInput.trim()) {
+    if (
+      chat.messages &&
+      !hasSendPrompt.current &&
+      location.state &&
+      messageInput.trim()
+    ) {
       handleSendMessage();
       navigate(location.pathname, { state: null, replace: true });
       hasSendPrompt.current = true;
     }
-  }, [messageInput]);
+  }, [messageInput, chat.messages]);
 
   // Focus title input when editing
   useEffect(() => {
