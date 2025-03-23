@@ -11,7 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const useChatbot = () => {
   // State for managing chats
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState(null);
   const [activeChat, setActiveChat] = useState(null);
   const [gettingChats, setGettingChats] = useState(false);
   const [gettingMessages, setGettingMessages] = useState(false);
@@ -38,6 +38,8 @@ export const useChatbot = () => {
 
   // Load chats
   useEffect(() => {
+    if (!chats) return;
+
     if (!hasCreatedChat.current && chats && location.state) {
       if (chats.length < 3) {
         createNewChat();
