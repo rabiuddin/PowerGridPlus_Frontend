@@ -66,6 +66,12 @@ const Navbar = () => {
             Services
           </Link>
           <Link
+            to={"/products"}
+            className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out"
+          >
+            Products
+          </Link>
+          <Link
             to={"/blogs"}
             className="text-sm/6 font-semibold text-gray-900 hover:text-secondary transition-all duration-200 ease-in-out"
           >
@@ -179,6 +185,12 @@ const Navbar = () => {
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Services
+                    </Link>
+                    <Link
+                      to={"/products"}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Products
                     </Link>
                     <Link
                       to={"/blogs"}
