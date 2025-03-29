@@ -27,7 +27,7 @@ const EmptyCart = () => {
         </p>
 
         <Link
-          href="/products"
+          to="/products"
           className="inline-flex items-center px-6 py-3 bg-[#0b6a62] text-white rounded-lg hover:bg-[#22a196] transition-colors"
         >
           <span>Browse Products</span>

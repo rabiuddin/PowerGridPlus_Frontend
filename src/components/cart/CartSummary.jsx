@@ -134,7 +134,7 @@ const CartSummary = () => {
         </div>
         {/* Checkout Button */}
         <Link
-          href="/checkout"
+          to="/checkout"
           className="block w-full py-3 px-4 bg-[#0b6a62] text-white text-center rounded-lg hover:bg-[#22a196] transition-colors"
         >
           <span className="flex items-center justify-center">

@@ -23,7 +23,7 @@ const CartHeader = ({ itemCount }) => {
         </div>
 
         <Link
-          href="/products"
+          to="/products"
           className="flex items-center text-[#0b6a62] hover:text-[#22a196] transition-colors"
         >
           <FiArrowLeft className="w-4 h-4 mr-2" />
@@ -33,7 +33,7 @@ const CartHeader = ({ itemCount }) => {
 
       {/* Breadcrumb navigation */}
       <nav className="flex text-sm text-gray-500 mt-4">
-        <Link href="/" className="hover:text-[#0b6a62] transition-colors">
+        <Link to="/" className="hover:text-[#0b6a62] transition-colors">
           Home
         </Link>
         <span className="mx-2">/</span>

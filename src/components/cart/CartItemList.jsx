@@ -69,14 +69,14 @@ const CartItemList = () => {
 
         <div className="flex flex-wrap gap-4">
           <Link
-            href="/products"
+            to="/products"
             className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
           >
             Continue Shopping
           </Link>
 
           <Link
-            href="/checkout"
+            to="/checkout"
             className="px-6 py-2 bg-[#0b6a62] text-white rounded-lg hover:bg-[#22a196] transition-colors"
           >
             Proceed to Checkout

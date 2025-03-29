@@ -51,7 +51,7 @@ const OrderConfirmation = ({ orderId }) => {
             </motion.button>
           </Link> */}
 
-          <Link to="/account">
+          <Link to="/dashboard">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -62,7 +62,7 @@ const OrderConfirmation = ({ orderId }) => {
             </motion.button>
           </Link>
 
-          <Link to="/">
+          <Link to="/products">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
