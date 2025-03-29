@@ -27,6 +27,7 @@ import { getCurrentUserApiCall } from "./api/users.api";
 import { setFetchingUser } from "./redux/slices/utilitySlice";
 import { ACCESS_TOKEN } from "./config/constants";
 import Chatbot from "./pages/dashboard/Chatbot";
+import VerifyUser from "./pages/VerifyUser";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -83,6 +84,7 @@ const App = () => {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogPost />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/verify-user/:token" element={<VerifyUser />} />
           <Route
             path="/reset-password/:uidb64/:token"
             element={<ResetPassword />}
