@@ -28,6 +28,7 @@ export default function Checkout() {
     orderPlaced,
     orderId,
     isProcessing,
+    lastStep,
   } = useCheckout();
 
   const { cart, cartCount, isLoading: cartLoading } = useCart();
@@ -56,16 +57,16 @@ export default function Checkout() {
             onNext={() => setCurrentStep(2)}
           />
         );
+      // case 2:
+      //   return (
+      //     <ShippingMethod
+      //       selectedMethod={shippingMethod}
+      //       setSelectedMethod={setShippingMethod}
+      //       onNext={() => setCurrentStep(3)}
+      //       onBack={() => setCurrentStep(1)}
+      //     />
+      //   );
       case 2:
-        return (
-          <ShippingMethod
-            selectedMethod={shippingMethod}
-            setSelectedMethod={setShippingMethod}
-            onNext={() => setCurrentStep(3)}
-            onBack={() => setCurrentStep(1)}
-          />
-        );
-      case 3:
         return (
           <PaymentForm
             paymentInfo={paymentInfo}
@@ -74,7 +75,7 @@ export default function Checkout() {
             onBack={() => setCurrentStep(2)}
           />
         );
-      case 4:
+      case 3:
         return (
           <OrderReview
             shippingInfo={shippingInfo}
@@ -85,7 +86,7 @@ export default function Checkout() {
             isProcessing={isProcessing}
           />
         );
-      case 5:
+      case 4:
         return <OrderConfirmation orderId={orderId} />;
       default:
         return (
@@ -110,7 +111,7 @@ export default function Checkout() {
     <MainLayout>
       <div className="min-h-screen bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5">
         <div className="container mx-auto px-4 py-8">
-          <CheckoutHeader currentStep={currentStep} />
+          <CheckoutHeader currentStep={currentStep} lastStep={lastStep} />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
             {/* Main checkout form - Takes up 2/3 of the space on large screens */}

@@ -78,12 +78,12 @@ const OrderSummary = ({ cart, shippingMethod, currentStep }) => {
             <span>{formatPrice(tax)}</span>
           </div>
 
-          {discount > 0 && (
+          {/* {discount > 0 && (
             <div className="flex justify-between text-green-600">
               <span>Discount</span>
               <span>-{formatPrice(discount)}</span>
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Total */}

@@ -112,7 +112,7 @@ const DevicesListGraph = () => {
     labels: days,
     datasets: filteredDevices.map((device) => ({
       label: device.name,
-      data: device.data,
+      data: device.data.map((val) => val / 10),
       borderColor: device.color,
       backgroundColor: `${device.color}20`,
       pointBackgroundColor: device.color,

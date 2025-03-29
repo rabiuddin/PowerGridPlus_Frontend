@@ -49,7 +49,6 @@ const CartSummary = () => {
     >
       <div className="p-6">
         <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
-
         {/* Price Breakdown */}
         <div className="space-y-3 mb-6">
           <div className="flex justify-between text-gray-600">
@@ -67,16 +66,15 @@ const CartSummary = () => {
             <span>{shipping > 0 ? formatPrice(shipping) : "Free"}</span>
           </div>
 
-          {discount > 0 && (
+          {/* {discount > 0 && (
             <div className="flex justify-between text-green-600">
               <span>Discount</span>
               <span>-{formatPrice(discount)}</span>
             </div>
-          )}
+          )} */}
         </div>
-
         {/* Promo Code */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <button
             onClick={() => setShowPromoInput(!showPromoInput)}
             className="flex items-center text-[#0b6a62] hover:text-[#22a196] transition-colors"
@@ -126,8 +124,7 @@ const CartSummary = () => {
               )}
             </motion.div>
           )}
-        </div>
-
+        </div> */}
         {/* Total */}
         <div className="flex justify-between items-center border-t border-gray-200 pt-4 mb-6">
           <span className="text-lg font-bold text-gray-900">Total</span>
@@ -135,7 +132,6 @@ const CartSummary = () => {
             {formatPrice(total)}
           </span>
         </div>
-
         {/* Checkout Button */}
         <Link
           href="/checkout"
@@ -146,7 +142,6 @@ const CartSummary = () => {
             Proceed to Checkout
           </span>
         </Link>
-
         {/* Secure Checkout Message */}
         <p className="text-xs text-gray-500 text-center mt-4 flex items-center justify-center">
           <svg

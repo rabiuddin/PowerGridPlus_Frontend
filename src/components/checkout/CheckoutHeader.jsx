@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 
 const steps = [
   { number: 1, title: "Shipping" },
-  { number: 2, title: "Delivery" },
-  { number: 3, title: "Payment" },
-  { number: 4, title: "Review" },
+  // { number: 2, title: "Delivery" },
+  { number: 2, title: "Payment" },
+  { number: 3, title: "Review" },
 ];
 
-const CheckoutHeader = ({ currentStep }) => {
+const CheckoutHeader = ({ currentStep, lastStep }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
@@ -108,10 +108,11 @@ const CheckoutHeader = ({ currentStep }) => {
       <div className="sm:hidden">
         <div className="flex justify-between mb-2">
           <span className="text-sm font-medium text-[#0b6a62]">
-            Step {currentStep <= 4 ? currentStep : 4} of {steps.length}
+            Step {currentStep <= lastStep - 1 ? currentStep : lastStep - 1} of{" "}
+            {steps.length}
           </span>
           <span className="text-sm font-medium text-gray-700">
-            {steps[currentStep - currentStep == 5 ? 2 : 1].title}
+            {steps[currentStep - currentStep == lastStep ? 2 : 1].title}
           </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1.5">
@@ -119,7 +120,9 @@ const CheckoutHeader = ({ currentStep }) => {
             className="bg-[#0b6a62] h-1.5 rounded-full transition-all duration-500"
             style={{
               width: `${
-                currentStep <= 4 ? (currentStep / steps.length) * 100 : "100"
+                currentStep <= lastStep - 1
+                  ? (currentStep / steps.length) * 100
+                  : "100"
               }%`,
             }}
           ></div>

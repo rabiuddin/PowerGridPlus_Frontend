@@ -7,6 +7,7 @@ import { useCart } from "../../products/hooks/useCart";
 export const useCheckout = () => {
   // Current step in checkout process
   const [currentStep, setCurrentStep] = useState(1);
+  const lastStep = 4;
 
   // Shipping information
   const [shippingInfo, setShippingInfo] = useState({
@@ -89,5 +90,6 @@ export const useCheckout = () => {
     orderId,
     isProcessing,
     placeOrder,
+    lastStep,
   };
 };

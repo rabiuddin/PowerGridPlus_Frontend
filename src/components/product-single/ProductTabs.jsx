@@ -91,12 +91,12 @@ const ProductTabs = ({ product, reviews, reviewsLoading }) => {
         )}
 
         {/* Review Form */}
-        <div className="mt-8 border-t border-gray-200 pt-8">
+        {/* <div className="mt-8 border-t border-gray-200 pt-8">
           <h3 className="text-lg font-medium text-gray-900 mb-4">
             Write a Review
           </h3>
           <ProductReviewForm productId={product.id} />
-        </div>
+        </div> */}
       </div>
     ),
   };
@@ -105,7 +105,7 @@ const ProductTabs = ({ product, reviews, reviewsLoading }) => {
     <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
       {/* Tabs */}
       <div className="flex border-b border-gray-200">
-        {["description", "specifications", "reviews"].map((tab) => (
+        {["description", "reviews"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}

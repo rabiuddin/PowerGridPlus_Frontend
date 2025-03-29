@@ -203,22 +203,6 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={handleToggleWishlist}
-          className={`p-3 rounded-lg border ${
-            isWishlisted
-              ? "border-red-500 text-red-500 bg-red-50"
-              : "border-gray-300 text-gray-600 hover:border-gray-400"
-          } transition-colors`}
-          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
-        >
-          <FiHeart
-            className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`}
-          />
-        </motion.button>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
           onClick={handleShare}
           className="p-3 rounded-lg border border-gray-300 text-gray-600 hover:border-gray-400 transition-colors"
           aria-label="Share product"

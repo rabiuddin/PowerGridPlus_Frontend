@@ -22,11 +22,6 @@ const ProductCard = ({ product }) => {
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
 
-        {/* Wishlist Button */}
-        <button className="absolute top-3 right-3 p-2 rounded-full bg-white shadow-md text-gray-400 hover:text-red-500 transition-colors">
-          <FiHeart className="h-5 w-5" />
-        </button>
-
         {/* Featured Badge */}
         <div className="absolute top-3 left-3 flex gap-2 text-white text-xs font-medium px-2 py-1 rounded">
           {product.featured && (
@@ -68,7 +63,7 @@ const ProductCard = ({ product }) => {
           {product.description}
         </p>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-row md:flex-col md:gap-2 xl:flex-row xl:gap-2 items-center justify-between">
           <span className="text-lg font-bold text-gray-900">
             ${product.price.toFixed(2)}
           </span>
