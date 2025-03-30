@@ -4,10 +4,9 @@ import Reveal from "../components/shared/framer-motion/Reveal";
 import { useSignup } from "../components/signup/hooks/useSignup";
 import PasswordStrengthIndicator from "../components/shared/PasswordStrengthIndicator";
 import FormError from "../components/shared/FormError";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import ButtonWithLoading from "../components/shared/button/ButtonWithLoading";
-import VerificationEmailSent from "../components/verify-user/VerificationEmailSent";
 import { motion } from "framer-motion";
+import VerificationEmailSent from "../components/verify-email/VerificationEmailSent";
 
 export default function Signup() {
   const {

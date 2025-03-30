@@ -58,12 +58,6 @@ export const useSignup = () => {
     });
 
     if (response.success) {
-      const { access, refresh, user } = response.data;
-      localStorage.setItem(ACCESS_TOKEN, access);
-      localStorage.setItem(REFRESH_TOKEN, refresh);
-      dispatch(setUser(user));
-      toast.success(response.message);
-      // navigate(from, { replace: true });
       setShowVerificationNotice(true);
     } else {
       setError(response.message);
