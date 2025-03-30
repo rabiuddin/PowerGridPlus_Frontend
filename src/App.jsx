@@ -32,6 +32,7 @@ import ProductSingle from "./pages/ProductSingle";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import { CartProvider } from "./components/products/hooks/useCart";
+import Orders from "./pages/dashboard/Orders";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -118,6 +119,14 @@ const App = () => {
               element={
                 <ProtectedRoutes>
                   <Chatbot />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/dashboard/my-orders"
+              element={
+                <ProtectedRoutes>
+                  <Orders />
                 </ProtectedRoutes>
               }
             />

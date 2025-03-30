@@ -1,5 +1,5 @@
 import { FaRobot } from "react-icons/fa";
-import { FiHome, FiZap } from "react-icons/fi";
+import { FiHome, FiShoppingBag, FiZap } from "react-icons/fi";
 import { MdOutlineSmartToy } from "react-icons/md";
 
 export const userDashboardMenuItems = [
@@ -13,5 +13,10 @@ export const userDashboardMenuItems = [
     icon: MdOutlineSmartToy,
     label: "Chat Bot",
     href: "/dashboard/chatbot",
+  },
+  {
+    icon: FiShoppingBag,
+    label: "My Orders",
+    href: "/dashboard/my-orders",
   },
 ];
