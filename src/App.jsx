@@ -27,6 +27,7 @@ import { getCurrentUserApiCall } from "./api/users.api";
 import { setFetchingUser } from "./redux/slices/utilitySlice";
 import { ACCESS_TOKEN } from "./config/constants";
 import Chatbot from "./pages/dashboard/Chatbot";
+import VerifyEmail from "./pages/VerifyEmail";
 import Products from "./pages/Products";
 import ProductSingle from "./pages/ProductSingle";
 import Cart from "./pages/Cart";
@@ -92,6 +93,10 @@ const App = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:productId" element={<ProductSingle />} />
+               <Route
+            path="/verify-email/:uidb64/:token"
+            element={<VerifyEmail />}
+          />
             <Route
               path="/cart"
               element={
