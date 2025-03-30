@@ -85,7 +85,7 @@ const ProductTabs = ({ product, reviews, reviewsLoading }) => {
         ) : (
           <div className="text-center py-8">
             <p className="text-gray-500 mb-4">
-              No reviews yet. Be the first to review this product!
+              No reviews yet. Be the first to buy and review this product!
             </p>
           </div>
         )}

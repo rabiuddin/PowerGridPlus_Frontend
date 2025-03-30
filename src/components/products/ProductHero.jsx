@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Reveal from "../shared/framer-motion/Reveal";
 
 const ProductHero = () => {

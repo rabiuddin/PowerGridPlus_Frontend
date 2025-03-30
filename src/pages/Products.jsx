@@ -1,5 +1,3 @@
-"use client";
-
 import ProductHero from "../components/products/ProductHero";
 import ProductFilters from "../components/products/ProductFilters";
 import ProductSearch from "../components/products/ProductSearch";
@@ -31,7 +29,7 @@ export default function Products() {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-br from-[#0b6a62]/5 to-[#22a196]/5">
+      <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5">
         {/* Hero Section */}
         <ProductHero />
 
@@ -100,8 +98,9 @@ export default function Products() {
         </section>
 
         {/* Featured Products Section */}
-        <FeaturedProducts featuredProducts={featuredProducts} />
-
+        {featuredProducts && featuredProducts.length > 0 && (
+          <FeaturedProducts featuredProducts={featuredProducts} />
+        )}
         {/* Call to Action */}
         <ProductCTA />
       </div>

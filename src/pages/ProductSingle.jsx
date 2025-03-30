@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import ProductBreadcrumbs from "../components/product-single/ProductBreadcrumbs";
 import ProductGallery from "../components/product-single/ProductGallery";
@@ -8,23 +6,20 @@ import ProductTabs from "../components/product-single/ProductTabs";
 import RelatedProducts from "../components/product-single/RelatedProducts";
 import { useProductDetails } from "../components/product-single/hooks/useProductDetails";
 import { useRelatedProducts } from "../components/product-single/hooks/useRelatedProducts";
-import { useProductReviews } from "../components/product-single/hooks/useProductReviews";
 import MainLayout from "../layouts/MainLayout";
+import { Link, useParams } from "react-router-dom";
 
 export default function ProductSingle() {
-  // In a real app, you'd get the product ID from the URL
-  const productId = 2; // Example product ID
+  const { productId } = useParams();
 
   const {
     product,
     loading: productLoading,
     error: productError,
-  } = useProductDetails(productId);
-  const {
     reviews,
     averageRating,
-    loading: reviewsLoading,
-  } = useProductReviews(productId);
+  } = useProductDetails(productId);
+
   const { relatedProducts, loading: relatedLoading } =
     useRelatedProducts(productId);
 
@@ -60,7 +55,7 @@ export default function ProductSingle() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
               {/* Product Gallery */}
               <ProductGallery
-                images={product.images}
+                images={product.images.map((image) => image.image)}
                 productName={product.name}
               />
 
@@ -77,14 +72,14 @@ export default function ProductSingle() {
           <ProductTabs
             product={product}
             reviews={reviews}
-            reviewsLoading={reviewsLoading}
+            reviewsLoading={productLoading}
           />
 
           {/* Related Products */}
-          <RelatedProducts
+          {/* <RelatedProducts
             products={relatedProducts}
             loading={relatedLoading}
-          />
+          /> */}
         </div>
       </div>
     </MainLayout>
@@ -146,12 +141,12 @@ const ProductErrorState = ({ error }) => {
           {error ||
             "We couldn't find the product you're looking for. It may have been removed or doesn't exist."}
         </p>
-        <a
-          href="/products"
+        <Link
+          to="/products"
           className="inline-block bg-[#0b6a62] text-white px-6 py-3 rounded-lg hover:bg-[#22a196] transition-colors"
         >
           Back to Products
-        </a>
+        </Link>
       </div>
     </div>
   );

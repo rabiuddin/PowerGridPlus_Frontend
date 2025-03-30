@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 const steps = [
   { number: 1, title: "Shipping" },
   // { number: 2, title: "Delivery" },
-  { number: 2, title: "Payment" },
-  { number: 3, title: "Review" },
+  // { number: 2, title: "Payment" },
+  { number: 2, title: "Review" },
 ];
 
 const CheckoutHeader = ({ currentStep, lastStep }) => {

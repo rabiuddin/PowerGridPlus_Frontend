@@ -16,7 +16,6 @@ import { useCart } from "../products/hooks/useCart";
 
 const ProductInfo = ({ product, averageRating, reviewCount }) => {
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const { addToCart } = useCart();
 
   const handleQuantityChange = (value) => {
@@ -28,11 +27,6 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
     if (product.inStock) {
       addToCart(product, quantity);
     }
-  };
-
-  const handleToggleWishlist = () => {
-    setIsWishlisted(!isWishlisted);
-    // In a real app, you'd call an API to add/remove from wishlist
   };
 
   const handleShare = () => {
@@ -122,13 +116,12 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
 
       {/* Short Description */}
       <p className="text-gray-600 mb-6">
-        {product.shortDescription ||
-          product.description.substring(0, 150) + "..."}
+        {product.description.substring(0, 150) + "..."}
       </p>
 
       {/* Stock Status */}
       <div className="flex items-center mb-6">
-        {product.inStock ? (
+        {product.stock > 0 ? (
           <div className="flex items-center text-green-600">
             <FiCheck className="w-5 h-5 mr-1" />
             <span>In Stock</span>
@@ -140,9 +133,9 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
           </div>
         )}
 
-        {product.inStock && product.stockQuantity && (
+        {product.stock > 0 && product.stock && (
           <span className="ml-4 text-sm text-gray-500">
-            {product.stockQuantity} units available
+            {product.stock} units available
           </span>
         )}
       </div>
@@ -189,9 +182,9 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleAddToCart}
-          disabled={!product.inStock}
+          disabled={!product.stock > 0}
           className={`flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-lg ${
-            product.inStock
+            product.stock > 0
               ? "bg-[#0b6a62] text-white hover:bg-[#22a196]"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           } transition-colors`}
@@ -210,11 +203,6 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
           <FiShare2 className="w-5 h-5" />
         </motion.button>
       </div>
-
-      {/* Additional Info */}
-      {product.sku && (
-        <div className="mt-6 text-sm text-gray-500">SKU: {product.sku}</div>
-      )}
     </motion.div>
   );
 };

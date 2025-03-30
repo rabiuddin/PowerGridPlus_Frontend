@@ -66,16 +66,16 @@ export default function Checkout() {
       //       onBack={() => setCurrentStep(1)}
       //     />
       //   );
+      // case 2:
+      //   return (
+      //     <PaymentForm
+      //       paymentInfo={paymentInfo}
+      //       setPaymentInfo={setPaymentInfo}
+      //       onNext={() => setCurrentStep(4)}
+      //       onBack={() => setCurrentStep(2)}
+      //     />
+      //   );
       case 2:
-        return (
-          <PaymentForm
-            paymentInfo={paymentInfo}
-            setPaymentInfo={setPaymentInfo}
-            onNext={() => setCurrentStep(4)}
-            onBack={() => setCurrentStep(2)}
-          />
-        );
-      case 3:
         return (
           <OrderReview
             shippingInfo={shippingInfo}
@@ -86,7 +86,7 @@ export default function Checkout() {
             isProcessing={isProcessing}
           />
         );
-      case 4:
+      case 3:
         return <OrderConfirmation orderId={orderId} />;
       default:
         return (

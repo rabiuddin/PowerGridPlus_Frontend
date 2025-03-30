@@ -1,7 +1,5 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { FiHeart, FiShoppingCart, FiStar } from "react-icons/fi";
+import { FiShoppingCart, FiStar } from "react-icons/fi";
 import { useCart } from "./hooks/useCart";
 import { Link } from "react-router-dom";
 
@@ -19,19 +17,19 @@ const ProductCard = ({ product }) => {
         {/* Product Image */}
         <div className="relative aspect-square bg-gray-100">
           <img
-            src={product.image || "/placeholder.svg"}
+            src={product.images[0]?.image || "https://placehold.co/300x300"}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
 
           {/* Featured Badge */}
           <div className="absolute top-3 left-3 flex gap-2 text-white text-xs font-medium px-2 py-1 rounded">
-            {product.featured && (
+            {product.is_featured && (
               <div className="bg-[#0b6a62] text-white text-xs font-medium px-2 py-1 rounded">
                 Featured
               </div>
             )}
-            {!product.inStock && (
+            {!product.stock > 0 && (
               <div className="bg-gray-800 text-white text-xs font-medium px-2 py-1 rounded">
                 Out of Stock
               </div>
@@ -57,7 +55,7 @@ const ProductCard = ({ product }) => {
               <span className="ml-1 text-sm font-medium">{product.rating}</span>
             </div>
             <span className="text-xs text-gray-500">
-              ({product.reviewCount} reviews)
+              ({product.reviews.length} reviews)
             </span>
           </div>
 
@@ -67,20 +65,20 @@ const ProductCard = ({ product }) => {
 
           <div className="flex flex-row md:flex-col md:gap-2 xl:flex-row xl:gap-2 items-center justify-between">
             <span className="text-lg font-bold text-gray-900">
-              ${product.price.toFixed(2)}
+              ${product.price}
             </span>
 
             <button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                if (product.inStock) {
+                if (product.stock > 0) {
                   addToCart(product);
                 }
               }}
-              disabled={!product.inStock}
+              disabled={!product.stock > 0}
               className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm ${
-                product.inStock
+                product.stock > 0
                   ? "bg-[#0b6a62] text-white hover:bg-[#22a196]"
                   : "bg-gray-200 text-gray-400 cursor-not-allowed"
               } transition-colors`}

@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useCart } from "../../products/hooks/useCart";
@@ -7,7 +5,7 @@ import { useCart } from "../../products/hooks/useCart";
 export const useCheckout = () => {
   // Current step in checkout process
   const [currentStep, setCurrentStep] = useState(1);
-  const lastStep = 4;
+  const lastStep = 3;
 
   // Shipping information
   const [shippingInfo, setShippingInfo] = useState({
@@ -25,7 +23,13 @@ export const useCheckout = () => {
   });
 
   // Selected shipping method
-  const [shippingMethod, setShippingMethod] = useState(null);
+  const [shippingMethod, setShippingMethod] = useState({
+    id: "standard",
+    name: "Standard Shipping",
+    description: "Delivery in 5-7 business days",
+    price: 0,
+    type: "standard",
+  });
 
   // Payment information
   const [paymentInfo, setPaymentInfo] = useState({
@@ -65,7 +69,7 @@ export const useCheckout = () => {
       setOrderPlaced(true);
 
       // Move to confirmation step
-      setCurrentStep(5);
+      setCurrentStep(lastStep);
 
       // Show success toast
       toast.success("Order placed successfully!");

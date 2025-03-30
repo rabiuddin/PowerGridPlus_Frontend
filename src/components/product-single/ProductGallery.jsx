@@ -10,7 +10,13 @@ const ProductGallery = ({ images, productName }) => {
 
   // If no images provided, use a placeholder
   const imageList =
-    images?.length > 0 ? images : ["https://placehold.co/600x600"];
+    images?.length > 0
+      ? images
+      : [
+          "https://placehold.co/600x600",
+          "https://placehold.co/600x600",
+          "https://placehold.co/600x600",
+        ];
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) =>
@@ -45,7 +51,7 @@ const ProductGallery = ({ images, productName }) => {
         className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4"
       >
         <img
-          src={imageList[currentImageIndex] || "/placeholder.svg"}
+          src={imageList[currentImageIndex] || "https://placehold.co/600x600"}
           alt={`${productName} - Image ${currentImageIndex + 1}`}
           className="w-full h-full object-contain"
         />

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ProductCTA = () => {
   return (
@@ -19,7 +20,7 @@ const ProductCTA = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-white text-[#0b6a62] font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            Contact Sales Team
+            <Link to={"/contact-us"}>Contact Us</Link>
           </motion.button>
         </div>
       </div>
