@@ -77,11 +77,11 @@ const RecommendedProducts = ({
         ref={scrollContainerRef}
         className="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide"
       >
-        {/* {products.map((product) => (
+        {products.map((product) => (
           <div key={product.id} className="w-64 flex-shrink-0">
             <ProductCard product={product} />
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );

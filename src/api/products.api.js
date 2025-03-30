@@ -28,3 +28,12 @@ export const fetchProductApiCall = async (productId) => {
     return e.response.data;
   }
 };
+
+export const fetchRecommendedProductsApiCall = async (body) => {
+  try {
+    const response = await api.post(`${path}/recommendations/`, body);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

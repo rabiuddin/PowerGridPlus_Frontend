@@ -21,7 +21,7 @@ export default function ProductSingle() {
   } = useProductDetails(productId);
 
   const { relatedProducts, loading: relatedLoading } =
-    useRelatedProducts(productId);
+    useRelatedProducts(product);
 
   // Scroll to top on page load
   useEffect(() => {
@@ -76,10 +76,10 @@ export default function ProductSingle() {
           />
 
           {/* Related Products */}
-          {/* <RelatedProducts
+          <RelatedProducts
             products={relatedProducts}
             loading={relatedLoading}
-          /> */}
+          />
         </div>
       </div>
     </MainLayout>

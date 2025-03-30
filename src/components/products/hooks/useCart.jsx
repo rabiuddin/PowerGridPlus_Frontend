@@ -111,7 +111,6 @@ export const CartProvider = ({ children }) => {
   // Clear cart
   const clearCart = () => {
     setCart([]);
-    toast.success("Cart cleared");
   };
 
   return (

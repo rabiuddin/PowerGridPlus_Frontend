@@ -27,7 +27,7 @@ export default function Checkout() {
     lastStep,
   } = useCheckout();
 
-  const { cart, cartCount, isLoading: cartLoading } = useCart();
+  const { cart, isLoading: cartLoading } = useCart();
   const navigate = useNavigate();
 
   // Scroll to top on page load
@@ -37,10 +37,10 @@ export default function Checkout() {
 
   // Redirect to cart if cart is empty
   useEffect(() => {
-    if (!cartLoading && cartCount === 0 && !orderPlaced) {
+    if (!cartLoading && cart.length === 0 && !orderPlaced) {
       navigate("/cart");
     }
-  }, [cartLoading, cartCount, orderPlaced, navigate]);
+  }, [cartLoading, cart, orderPlaced, navigate]);
 
   // Render appropriate step content
   const renderStepContent = () => {

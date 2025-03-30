@@ -16,10 +16,10 @@ const OrderCard = ({ order, isExpanded, onClick }) => {
         {/* Order ID and Date */}
         <div>
           <h3 className="text-lg font-medium text-gray-900">
-            Order #{order.orderNumber}
+            Order #{order.id}
           </h3>
           <p className="text-sm text-gray-500">
-            Placed on {formatOrderDate(order.orderDate)}
+            Placed on {formatOrderDate(order.created_at)}
           </p>
         </div>
 

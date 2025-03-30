@@ -92,8 +92,22 @@ const App = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:productId" element={<ProductSingle />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoutes>
+                  <Cart />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <ProtectedRoutes>
+                  <Checkout />
+                </ProtectedRoutes>
+              }
+            />
             <Route
               path="/reset-password/:uidb64/:token"
               element={<ResetPassword />}

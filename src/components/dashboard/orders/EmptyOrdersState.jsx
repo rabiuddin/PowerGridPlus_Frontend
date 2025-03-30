@@ -1,8 +1,6 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { FiShoppingBag, FiFilter, FiArrowRight } from "react-icons/fi"
-import { Link } from "react-router-dom"
+import { motion } from "framer-motion";
+import { FiShoppingBag, FiFilter, FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const EmptyOrdersState = ({ hasFilters, onResetFilters }) => {
   return (
@@ -19,10 +17,12 @@ const EmptyOrdersState = ({ hasFilters, onResetFilters }) => {
 
         {hasFilters ? (
           <>
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">No matching orders found</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              No matching orders found
+            </h2>
             <p className="text-gray-600 mb-8">
-              We couldn't find any orders matching your current filters. Try adjusting your search criteria or reset
-              filters to see all orders.
+              We couldn't find any orders matching your current filters. Try
+              adjusting your search criteria or reset filters to see all orders.
             </p>
             <button
               onClick={onResetFilters}
@@ -34,10 +34,12 @@ const EmptyOrdersState = ({ hasFilters, onResetFilters }) => {
           </>
         ) : (
           <>
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">No orders yet</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              No orders yet
+            </h2>
             <p className="text-gray-600 mb-8">
-              You haven't placed any orders yet. Browse our products and make your first purchase to see your order
-              history here.
+              You haven't placed any orders yet. Browse our products and make
+              your first purchase to see your order history here.
             </p>
             <Link to="/products">
               <motion.button
@@ -53,8 +55,7 @@ const EmptyOrdersState = ({ hasFilters, onResetFilters }) => {
         )}
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default EmptyOrdersState
-
+export default EmptyOrdersState;

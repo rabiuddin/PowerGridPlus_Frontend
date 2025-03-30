@@ -13,8 +13,7 @@ import { formatOrderDate, formatPrice } from "../../../utils/utils";
 const OrderDetails = ({ order }) => {
   return (
     <div className="p-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        {/* Shipping Information */}
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="bg-white p-4 rounded-lg shadow-sm">
           <div className="flex items-center mb-3">
             <FiMapPin className="w-5 h-5 text-primary mr-2" />
@@ -35,7 +34,6 @@ const OrderDetails = ({ order }) => {
           </div>
         </div>
 
-        {/* Payment Information */}
         <div className="bg-white p-4 rounded-lg shadow-sm">
           <div className="flex items-center mb-3">
             <FiCreditCard className="w-5 h-5 text-primary mr-2" />
@@ -70,7 +68,6 @@ const OrderDetails = ({ order }) => {
           </div>
         </div>
 
-        {/* Order Timeline */}
         <div className="bg-white p-4 rounded-lg shadow-sm">
           <div className="flex items-center mb-3">
             <FiPackage className="w-5 h-5 text-primary mr-2" />
@@ -97,7 +94,7 @@ const OrderDetails = ({ order }) => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Order Items */}
       <h4 className="font-medium text-gray-900 mb-3">Order Items</h4>
@@ -134,25 +131,25 @@ const OrderDetails = ({ order }) => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {order.items.map((item) => (
-                <tr key={item.id}>
+                <tr key={item.product}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div className="h-10 w-10 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden">
                         <img
-                          src={item.image || "/placeholder.svg"}
-                          alt={item.name}
+                          src={item.image || "https://placehold.co/600x600"}
+                          alt={item.product_name}
                           className="h-full w-full object-cover"
                         />
                       </div>
                       <div className="ml-4">
                         <div className="text-sm font-medium text-gray-900">
-                          {item.name}
+                          {item.product_name}
                         </div>
-                        {item.variant && (
+                        {/* {item.variant && (
                           <div className="text-xs text-gray-500">
                             {item.variant}
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </div>
                   </td>

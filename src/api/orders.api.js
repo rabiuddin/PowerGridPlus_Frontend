@@ -10,3 +10,12 @@ export const placeOrderApiCall = async (body) => {
     return e.response.data;
   }
 };
+
+export const getUserOrdersApiCall = async () => {
+  try {
+    const response = await api.get(`${path}/`);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};
