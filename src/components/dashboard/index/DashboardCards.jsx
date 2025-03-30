@@ -6,9 +6,9 @@ const DashboardCards = () => {
   // Sample data - in a real app, this would come from an API or state
   const summaryData = {
     activeDevices: 12,
-    energyUsage: 245.8,
+    energyUsage: 24.8,
     alerts: 3,
-    savings: 18.5,
+    savings: 1.5,
   };
 
   return (

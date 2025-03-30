@@ -5,8 +5,7 @@ import { MdEmail, MdPhone } from "react-icons/md";
 import useScroll from "../../hooks/useScroll";
 
 const Footer = () => {
-
-  const {handleScrollToSection, scrollToTop} = useScroll();
+  const { handleScrollToSection, scrollToTop } = useScroll();
 
   return (
     <footer className="bg-white">
@@ -56,6 +55,17 @@ const Footer = () => {
                     Contact Us
                   </Link>
                 </li>
+                <li>
+                  <a
+                    href="/#get-device"
+                    onClick={(e) => {
+                      handleScrollToSection(e, "get-device");
+                    }}
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
+                  >
+                    Get your Device
+                  </a>
+                </li>
               </ul>
               <ul className="space-y-2">
                 <li className="mx-5">
@@ -69,21 +79,21 @@ const Footer = () => {
                 </li>
                 <li className="mx-5">
                   <Link
+                    to="/products"
+                    onClick={scrollToTop}
+                    className="hover:text-secondary transition-all duration-200 ease-in-out"
+                  >
+                    Products
+                  </Link>
+                </li>
+                <li className="mx-5">
+                  <Link
                     to="/blogs"
                     onClick={scrollToTop}
                     className="hover:text-secondary transition-all duration-200 ease-in-out"
                   >
                     Blog
                   </Link>
-                </li>
-                <li className="mx-5">
-                  <a
-                    href="/#get-device"
-                    onClick={(e)=>{handleScrollToSection(e, "get-device")}}
-                    className="hover:text-secondary transition-all duration-200 ease-in-out"
-                  >
-                    Get your Device
-                  </a>
                 </li>
               </ul>
             </div>
@@ -100,8 +110,7 @@ const Footer = () => {
                 abiodun.onile@powergridplus.com
               </p>
               <p className="flex items-center justify-center md:justify-start">
-                <MdPhone className="mr-2 text-xl text-secondary" />{" "}
-                +37253676853
+                <MdPhone className="mr-2 text-xl text-secondary" /> +37253676853
               </p>
             </div>
             {/* Social Media Icons */}
