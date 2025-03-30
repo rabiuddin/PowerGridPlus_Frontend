@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useCart } from "../../products/hooks/useCart";
+import { placeOrderApiCall } from "../../../api/orders.api";
 
 export const useCheckout = () => {
   // Current step in checkout process
@@ -46,21 +47,33 @@ export const useCheckout = () => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   // Get cart functions
-  const { clearCart } = useCart();
+  const { clearCart, cart } = useCart();
 
   // Place order function
   const placeOrder = async () => {
     setIsProcessing(true);
 
-    try {
-      // In a real app, you'd make an API call to create the order
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API delay
+    const body = {
+      first_name: shippingInfo.firstName,
+      last_name: shippingInfo.lastName,
+      email: shippingInfo.email,
+      phone: shippingInfo.phone,
+      street_address: shippingInfo.address,
+      address_line_2: shippingInfo.addressLine2,
+      city: shippingInfo.city,
+      state_province: shippingInfo.state,
+      postal_code: shippingInfo.zipCode,
+      country: shippingInfo.country,
+      items: cart.map((item) => ({
+        product: item.id,
+        quantity: item.quantity,
+      })),
+    };
 
-      // Generate a random order ID
-      const generatedOrderId = Math.floor(
-        100000 + Math.random() * 900000
-      ).toString();
-      setOrderId(generatedOrderId);
+    const response = await placeOrderApiCall(body);
+
+    if (response.success) {
+      setOrderId(response.data.id);
 
       // Clear the cart
       clearCart();
@@ -73,12 +86,11 @@ export const useCheckout = () => {
 
       // Show success toast
       toast.success("Order placed successfully!");
-    } catch (error) {
-      console.error("Error placing order:", error);
-      toast.error("Failed to place order. Please try again.");
-    } finally {
-      setIsProcessing(false);
+    } else {
+      console.error(response);
     }
+
+    setIsProcessing(false);
   };
 
   return {

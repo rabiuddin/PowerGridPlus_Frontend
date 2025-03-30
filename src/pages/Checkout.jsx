@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import CheckoutHeader from "../components/checkout/CheckoutHeader";
 import CheckoutSteps from "../components/checkout/CheckoutSteps";
 import ShippingForm from "../components/checkout/ShippingForm";
-import ShippingMethod from "../components/checkout/ShippingMethod";
-import PaymentForm from "../components/checkout/PaymentForm";
 import OrderReview from "../components/checkout/OrderReview";
 import OrderConfirmation from "../components/checkout/OrderConfirmation";
 import OrderSummary from "../components/checkout/OrderSummary";
@@ -21,9 +19,7 @@ export default function Checkout() {
     shippingInfo,
     setShippingInfo,
     shippingMethod,
-    setShippingMethod,
     paymentInfo,
-    setPaymentInfo,
     placeOrder,
     orderPlaced,
     orderId,
@@ -57,24 +53,7 @@ export default function Checkout() {
             onNext={() => setCurrentStep(2)}
           />
         );
-      // case 2:
-      //   return (
-      //     <ShippingMethod
-      //       selectedMethod={shippingMethod}
-      //       setSelectedMethod={setShippingMethod}
-      //       onNext={() => setCurrentStep(3)}
-      //       onBack={() => setCurrentStep(1)}
-      //     />
-      //   );
-      // case 2:
-      //   return (
-      //     <PaymentForm
-      //       paymentInfo={paymentInfo}
-      //       setPaymentInfo={setPaymentInfo}
-      //       onNext={() => setCurrentStep(4)}
-      //       onBack={() => setCurrentStep(2)}
-      //     />
-      //   );
+
       case 2:
         return (
           <OrderReview
@@ -82,7 +61,8 @@ export default function Checkout() {
             shippingMethod={shippingMethod}
             paymentInfo={paymentInfo}
             onPlaceOrder={placeOrder}
-            onBack={() => setCurrentStep(3)}
+            onBack={() => setCurrentStep(1)}
+            setCurrentStep={setCurrentStep}
             isProcessing={isProcessing}
           />
         );

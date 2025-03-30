@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import { getAllProductsApiCall } from "../../../api/products.api";
+import {
+  getAllCategoriesApiCall,
+  getAllProductsApiCall,
+} from "../../../api/products.api";
 
 // Extract unique categories
 const CATEGORIES = [
@@ -22,12 +25,23 @@ export const useProducts = () => {
   const [filteredProducts, setFilteredProducts] = useState(null);
   const [featuredProducts, setFeaturedProducts] = useState(null);
   const [products, setProducts] = useState(null);
+  const [categories, setCategories] = useState(null);
 
   // Reset all filters
   const resetFilters = () => {
     setActiveCategory("All");
     setPriceRange([0, 2000]);
     setSearchQuery("");
+  };
+
+  const getAllCategories = async () => {
+    const response = await getAllCategoriesApiCall();
+
+    if (response.success) {
+      setCategories(response.data);
+    } else {
+      console.error(response);
+    }
   };
 
   const getAllProducts = async () => {
@@ -42,6 +56,7 @@ export const useProducts = () => {
 
   useEffect(() => {
     getAllProducts();
+    getAllCategories();
   }, []);
 
   // Filter and sort products when filters change
@@ -114,7 +129,7 @@ export const useProducts = () => {
     showFilters,
     setShowFilters,
     resetFilters,
-    categories: CATEGORIES,
+    categories,
     featuredProducts,
   };
 };

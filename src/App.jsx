@@ -31,6 +31,7 @@ import Products from "./pages/Products";
 import ProductSingle from "./pages/ProductSingle";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import { CartProvider } from "./components/products/hooks/useCart";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -75,52 +76,54 @@ const App = () => {
     <>
       <Toaster position="right-top" />
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<LogoutAndSignup />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:id" element={<BlogPost />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:productId" element={<ProductSingle />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route
-            path="/reset-password/:uidb64/:token"
-            element={<ResetPassword />}
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutes>
-                <Dashboard />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/dashboard/electricity-cost"
-            element={
-              <ProtectedRoutes>
-                <ElectricityCost />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/dashboard/chatbot"
-            element={
-              <ProtectedRoutes>
-                <Chatbot />
-              </ProtectedRoutes>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<LogoutAndSignup />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:id" element={<BlogPost />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:productId" element={<ProductSingle />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route
+              path="/reset-password/:uidb64/:token"
+              element={<ResetPassword />}
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoutes>
+                  <Dashboard />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/dashboard/electricity-cost"
+              element={
+                <ProtectedRoutes>
+                  <ElectricityCost />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/dashboard/chatbot"
+              element={
+                <ProtectedRoutes>
+                  <Chatbot />
+                </ProtectedRoutes>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CartProvider>
       </Router>
     </>
   );

@@ -4,12 +4,6 @@ import ProductCard from "./ProductCard";
 import { FiSearch } from "react-icons/fi";
 
 const ProductGrid = ({ filteredProducts, activeCategory, resetFilters }) => {
-  if (!filteredProducts)
-    return (
-      <>
-        <FullScreenLoader />
-      </>
-    );
   if (filteredProducts.length === 0) {
     return (
       <div className="bg-white rounded-xl shadow-sm p-8 text-center">

@@ -50,15 +50,15 @@ const MobileFilters = ({
               </button>
               {categories.map((category) => (
                 <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.name)}
                   className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
-                    activeCategory === category
+                    activeCategory === category.name
                       ? "bg-[#0b6a62] text-white"
                       : "hover:bg-gray-100 text-gray-700"
                   }`}
                 >
-                  {category}
+                  {category.name}
                 </button>
               ))}
             </div>

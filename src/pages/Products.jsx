@@ -8,6 +8,7 @@ import ProductCTA from "../components/products/ProductCTA";
 import MobileFilters from "../components/products/MobileFilters";
 import { useProducts } from "../components/products/hooks/useProduct";
 import MainLayout from "../layouts/MainLayout";
+import FullScreenLoader from "../components/shared/loader/FullScreenLoader";
 
 export default function Products() {
   const {
@@ -26,6 +27,13 @@ export default function Products() {
     categories,
     featuredProducts,
   } = useProducts();
+
+  if (!filteredProducts || !categories)
+    return (
+      <>
+        <FullScreenLoader />
+      </>
+    );
 
   return (
     <MainLayout>

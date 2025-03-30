@@ -1,7 +1,7 @@
-"use client";
-
 import { useState, useEffect, createContext, useContext } from "react";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CartContext = createContext();
 
@@ -9,13 +9,15 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useSelector((state) => state.user);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Load cart from localStorage on initial render
   useEffect(() => {
     const loadCart = async () => {
       setIsLoading(true);
       try {
-        // In a real app, you might fetch the cart from an API
         const savedCart = localStorage.getItem("cart");
         if (savedCart) {
           const parsedCart = JSON.parse(savedCart);
@@ -48,6 +50,15 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addToCart = (product, quantity = 1) => {
+    // if user is not logged in
+    if (!user) {
+      navigate("/login", {
+        state: { from: location },
+        replace: true,
+      });
+      return;
+    }
+
     setCart((prevCart) => {
       // Check if product already exists in cart
       const existingItemIndex = prevCart.findIndex(
@@ -107,7 +118,6 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cart,
-
         cartTotal,
         isLoading,
         addToCart,

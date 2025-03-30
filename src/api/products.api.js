@@ -11,6 +11,15 @@ export const getAllProductsApiCall = async () => {
   }
 };
 
+export const getAllCategoriesApiCall = async () => {
+  try {
+    const response = await api.get(`${path}/categories/`);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};
+
 export const fetchProductApiCall = async (productId) => {
   try {
     const response = await api.get(`${path}/${productId}/`);

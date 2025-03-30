@@ -13,6 +13,7 @@ const OrderReview = ({
   onPlaceOrder,
   onBack,
   isProcessing,
+  setCurrentStep,
 }) => {
   const { cart } = useCart();
   const { subtotal, tax, total } = useCartTotals();
@@ -98,17 +99,6 @@ const OrderReview = ({
             <h3 className="text-lg font-medium text-gray-900">
               Shipping Method
             </h3>
-            <Link
-              to="/checkout"
-              onClick={(e) => {
-                e.preventDefault();
-                onBack();
-              }}
-              className="flex items-center text-[#0b6a62] hover:text-[#22a196] transition-colors text-sm"
-            >
-              <FiEdit2 className="w-4 h-4 mr-1" />
-              <span>Edit</span>
-            </Link>
           </div>
 
           <div className="bg-gray-50 rounded-lg p-4">
@@ -124,53 +114,6 @@ const OrderReview = ({
                   ? "Free"
                   : formatPrice(shippingMethod.price)}
               </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Payment Information */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-gray-900">
-              Payment Information
-            </h3>
-            <Link
-              to="/checkout"
-              onClick={(e) => {
-                e.preventDefault();
-                onBack();
-              }}
-              className="flex items-center text-[#0b6a62] hover:text-[#22a196] transition-colors text-sm"
-            >
-              <FiEdit2 className="w-4 h-4 mr-1" />
-              <span>Edit</span>
-            </Link>
-          </div>
-
-          <div className="bg-gray-50 rounded-lg p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <p className="text-gray-500 text-sm">Payment Method</p>
-                <p className="font-medium">Credit Card</p>
-                <p>{formatCardNumber(paymentInfo.cardNumber)}</p>
-                <p>Expires {paymentInfo.expiryDate}</p>
-              </div>
-
-              <div>
-                <p className="text-gray-500 text-sm">Billing Address</p>
-                {paymentInfo.sameAsShipping ? (
-                  <p className="text-sm italic">Same as shipping address</p>
-                ) : (
-                  <>
-                    <p className="font-medium">{paymentInfo.billingAddress}</p>
-                    <p>
-                      {paymentInfo.billingCity}, {paymentInfo.billingState}{" "}
-                      {paymentInfo.billingZipCode}
-                    </p>
-                    <p>{paymentInfo.billingCountry}</p>
-                  </>
-                )}
-              </div>
             </div>
           </div>
         </div>
@@ -239,6 +182,7 @@ const OrderReview = ({
               name="terms"
               type="checkbox"
               className="h-4 w-4 text-[#0b6a62] focus:ring-[#0b6a62]/20 border-gray-300 rounded"
+              required
             />
           </div>
           <div className="ml-3 text-sm">

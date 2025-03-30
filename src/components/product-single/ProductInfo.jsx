@@ -24,7 +24,7 @@ const ProductInfo = ({ product, averageRating, reviewCount }) => {
   };
 
   const handleAddToCart = () => {
-    if (product.inStock) {
+    if (product.stock > 0) {
       addToCart(product, quantity);
     }
   };
