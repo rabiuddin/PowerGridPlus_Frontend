@@ -59,7 +59,11 @@ export const CartProvider = ({ children }) => {
       return;
     }
 
+    let isUpdated = false;
+    let message = "";
+
     setCart((prevCart) => {
+      console.log("Triggered");
       // Check if product already exists in cart
       const existingItemIndex = prevCart.findIndex(
         (item) => item.id === product.id
@@ -73,25 +77,39 @@ export const CartProvider = ({ children }) => {
           quantity: updatedCart[existingItemIndex].quantity + quantity,
         };
 
-        toast.success(`Updated ${product.name} quantity in cart`);
+        message = `Updated ${product.name} quantity in cart`;
+        isUpdated = true;
         return updatedCart;
       } else {
         // Add new item to cart
-        toast.success(`Added ${product.name} to cart`);
+        message = `Added ${product.name} to cart`;
+        isUpdated = true;
+
         return [...prevCart, { ...product, quantity }];
       }
     });
+
+    if (isUpdated) {
+      toast.success(message);
+    }
   };
 
   // Remove item from cart
   const removeFromCart = (productId) => {
+    let isRemoved = false;
+    let message = "";
     setCart((prevCart) => {
       const itemToRemove = prevCart.find((item) => item.id === productId);
       if (itemToRemove) {
-        toast.success(`Removed ${itemToRemove.name} from cart`);
+        isRemoved = true;
+        message = `Removed ${itemToRemove.name} from cart`;
       }
       return prevCart.filter((item) => item.id !== productId);
     });
+
+    if (isRemoved) {
+      toast.success(message);
+    }
   };
 
   // Update item quantity

@@ -54,13 +54,11 @@ const ProductTabs = ({ product, reviews, reviewsLoading }) => {
                       <FiUser className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">
-                        {review.userName}
-                      </h4>
+                      <h4 className="font-medium text-gray-900">{review.id}</h4>
                       <div className="flex items-center text-sm text-gray-500">
                         <FiCalendar className="w-3 h-3 mr-1" />
                         <span>
-                          {new Date(review.date).toLocaleDateString()}
+                          {new Date(review.created_at).toLocaleDateString()}
                         </span>
                       </div>
                     </div>
@@ -91,12 +89,12 @@ const ProductTabs = ({ product, reviews, reviewsLoading }) => {
         )}
 
         {/* Review Form */}
-        {/* <div className="mt-8 border-t border-gray-200 pt-8">
+        <div className="mt-8 border-t border-gray-200 pt-8">
           <h3 className="text-lg font-medium text-gray-900 mb-4">
             Write a Review
           </h3>
           <ProductReviewForm productId={product.id} />
-        </div> */}
+        </div>
       </div>
     ),
   };

@@ -1,6 +1,7 @@
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import PopupChatbot from "../components/popup-chatbot/PopupChatbot";
+import CartIcon from "../components/cart/CartIcon";
 
 const MainLayout = ({ children }) => {
   return (
@@ -11,6 +12,7 @@ const MainLayout = ({ children }) => {
         <Footer />
       </div>
       <PopupChatbot />
+      <CartIcon />
     </>
   );
 };

@@ -37,3 +37,12 @@ export const fetchRecommendedProductsApiCall = async (body) => {
     return e.response.data;
   }
 };
+
+export const addReviewApiCall = async (productId, body) => {
+  try {
+    const response = await api.post(`${path}/${productId}/reviews/add/`, body);
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

@@ -1,51 +1,63 @@
-"use client";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiStar } from "react-icons/fi";
+import { addReviewApiCall } from "../../api/products.api";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ProductReviewForm = ({ productId }) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // if user is not logged in
+    if (!user) {
+      navigate("/login", {
+        state: { from: location },
+        replace: true,
+      });
+      return;
+    }
+
     // Validate form
-    if (!rating || !name || !email || !comment) {
-      setSubmitError("Please fill in all fields and provide a rating");
+    if (!rating || !comment) {
+      setSubmitError("Please add a comment and provide a rating");
       return;
     }
 
     setIsSubmitting(true);
     setSubmitError("");
 
-    try {
-      // In a real app, you'd call an API to submit the review
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+    const response = await addReviewApiCall(productId, {
+      rating,
+      comment,
+      user: user.id,
+    });
 
+    if (response.success) {
       // Reset form on success
       setRating(0);
-      setName("");
-      setEmail("");
       setComment("");
       setSubmitSuccess(true);
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    } catch (error) {
-      setSubmitError("Failed to submit review. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setSubmitError(
+        response.detail ||
+          response.message ||
+          "Failed to submit review. Please try again."
+      );
+      console.error(response);
     }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -74,42 +86,6 @@ const ProductReviewForm = ({ productId }) => {
               />
             </button>
           ))}
-        </div>
-      </div>
-
-      {/* Name & Email */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label
-            htmlFor="review-name"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Your Name
-          </label>
-          <input
-            id="review-name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0b6a62]/20 focus:border-[#0b6a62] outline-none transition-all"
-            required
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="review-email"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Your Email
-          </label>
-          <input
-            id="review-email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0b6a62]/20 focus:border-[#0b6a62] outline-none transition-all"
-            required
-          />
         </div>
       </div>
 
