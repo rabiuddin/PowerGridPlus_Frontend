@@ -19,6 +19,8 @@ export const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [error, setError] = useState("");
+  const [showVerificationNotice, setShowVerificationNotice] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -56,12 +58,7 @@ export const useSignup = () => {
     });
 
     if (response.success) {
-      const { access, refresh, user } = response.data;
-      localStorage.setItem(ACCESS_TOKEN, access);
-      localStorage.setItem(REFRESH_TOKEN, refresh);
-      dispatch(setUser(user));
-      toast.success(response.message);
-      navigate(from, { replace: true });
+      setShowVerificationNotice(true);
     } else {
       setError(response.message);
     }
@@ -84,5 +81,6 @@ export const useSignup = () => {
     setShowConfirmPassword,
     passwordStrength,
     error,
+    showVerificationNotice,
   };
 };

@@ -27,6 +27,13 @@ import { getCurrentUserApiCall } from "./api/users.api";
 import { setFetchingUser } from "./redux/slices/utilitySlice";
 import { ACCESS_TOKEN } from "./config/constants";
 import Chatbot from "./pages/dashboard/Chatbot";
+import VerifyEmail from "./pages/VerifyEmail";
+import Products from "./pages/Products";
+import ProductSingle from "./pages/ProductSingle";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import { CartProvider } from "./components/products/hooks/useCart";
+import Orders from "./pages/dashboard/Orders";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -71,48 +78,80 @@ const App = () => {
     <>
       <Toaster position="right-top" />
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<LogoutAndSignup />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:id" element={<BlogPost />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route
-            path="/reset-password/:uidb64/:token"
-            element={<ResetPassword />}
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<LogoutAndSignup />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:id" element={<BlogPost />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:productId" element={<ProductSingle />} />
+               <Route
+            path="/verify-email/:uidb64/:token"
+            element={<VerifyEmail />}
           />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutes>
-                <Dashboard />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/dashboard/electricity-cost"
-            element={
-              <ProtectedRoutes>
-                <ElectricityCost />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/dashboard/chatbot"
-            element={
-              <ProtectedRoutes>
-                <Chatbot />
-              </ProtectedRoutes>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoutes>
+                  <Cart />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <ProtectedRoutes>
+                  <Checkout />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/reset-password/:uidb64/:token"
+              element={<ResetPassword />}
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoutes>
+                  <Dashboard />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/dashboard/electricity-cost"
+              element={
+                <ProtectedRoutes>
+                  <ElectricityCost />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/dashboard/chatbot"
+              element={
+                <ProtectedRoutes>
+                  <Chatbot />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/dashboard/my-orders"
+              element={
+                <ProtectedRoutes>
+                  <Orders />
+                </ProtectedRoutes>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CartProvider>
       </Router>
     </>
   );
