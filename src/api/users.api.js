@@ -51,3 +51,14 @@ export const getCurrentUserApiCall = async () => {
     return e.response.data;
   }
 };
+
+export const verifyEmailApiCall = async (uidb64, token) => {
+  try {
+    const response = await api.get(`${path}/verify-email/${uidb64}/${token}/`, {
+      skipInterceptor: true, // This will skip the interceptor
+    });
+    return response.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

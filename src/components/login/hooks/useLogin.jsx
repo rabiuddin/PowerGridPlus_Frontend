@@ -15,6 +15,7 @@ export const useLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showVerificationNotice, setShowVerificationNotice] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -36,6 +37,13 @@ export const useLogin = () => {
     const response = await loginApiCall(formData);
 
     if (response.success) {
+      // if user is not verified
+      if (response.data.is_verified == false) {
+        setShowVerificationNotice(true);
+        setLoading(false);
+        return;
+      }
+
       const { user, tokens } = response.data;
       const { access, refresh } = tokens;
       localStorage.setItem(ACCESS_TOKEN, access);
@@ -58,5 +66,7 @@ export const useLogin = () => {
     showPassword,
     setShowPassword,
     error,
+    showVerificationNotice,
+    setShowVerificationNotice,
   };
 };

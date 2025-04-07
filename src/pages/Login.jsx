@@ -4,6 +4,8 @@ import Reveal from "../components/shared/framer-motion/Reveal";
 import { useLogin } from "../components/login/hooks/useLogin";
 import FormError from "../components/shared/FormError";
 import ButtonWithLoading from "../components/shared/button/ButtonWithLoading";
+import VerificationEmailSent from "../components/verify-email/VerificationEmailSent";
+import { motion } from "framer-motion";
 
 export default function Login() {
   const {
@@ -14,8 +16,29 @@ export default function Login() {
     showPassword,
     setShowPassword,
     error,
+    showVerificationNotice,
+    setShowVerificationNotice,
   } = useLogin();
   const { email, password } = formData;
+
+  if (showVerificationNotice)
+    return (
+      <>
+        <div className="flex bg-gradient-to-br justify-center p-4 from-primary/5 items-center min-h-screen to-[#22a196]/5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-md"
+          >
+            <VerificationEmailSent
+              email={email}
+              setShowVerificationNotice={setShowVerificationNotice}
+            />
+          </motion.div>
+        </div>
+      </>
+    );
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative ">

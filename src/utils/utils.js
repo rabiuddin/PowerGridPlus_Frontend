@@ -49,3 +49,35 @@ export const formatDate = (dateString) => {
     minute: "2-digit",
   });
 };
+
+// Format date to readable string
+export const formatOrderDate = (dateString, includeTime = false) => {
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
+  if (includeTime) {
+    return date.toLocaleString("en-US", {
+      ...options,
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  return date.toLocaleDateString("en-US", options);
+};
+
+// Format price with currency
+export const formatPrice = (price) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(price);
+};

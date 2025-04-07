@@ -4,8 +4,9 @@ import Reveal from "../components/shared/framer-motion/Reveal";
 import { useSignup } from "../components/signup/hooks/useSignup";
 import PasswordStrengthIndicator from "../components/shared/PasswordStrengthIndicator";
 import FormError from "../components/shared/FormError";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import ButtonWithLoading from "../components/shared/button/ButtonWithLoading";
+import { motion } from "framer-motion";
+import VerificationEmailSent from "../components/verify-email/VerificationEmailSent";
 
 export default function Signup() {
   const {
@@ -19,9 +20,26 @@ export default function Signup() {
     setShowConfirmPassword,
     passwordStrength,
     error,
+    showVerificationNotice,
   } = useSignup();
 
   const { email, password, confirmPassword } = formData;
+
+  if (showVerificationNotice)
+    return (
+      <>
+        <div className="flex bg-gradient-to-br justify-center p-4 from-primary/5 items-center min-h-screen to-[#22a196]/5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-md"
+          >
+            <VerificationEmailSent email={email} />
+          </motion.div>
+        </div>
+      </>
+    );
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 relative">
