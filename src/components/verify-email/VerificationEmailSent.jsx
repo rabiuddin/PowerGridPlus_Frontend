@@ -1,9 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiCheckCircle } from "react-icons/fi";
-import { Link } from "react-router-dom";
 
-const VerificationEmailSent = ({ email }) => {
+const VerificationEmailSent = ({ email, setShowVerificationNotice }) => {
   return (
     <>
       <motion.div
@@ -28,14 +27,16 @@ const VerificationEmailSent = ({ email }) => {
           If you don't see the email, check your spam folder or make sure the
           email address is correct.
         </p>
-        <div className="flex justify-center">
-          <Link
-            to="/login"
+        <div className="flex justify-center cursor-pointer">
+          <div
+            onClick={() => {
+              setShowVerificationNotice(false);
+            }}
             className="text-primary hover:text-[#22a196] inline-flex items-center transition-colors"
           >
             <FiArrowLeft className="mr-2" />
             Back to Login
-          </Link>
+          </div>
         </div>
       </motion.div>
     </>

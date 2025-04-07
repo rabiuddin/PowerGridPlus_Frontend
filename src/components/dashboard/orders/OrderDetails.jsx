@@ -9,6 +9,7 @@ import {
   FiExternalLink,
 } from "react-icons/fi";
 import { formatOrderDate, formatPrice } from "../../../utils/utils";
+import { BACKEND_URL } from "../../../config/constants";
 
 const OrderDetails = ({ order }) => {
   return (
@@ -132,11 +133,16 @@ const OrderDetails = ({ order }) => {
             <tbody className="bg-white divide-y divide-gray-200">
               {order.items.map((item) => (
                 <tr key={item.product}>
+                  {console.log(item)}
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div className="h-10 w-10 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden">
                         <img
-                          src={item.image || "https://placehold.co/600x600"}
+                          src={
+                            item.image
+                              ? BACKEND_URL + "/" + item.image
+                              : "https://placehold.co/300x300"
+                          }
                           alt={item.product_name}
                           className="h-full w-full object-cover"
                         />

@@ -17,6 +17,7 @@ export default function Login() {
     setShowPassword,
     error,
     showVerificationNotice,
+    setShowVerificationNotice,
   } = useLogin();
   const { email, password } = formData;
 
@@ -30,7 +31,10 @@ export default function Login() {
             transition={{ duration: 0.5 }}
             className="w-full max-w-md"
           >
-            <VerificationEmailSent email={email} />
+            <VerificationEmailSent
+              email={email}
+              setShowVerificationNotice={setShowVerificationNotice}
+            />
           </motion.div>
         </div>
       </>
