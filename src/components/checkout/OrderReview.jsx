@@ -140,15 +140,13 @@ const OrderReview = ({
                   </div>
                 ))}
               </div>
-
               {/* Subtotal */}
               <div className="flex justify-between pt-4 border-t border-gray-200">
                 <span>Subtotal</span>
                 <span>{formatPrice(subtotal)}</span>
               </div>
 
-              {/* Shipping */}
-              <div className="flex justify-between">
+              {/* <div className="flex justify-between">
                 <span>Shipping</span>
                 <span>
                   {shippingMethod.price === 0
@@ -157,18 +155,14 @@ const OrderReview = ({
                 </span>
               </div>
 
-              {/* Tax */}
               <div className="flex justify-between">
                 <span>Tax</span>
                 <span>{formatPrice(tax)}</span>
-              </div>
-
+              </div> */}
               {/* Total */}
               <div className="flex justify-between pt-4 border-t border-gray-200">
                 <span className="font-bold">Total</span>
-                <span className="font-bold">
-                  {formatPrice(total + shippingMethod.price)}
-                </span>
+                <span className="font-bold">{formatPrice(subtotal)}</span>
               </div>
             </div>
           </div>

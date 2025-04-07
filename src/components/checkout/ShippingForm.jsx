@@ -55,9 +55,9 @@ const ShippingForm = ({ shippingInfo, setShippingInfo, onNext }) => {
     // Phone validation
     if (
       shippingInfo.phone &&
-      !/^\+?[0-9\s\-()]{7,}$/.test(shippingInfo.phone)
+      !/^\+?[0-9\s\-()]{7,20}$/.test(shippingInfo.phone.replace(/\D/g, "")) // count only digits
     ) {
-      newErrors.phone = "Please enter a valid phone number";
+      newErrors.phone = "Please enter a valid phone number (up to 14 digits)";
     }
 
     setErrors(newErrors);
