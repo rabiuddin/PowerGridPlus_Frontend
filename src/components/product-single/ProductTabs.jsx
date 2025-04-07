@@ -54,7 +54,9 @@ const ProductTabs = ({ product, reviews, reviewsLoading }) => {
                       <FiUser className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">{review.id}</h4>
+                      <h4 className="font-medium text-gray-900">
+                        {review.user}
+                      </h4>
                       <div className="flex items-center text-sm text-gray-500">
                         <FiCalendar className="w-3 h-3 mr-1" />
                         <span>

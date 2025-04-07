@@ -63,7 +63,6 @@ export const CartProvider = ({ children }) => {
     let message = "";
 
     setCart((prevCart) => {
-      console.log("Triggered");
       // Check if product already exists in cart
       const existingItemIndex = prevCart.findIndex(
         (item) => item.id === product.id

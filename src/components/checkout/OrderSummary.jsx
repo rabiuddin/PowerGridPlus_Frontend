@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FiShoppingBag } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useCartTotals } from "../cart/hooks/useCartTotals";
+import { BACKEND_URL } from "../../config/constants";
 
 const OrderSummary = ({ cart, shippingMethod, currentStep }) => {
   const { subtotal, tax, discount, total } = useCartTotals();
@@ -20,7 +21,7 @@ const OrderSummary = ({ cart, shippingMethod, currentStep }) => {
   const shippingCost = shippingMethod ? shippingMethod.price : 0;
 
   // Calculate final total
-  const finalTotal = total + shippingCost;
+  const finalTotal = subtotal;
 
   return (
     <motion.div
@@ -38,7 +39,11 @@ const OrderSummary = ({ cart, shippingMethod, currentStep }) => {
             <div key={item.id} className="flex gap-3">
               <div className="relative w-16 h-16 bg-gray-100 rounded-md overflow-hidden flex-shrink-0">
                 <img
-                  src={item.image || "/placeholder.svg"}
+                  src={
+                    item.images && item.images.length > 0
+                      ? BACKEND_URL + "/" + item.images[0].image
+                      : "https://placehold.co/300x300"
+                  }
                   alt={item.name}
                   className="w-full h-full object-cover"
                 />
@@ -68,7 +73,7 @@ const OrderSummary = ({ cart, shippingMethod, currentStep }) => {
             <span>{formatPrice(subtotal)}</span>
           </div>
 
-          <div className="flex justify-between text-gray-600">
+          {/* <div className="flex justify-between text-gray-600">
             <span>Shipping</span>
             <span>{shippingCost > 0 ? formatPrice(shippingCost) : "Free"}</span>
           </div>
@@ -76,7 +81,7 @@ const OrderSummary = ({ cart, shippingMethod, currentStep }) => {
           <div className="flex justify-between text-gray-600">
             <span>Tax</span>
             <span>{formatPrice(tax)}</span>
-          </div>
+          </div> */}
 
           {/* {discount > 0 && (
             <div className="flex justify-between text-green-600">

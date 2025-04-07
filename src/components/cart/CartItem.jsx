@@ -1,6 +1,7 @@
 "use client";
 import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../../config/constants";
 
 const CartItem = ({ item, onRemove, onUpdateQuantity }) => {
   const handleQuantityChange = (newQuantity) => {
@@ -29,7 +30,11 @@ const CartItem = ({ item, onRemove, onUpdateQuantity }) => {
           className="flex-shrink-0 w-full sm:w-20 h-20 bg-gray-100 rounded-lg overflow-hidden"
         >
           <img
-            src={item.image || "/placeholder.svg"}
+            src={
+              item.images && item.images.length > 0
+                ? BACKEND_URL + "/" + item.images[0].image
+                : "https://placehold.co/300x300"
+            }
             alt={item.name}
             className="w-full h-full object-cover"
           />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiZoomIn, FiChevronLeft, FiChevronRight, FiX } from "react-icons/fi";
+import { BACKEND_URL } from "../../config/constants";
 
 const ProductGallery = ({ images, productName }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -10,7 +11,7 @@ const ProductGallery = ({ images, productName }) => {
 
   // If no images provided, use a placeholder
   const imageList =
-    images?.length > 0
+    images && images.length > 0
       ? images
       : [
           "https://placehold.co/600x600",
@@ -51,7 +52,7 @@ const ProductGallery = ({ images, productName }) => {
         className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4"
       >
         <img
-          src={imageList[currentImageIndex] || "https://placehold.co/600x600"}
+          src={BACKEND_URL + "/" + imageList[currentImageIndex]}
           alt={`${productName} - Image ${currentImageIndex + 1}`}
           className="w-full h-full object-contain"
         />
@@ -101,7 +102,7 @@ const ProductGallery = ({ images, productName }) => {
               }`}
             >
               <img
-                src={image || "/placeholder.svg"}
+                src={BACKEND_URL + "/" + image}
                 alt={`${productName} - Thumbnail ${index + 1}`}
                 className="w-full h-full object-cover"
               />
@@ -133,7 +134,7 @@ const ProductGallery = ({ images, productName }) => {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={imageList[currentImageIndex] || "/placeholder.svg"}
+                src={BACKEND_URL + "/" + imageList[currentImageIndex]}
                 alt={`${productName} - Full size image ${
                   currentImageIndex + 1
                 }`}

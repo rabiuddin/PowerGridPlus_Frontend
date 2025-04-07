@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FiShoppingCart, FiStar } from "react-icons/fi";
 import { useCart } from "./hooks/useCart";
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../../config/constants";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -17,7 +18,11 @@ const ProductCard = ({ product }) => {
         {/* Product Image */}
         <div className="relative aspect-square bg-gray-100">
           <img
-            src={product.images[0]?.image || "https://placehold.co/300x300"}
+            src={
+              product.images && product.images.length > 0
+                ? BACKEND_URL + "/" + product.images[0]?.image
+                : "https://placehold.co/300x300"
+            }
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
@@ -59,7 +64,10 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
 
-          <p className="text-gray-500 text-sm mb-4 line-clamp-2">
+          <p
+            className="text-gray-500 text-sm mb-4 line-clamp-1"
+            title={product.description}
+          >
             {product.description}
           </p>
 

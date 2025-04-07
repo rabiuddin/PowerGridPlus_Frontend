@@ -34,9 +34,7 @@ const OrderConfirmation = ({ orderId }) => {
         </div>
 
         <p className="text-gray-600 mb-8">
-          We've sent a confirmation email to your email address with all the
-          details of your order. You can also track your order status in your
-          account.
+          You can track your order status in your account.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

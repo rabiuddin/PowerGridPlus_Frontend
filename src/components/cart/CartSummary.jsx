@@ -56,7 +56,7 @@ const CartSummary = () => {
             <span>{formatPrice(subtotal)}</span>
           </div>
 
-          <div className="flex justify-between text-gray-600">
+          {/* <div className="flex justify-between text-gray-600">
             <span>Tax</span>
             <span>{formatPrice(tax)}</span>
           </div>
@@ -64,7 +64,7 @@ const CartSummary = () => {
           <div className="flex justify-between text-gray-600">
             <span>Shipping</span>
             <span>{shipping > 0 ? formatPrice(shipping) : "Free"}</span>
-          </div>
+          </div> */}
 
           {/* {discount > 0 && (
             <div className="flex justify-between text-green-600">
@@ -129,7 +129,7 @@ const CartSummary = () => {
         <div className="flex justify-between items-center border-t border-gray-200 pt-4 mb-6">
           <span className="text-lg font-bold text-gray-900">Total</span>
           <span className="text-xl font-bold text-[#0b6a62]">
-            {formatPrice(total)}
+            {formatPrice(subtotal)}
           </span>
         </div>
         {/* Checkout Button */}
